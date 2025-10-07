@@ -3,160 +3,714 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ablockalypse - A quick paced puzzle game.</title>
+    <title>Ablockalypse - Competitive Tetromino Gaming</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a; /* Dark background */
-            color: #e0e0e0; /* Light text for contrast */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: #2c2c2c;
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #8b5cf6;
+            --dark: #18181b;
+            --dark-light: #27272a;
+            --dark-lighter: #3f3f46;
+            --text: #fafafa;
+            --text-muted: #a1a1aa;
         }
-        .social-buttons {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #18181b;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Sleek Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background: 
+                radial-gradient(circle at 20% 50%, var(--primary) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--secondary) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--accent) 0%, transparent 50%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.03; }
+            50% { opacity: 0.06; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(24, 24, 27, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--dark-lighter);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
         }
-        .social-buttons a {
-            display: inline-block;
-            padding: 10px 20px;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
             text-decoration: none;
-            color: white;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: color 0.3s;
+            font-weight: 500;
         }
-        .steam { background-color: #000; }
-        .github { background-color: #333; }
-        .itch { background-color: #fa5c5c; }
-        .facebook { background-color: #4267B2; }
-        .twitter { background-color: #1DA1F2; }
-        .discord { background-color: #7289DA; }
-        .blog { background-color: #006600; }
-        .youtube { background-color: #ff6666; }
-        .social-buttons a:hover {
-            opacity: 0.8;
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
-        .content {
-            padding: 20px;
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
             max-width: 800px;
-            margin: auto;
+            margin-left: auto;
+            margin-right: auto;
         }
-        img {
-            max-width: 100%;
+
+        .logo-container {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .logo-container img {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 60px rgba(99, 102, 241, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5), 0 8px 10px -6px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -5px rgba(99, 102, 241, 0.6), 0 10px 15px -6px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--dark-light);
+            color: var(--text);
+            border: 1px solid var(--dark-lighter);
+        }
+
+        .btn-secondary:hover {
+            background: var(--dark-lighter);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Screenshot Carousel */
+        .carousel-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--dark-lighter);
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: auto;
+        }
+
+        .carousel-item img {
+            width: 100%;
             height: auto;
             display: block;
-            margin: 20px auto;
         }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(39, 39, 42, 0.95);
             color: white;
+            border: 1px solid var(--dark-lighter);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            z-index: 10;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .carousel-btn.prev {
+            left: 1rem;
+        }
+
+        .carousel-btn.next {
+            right: 1rem;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 4rem 2rem;
+            background: var(--dark-light);
+            border-radius: 20px;
+            border: 1px solid var(--dark-lighter);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--dark);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--dark-lighter);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.4);
+            background: #1f1f23;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+        }
+
+        /* Social Links Section */
+        .social-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.5rem 1rem;
+            background: var(--dark-light);
+            border-radius: 15px;
             text-decoration: none;
-            border-radius: 5px;
-            margin: 10px 0;
+            color: var(--text);
+            border: 1px solid var(--dark-lighter);
+            transition: all 0.3s;
+            font-weight: 600;
         }
-        .button:hover {
-            background-color: #45a049;
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.4);
+            background: #1f1f23;
         }
-        iframe {
-            display: block;
-            margin: 20px auto;
+
+        .social-icon {
+            font-size: 2rem;
+        }
+
+        .social-link.steam:hover { border-color: #000; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+        .social-link.itch:hover { border-color: #fa5c5c; box-shadow: 0 10px 30px rgba(250, 92, 92, 0.5); }
+        .social-link.discord:hover { border-color: #7289DA; box-shadow: 0 10px 30px rgba(114, 137, 218, 0.5); }
+        .social-link.youtube:hover { border-color: #ff6666; box-shadow: 0 10px 30px rgba(255, 102, 102, 0.5); }
+        .social-link.twitter:hover { border-color: #1DA1F2; box-shadow: 0 10px 30px rgba(29, 161, 242, 0.5); }
+        .social-link.facebook:hover { border-color: #4267B2; box-shadow: 0 10px 30px rgba(66, 103, 178, 0.5); }
+        .social-link.github:hover { border-color: #333; box-shadow: 0 10px 30px rgba(51, 51, 51, 0.5); }
+        .social-link.blog:hover { border-color: #006600; box-shadow: 0 10px 30px rgba(0, 102, 0, 0.5); }
+
+        /* Roadmap Section */
+        .roadmap {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .roadmap-content {
+            background: var(--dark-light);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            border: 1px solid var(--dark-lighter);
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--dark-lighter);
+        }
+
+        .roadmap-item:last-child {
+            border-bottom: none;
+        }
+
+        .roadmap-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .roadmap-text h4 {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-text p {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--dark-light);
+            margin-top: 4rem;
+            border-top: 1px solid var(--dark-lighter);
+        }
+
+        .company-logo {
+            max-width: 200px;
+            margin: 0 auto 1rem;
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        footer p {
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .carousel-btn {
+                padding: 0.5rem 1rem;
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
 
-<div class="header">
-    <h1>Ablockalypse</h1>
-    <p>A quick paced puzzle game.</p>
-    
-    <!-- Social Media Buttons -->
-    <div class="social-buttons">
-        <a href="https://store.steampowered.com/app/1674300/Ablockalypse/" class="steam">Steam</a>
-        <a href="https://coloritcompany.itch.io/ablockalypse" class="itch">Itch.io</a>
-        <a href="https://github.com/electrosy/sdl2-blocks" class="github">GitHub</a>
-        <a href="https://blog.coloritcompany.com" class="blog">Blog</a>
-    </div>
-</div>
+    <header>
+        <nav>
+            <div class="logo">COLOR IT COMPANY</div>
+            <ul class="nav-links">
+                <li><a href="#game">Game</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="content">
-    <h2>Welcome to Ablockalypse!</h2>
-    <p>Experience the thrill of our fast-paced tetromino game, designed for fluid gameplay and intense competitive action! Perfect for casual players and esports enthusiasts alike, dive in and test your skills in a vibrant, addictive puzzle battle. Join the community and see if you have what it takes to dominate the leaderboards!</p>
+    <section class="hero" id="game">
+        <h1>ABLOCKALYPSE</h1>
+        <p class="tagline">Experience the thrill of our fast-paced tetromino game, designed for fluid gameplay and intense competitive action!</p>
+        
+        <div class="logo-container">
+            <img src="logo-drop-shadow-capsule-900x450.png" alt="Ablockalypse Logo">
+        </div>
 
-    <!-- Adding images from the repo with link for colorit2023.png -->
-    <img src="logo-drop-shadow-capsule-900x450.png" alt="Ablockalypse Logo" class="borderless">
+        <div class="cta-buttons">
+            <a href="https://store.steampowered.com/app/1674300/Ablockalypse/" class="btn btn-primary">Get on Steam</a>
+            <a href="https://coloritcompany.itch.io/ablockalypse" class="btn btn-secondary">Get on Itch.io</a>
+        </div>
 
-    <a href="https://store.steampowered.com/app/1674300/Ablockalypse/"><img src="Screenshot From 2025-04-03 20-47-27.png" alt="Gameplay Screenshot 1"></a>
-    <a href="https://store.steampowered.com/app/1674300/Ablockalypse/"><img src="Screenshot From 2025-04-07 20-46-44.png" alt="Gameplay Screenshot 2"></a>
-    <a href="https://store.steampowered.com/app/1674300/Ablockalypse/"><img src="Screenshot From 2025-04-08 11-31-18.png" alt="Gameplay Screenshot 3"></a>
-    <a href="https://store.steampowered.com/app/1674300/Ablockalypse/"><img src="Screenshot From 2025-04-08 11-31-59.png" alt="Gameplay Screenshot 4"></a>
-    <a href="https://store.steampowered.com/app/1674300/Ablockalypse/"><img src="Screenshot From 2025-04-08 11-32-31.png" alt="Gameplay Screenshot 5"></a>
-    <a href="https://store.steampowered.com/app/1674300/Ablockalypse/"><img src="Screenshot From 2025-04-08 11-33-36.png" alt="Gameplay Screenshot 6"></a>
-    
-    <img src="board_size_animated.gif" alt="Board size options">
-    <a href="https://blog.coloritcompany.com"><img src="ColorItCo_controller_logo-05_cropped.png" alt="Color It Company Logo"></a>
+        <!-- Store Widgets -->
+        <div style="margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+            <iframe src="https://store.steampowered.com/widget/1674300/" frameborder="0" width="646" height="190" style="border-radius: 10px;"></iframe>
+            <iframe frameborder="0" src="https://itch.io/embed/834587" width="552" height="167" style="border-radius: 10px;"><a href="https://coloritcompany.itch.io/ablockalypse">Ablockalypse by coloritcompany</a></iframe>
+        </div>
+    </section>
 
-    <h3>Features:</h3>
-    <ul>
-        <li>Keyboard and Gamepad compatable</li>
-        <li>Dynamic size playing area.</li>
-        <li>Designed from the ground up for competitive play.</li>
-        <li>Configurable Input Delay rate and Repeat rates.</li>
-        <li>Wall kick.</li>
-        <li>Block Editor - Edit the shapes of the blocks</li>
-        <li>The encouraging music will keep you hooked and the beautiful backgrounds will leave you wanting more.</li>
-    </ul>
+    <!-- Social Links Section -->
+    <section class="social-section" id="community">
+        <h2 class="section-title">Join Our Community</h2>
+        <div class="social-links">
+            <a href="https://store.steampowered.com/app/1674300/Ablockalypse/" class="social-link steam" target="_blank">
+                <span class="social-icon">🎮</span>
+                <span>Steam</span>
+            </a>
+            <a href="https://coloritcompany.itch.io/ablockalypse" class="social-link itch" target="_blank">
+                <span class="social-icon">🎲</span>
+                <span>Itch.io</span>
+            </a>
+            <a href="https://discord.gg/7RWDpweT3h" class="social-link discord" target="_blank">
+                <span class="social-icon">💬</span>
+                <span>Discord</span>
+            </a>
+            <a href="https://www.youtube.com/@ColorItCompany" class="social-link youtube" target="_blank">
+                <span class="social-icon">▶️</span>
+                <span>YouTube</span>
+            </a>
+            <a href="https://x.com/coloritcompany" class="social-link twitter" target="_blank">
+                <span class="social-icon">🐦</span>
+                <span>Twitter</span>
+            </a>
+            <a href="https://www.facebook.com/coloritgamestudio/" class="social-link facebook" target="_blank">
+                <span class="social-icon">📘</span>
+                <span>Facebook</span>
+            </a>
+            <a href="https://github.com/electrosy/sdl2-blocks" class="social-link github" target="_blank">
+                <span class="social-icon">💻</span>
+                <span>GitHub</span>
+            </a>
+            <a href="https://blog.coloritcompany.com" class="social-link blog" target="_blank">
+                <span class="social-icon">📝</span>
+                <span>Blog</span>
+            </a>
+        </div>
+    </section>
 
-    <h4>Block Editor:</h4>
-    Edit the blocks by using the block editor and come up with endless possibilities
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/2B0x6lrGWxM?si=2TQASXennEB-Yuz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    
-    <h3>Roadmap:</h3>
-    <img src="ablockalypse_roadmap.png" alt="Ablockalypse Roadmap">
-    <ul>
-        <li>Simplified Chineese</li>
-        <li>Career Mode</li>
-        <li>Adventure Mode - A top secret way of playing a tetromino game, never seen before!</li>
-        <li>A match 3 style mode.</li>
-        <li>Two Player Head to Head.</li>
-        <li>More polish.</li>
-        <ul>
-            <li>Some particle effects when lines are cleared and also when a block is set into place.</li>
-            <li>Odometer Style score that spins up when points are added.</li>
-            <li>An animated game over text that moves in the shape of a sin wave.</li>
-        </ul>
-        <li>A few more sound effects</li>
-        <ul>
-            <li>When a combo is made</li>
-            <li>Possibly when a level is completed, although the background change is probably enough. What do you think?</li>
-        </ul>
-    </ul>
-    Would you like to discuss more? Do you have some ideas you would like us to try? Please find a link to our discord server at the bottom of this page.
+    <section class="carousel-section">
+        <h2 class="section-title">Screenshots</h2>
+        <div class="carousel">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">‹</button>
+            <div class="carousel-inner" id="carouselInner">
+                <div class="carousel-item"><img src="Screenshot From 2025-04-03 20-47-27.png" alt="Gameplay 1"></div>
+                <div class="carousel-item"><img src="Screenshot From 2025-04-07 20-46-44.png" alt="Gameplay 2"></div>
+                <div class="carousel-item"><img src="Screenshot From 2025-04-08 11-31-18.png" alt="Gameplay 3"></div>
+                <div class="carousel-item"><img src="Screenshot From 2025-04-08 11-31-59.png" alt="Gameplay 4"></div>
+                <div class="carousel-item"><img src="Screenshot From 2025-04-08 11-32-31.png" alt="Gameplay 5"></div>
+                <div class="carousel-item"><img src="Screenshot From 2025-04-08 11-33-36.png" alt="Gameplay 6"></div>
+                <div class="carousel-item"><img src="board_size_animated.gif" alt="Board Size Options"></div>
+            </div>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">›</button>
+        </div>
+        <div class="carousel-indicators" id="indicators"></div>
+    </section>
 
-    <p>Ready to dive in?</p>
+    <section class="features" id="features">
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🎮 Multiple Input Support</h3>
+                <p>Full keyboard and gamepad compatibility for your preferred gaming style</p>
+            </div>
+            <div class="feature-card">
+                <h3>📏 Dynamic Playing Area</h3>
+                <p>Customize board size to match your skill level and play style</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏆 Competitive Design</h3>
+                <p>Built from the ground up for competitive play and esports</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚙️ Configurable Controls</h3>
+                <p>Adjust input delay and repeat rates to perfection</p>
+            </div>
+            <div class="feature-card">
+                <h3>🧱 Wall Kick System</h3>
+                <p>Advanced wall kick mechanics for fluid gameplay</p>
+            </div>
+            <div class="feature-card">
+                <h3>✏️ Block Editor</h3>
+                <p>Create and edit block shapes with endless possibilities</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎵 Immersive Audio</h3>
+                <p>Encouraging music and beautiful backgrounds keep you engaged</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎨 Stunning Visuals</h3>
+                <p>Beautiful backgrounds that will leave you wanting more</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- Existing iframes -->
-    <iframe src="https://store.steampowered.com/widget/1674300/" frameborder="0" width="646" height="190"></iframe>
-    <iframe frameborder="0" src="https://itch.io/embed/834587" width="552" height="167"><a href="https://coloritcompany.itch.io/ablockalypse">Ablockalypse by coloritcompany</a></iframe>
-</div>
+    <section class="roadmap" id="roadmap">
+        <h2 class="section-title">Roadmap</h2>
+        <div class="roadmap-content">
+            <div class="roadmap-item">
+                <div class="roadmap-icon">🌏</div>
+                <div class="roadmap-text">
+                    <h4>Simplified Chinese Support</h4>
+                    <p>Expanding our reach to Chinese-speaking players</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-icon">🎯</div>
+                <div class="roadmap-text">
+                    <h4>Career Mode</h4>
+                    <p>Progress through challenging campaigns and unlock achievements</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-icon">🚀</div>
+                <div class="roadmap-text">
+                    <h4>Adventure Mode</h4>
+                    <p>A top-secret way of playing a tetromino game, never seen before!</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-icon">💎</div>
+                <div class="roadmap-text">
+                    <h4>Match-3 Style Mode</h4>
+                    <p>A unique twist on classic puzzle mechanics</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-icon">👥</div>
+                <div class="roadmap-text">
+                    <h4>Two-Player Head to Head</h4>
+                    <p>Challenge your friends in intense multiplayer battles</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-icon">✨</div>
+                <div class="roadmap-text">
+                    <h4>Enhanced Visual Effects</h4>
+                    <p>Particle effects, animated scores, and dynamic game over screens</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="social-buttons">
-    <a href="https://discord.gg/7RWDpweT3h" class="discord">Discord</a>
-    <a href="https://www.youtube.com/@ColorItCompany" class="youtube">YouTube</a>
-    <a href="https://x.com/coloritcompany" class="twitter">Twitter</a>
-    <a href="https://www.facebook.com/coloritgamestudio/" class="facebook">Facebook</a>
-</div>
+    <footer>
+        <div class="company-logo">
+            <img src="ColorItCo_controller_logo-05_cropped.png" alt="Color It Company">
+        </div>
+        <p>&copy; 2025 Color It Company. All rights reserved.</p>
+        <p>Ready to dive in? Download Ablockalypse today!</p>
+    </footer>
 
-<footer>
-    <p>© 2025 Color It Company All rights reserved.</p>
-</footer>
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 7;
 
+        function initCarousel() {
+            const indicatorsContainer = document.getElementById('indicators');
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator' + (i === 0 ? ' active' : '');
+                indicator.onclick = () => goToSlide(i);
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        function updateCarousel() {
+            const inner = document.getElementById('carouselInner');
+            inner.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((ind, idx) => {
+                ind.classList.toggle('active', idx === currentSlide);
+            });
+        }
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Auto-advance carousel
+        setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+
+        // Initialize
+        initCarousel();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
