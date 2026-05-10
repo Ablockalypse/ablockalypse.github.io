@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Launch Up — Game Manual</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan: #00e5c8;
+    --cyan-dim: #00a89480;
+    --orange: #ff7a2f;
+    --orange-dim: #c0521560;
+    --purple: #9b59f5;
+    --purple-dim: #7c3aed50;
+    --magenta: #e040fb;
+    --dark: #080a10;
+    --dark2: #0d1018;
+    --dark3: #131620;
+    --dark4: #1a1e2c;
+    --text: #dde4f0;
+    --text-dim: #7a849e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--cyan-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--cyan-dim) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.07;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    text-align: center;
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--dark4);
+    margin-bottom: 56px;
+  }
+
+  .studio-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 20px;
+  }
+
+  .game-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 96px;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow:
+      0 0 40px var(--cyan),
+      0 0 80px var(--cyan-dim);
+    margin-bottom: 8px;
+  }
+
+  .game-title span {
+    display: block;
+    color: var(--cyan);
+    font-size: 52px;
+    letter-spacing: 0.25em;
+    text-shadow: 0 0 30px var(--cyan);
+  }
+
+  .cover-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 28px;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    margin: 28px auto;
+  }
+
+  .platform-badge {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    padding: 5px 14px;
+    border: 1px solid var(--cyan-dim);
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+
+  /* ── CHAPTER HEADERS ── */
+  .chapter {
+    margin-bottom: 52px;
+  }
+
+  .chapter-number {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--cyan);
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .chapter-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #fff;
+    border-left: 3px solid var(--orange);
+    padding-left: 14px;
+    margin-bottom: 28px;
+    line-height: 1.1;
+  }
+
+  /* ── LORE BLOCK ── */
+  .lore {
+    background: var(--dark3);
+    border-left: 3px solid var(--purple);
+    padding: 22px 24px;
+    margin-bottom: 28px;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #b4b9cc;
+  }
+
+  .lore cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--purple);
+    opacity: 0.7;
+    text-transform: uppercase;
+  }
+
+  /* ── BODY TEXT ── */
+  p {
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  /* ── CONTROLS TABLE ── */
+  .controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .control-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--dark3);
+    padding: 10px 14px;
+    border: 1px solid var(--dark4);
+  }
+
+  .key {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    background: var(--dark4);
+    border: 1px solid #2a2f3e;
+    border-bottom: 2px solid #1a1e2c;
+    padding: 3px 9px;
+    color: var(--cyan);
+    white-space: nowrap;
+    min-width: 52px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .control-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  /* ── STAT CARDS ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: var(--dark3);
+    border: 1px solid var(--dark4);
+    border-top: 2px solid var(--cyan);
+    padding: 16px 14px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--cyan);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .stat-card.orange { border-top-color: var(--orange); }
+  .stat-card.orange .stat-value { color: var(--orange); }
+  .stat-card.purple { border-top-color: var(--purple); }
+  .stat-card.purple .stat-value { color: var(--purple); }
+
+  /* ── OBSTACLE ENTRIES ── */
+  .obstacle {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    background: var(--dark3);
+    padding: 16px 18px;
+    border: 1px solid var(--dark4);
+  }
+
+  .obstacle-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    background: var(--dark4);
+  }
+
+  .obstacle-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  .obstacle-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── TIP BOXES ── */
+  .tip {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    background: var(--dark3);
+    border-left: 3px solid var(--cyan);
+  }
+
+  .tip-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-top: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .tip p {
+    font-size: 13.5px;
+    color: var(--text-dim);
+    margin: 0;
+  }
+
+  .tip.warn { border-left-color: var(--orange); }
+  .tip.warn .tip-label { color: var(--orange); }
+
+  /* ── SCORING ── */
+  .score-diagram {
+    background: var(--dark3);
+    border: 1px solid var(--dark4);
+    padding: 24px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .score-diagram::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--magenta), var(--purple), var(--cyan));
+  }
+
+  .score-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--dark4);
+    font-size: 13.5px;
+  }
+
+  .score-row:last-child { border-bottom: none; }
+
+  .score-event { color: var(--text-dim); }
+
+  .score-pts {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--cyan);
+  }
+
+  .score-pts.orange { color: var(--orange); }
+  .score-pts.red { color: #ff4466; }
+  .score-pts.purple { color: var(--purple); }
+
+  /* ── SECTION RULE ── */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--dark4);
+    margin: 48px 0;
+  }
+
+  /* ── STATE DIAGRAM ── */
+  .states {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .state-node {
+    background: var(--dark4);
+    border: 1px solid var(--dark4);
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 110px;
+  }
+
+  .state-node.active { border-color: var(--cyan); }
+  .state-node.danger { border-color: #ff4466; }
+  .state-node.recover { border-color: var(--purple); }
+
+  .state-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .state-node.active .state-name { color: var(--cyan); }
+  .state-node.danger .state-name { color: #ff4466; }
+  .state-node.recover .state-name { color: var(--purple); }
+
+  .state-desc {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 3px;
+  }
+
+  .state-arrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    padding: 0 10px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 40px 0 0;
+    border-top: 1px solid var(--dark4);
+  }
+
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    color: var(--magenta);
+    text-shadow: 0 0 20px var(--magenta);
+    margin-bottom: 6px;
+  }
+
+  .footer-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ── INLINE CODE ── */
+  code {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--cyan);
+    background: var(--dark4);
+    padding: 1px 6px;
+  }
+
+  /* ── HEADING LEVELS ── */
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+    margin-top: 28px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  ul li {
+    padding: 5px 0 5px 18px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--dark4);
+  }
+
+  ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--cyan);
+    font-size: 10px;
+    top: 7px;
+  }
+
+  ul li:last-child { border-bottom: none; }
+
+  strong { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="studio-tag">∮ Flux Studios · Color It Company LLC</div>
+    <div class="game-title">
+      LAUNCH<span>UP</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-sub">Game Manual · First Edition</div>
+    <br>
+    <span class="platform-badge">Available on Steam</span>
+  </div>
+
+  <!-- CHAPTER 1: STORY -->
+  <div class="chapter">
+    <div class="chapter-number">Chapter 01</div>
+    <div class="chapter-title">The World & Your Mission</div>
+
+    <div class="lore">
+      "The Lattice was built to reach something. Nobody remembers what. After the collapse, the platforms kept floating — suspended in the orange void between the crystal walls. The only way out was always the same: up."
+      <cite>— Found inscription, Level 1 Entry Platform</cite>
+    </div>
+
+    <p>You awaken on the lowest platform of the Lattice — a vast vertical labyrinth of emissive cyan platforms, crystal formations, and ancient machinery that has long since turned hostile. The ground below offers nothing but a death plane. The sky above holds the only exit.</p>
+
+    <p>Climb. Score. Survive. There is no down.</p>
+  </div>
+
+  <!-- CHAPTER 2: CONTROLS -->
+  <div class="chapter">
+    <div class="chapter-number">Chapter 02</div>
+    <div class="chapter-title">Controls</div>
+
+    <h3>Movement</h3>
+    <div class="controls-grid">
+      <div class="control-row">
+        <span class="key">W A S D</span>
+        <span class="control-desc">Move forward / left / back / right</span>
+      </div>
+      <div class="control-row">
+        <span class="key">SPACE</span>
+        <span class="control-desc">Jump</span>
+      </div>
+      <div class="control-row">
+        <span class="key">MOUSE</span>
+        <span class="control-desc">Look / aim</span>
+      </div>
+      <div class="control-row">
+        <span class="key">SHIFT</span>
+        <span class="control-desc">Sprint (2× speed)</span>
+      </div>
+    </div>
+
+    <h3>System</h3>
+    <div class="controls-grid">
+      <div class="control-row">
+        <span class="key">ESC</span>
+        <span class="control-desc">Pause / menu</span>
+      </div>
+      <div class="control-row">
+        <span class="key">F1</span>
+        <span class="control-desc">Close active panel</span>
+      </div>
+      <div class="control-row">
+        <span class="key">F2</span>
+        <span class="control-desc">Video settings</span>
+      </div>
+      <div class="control-row">
+        <span class="key">F4</span>
+        <span class="control-desc">Fly mode (spectate)</span>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">TIP</span>
+      <p>Mouse sensitivity can be adjusted in the F2 video settings panel. RTX reflections and GI samples are also tunable from the same menu — lower them on weaker hardware for a smoother frame rate.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 3: MECHANICS -->
+  <div class="chapter">
+    <div class="chapter-number">Chapter 03</div>
+    <div class="chapter-title">Core Mechanics</div>
+
+    <h3>Jump Physics</h3>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-value">8.5</div>
+        <div class="stat-label">Jump Velocity</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-value">0.15s</div>
+        <div class="stat-label">Coyote Time</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-value">0.12s</div>
+        <div class="stat-label">Jump Buffer</div>
+      </div>
+    </div>
+
+    <p><strong>Coyote time</strong> means you can jump for a brief window after walking off a platform edge — the game remembers you were grounded and allows the jump. This rewards confident movement.</p>
+
+    <p><strong>Jump buffering</strong> means pressing Space just before you land will automatically trigger a jump on landing. Chain jumps by pressing Space slightly early rather than waiting to feel the ground.</p>
+
+    <div class="tip">
+      <span class="tip-label">TIP</span>
+      <p>Hold your jump button to reach maximum height. Short-tapping produces a shallow hop; holding gives full arc. Master both for precise platform routing.</p>
+    </div>
+
+    <h3>Game States</h3>
+    <div class="states">
+      <div class="state-node active">
+        <div class="state-name">Exploring</div>
+        <div class="state-desc">Climbing &amp; scoring</div>
+      </div>
+      <div class="state-arrow">— fall below<br>Y = −5m →</div>
+      <div class="state-node danger">
+        <div class="state-name">Dead</div>
+        <div class="state-desc">Score frozen</div>
+      </div>
+      <div class="state-arrow">— automatic<br>respawn →</div>
+      <div class="state-node recover">
+        <div class="state-name">Respawning</div>
+        <div class="state-desc">Return to checkpoint</div>
+      </div>
+    </div>
+
+    <div class="tip warn">
+      <span class="tip-label">DANGER</span>
+      <p>The death plane sits at Y = −5 metres. Falling below this threshold instantly triggers the Dead state. Watch your footing on narrow platforms — there are no guardrails in the Lattice.</p>
+    </div>
+
+    <h3>Platform Grounding</h3>
+    <p>The engine uses a five-point ground cast — one centre point plus four corners of your footprint. This means you can stand reliably on platform edges and small surfaces without sliding off. Use narrow ledges and jutting corners as emergency footholds.</p>
+  </div>
+
+  <!-- CHAPTER 4: SCORING -->
+  <div class="chapter">
+    <div class="chapter-number">Chapter 04</div>
+    <div class="chapter-title">Scoring System</div>
+
+    <p>Your score is tied directly to how high you climb. The Lattice rewards altitude above all else.</p>
+
+    <div class="score-diagram">
+      <div class="score-row">
+        <span class="score-event">Height climbed</span>
+        <span class="score-pts">100 pts / metre</span>
+      </div>
+      <div class="score-row">
+        <span class="score-event">Reach new personal best height</span>
+        <span class="score-pts purple">Bonus multiplier</span>
+      </div>
+      <div class="score-row">
+        <span class="score-event">Complete the level goal pad</span>
+        <span class="score-pts orange">Stage clear bonus</span>
+      </div>
+      <div class="score-row">
+        <span class="score-event">Death (fall below Y = −5m)</span>
+        <span class="score-pts red">Score frozen at peak</span>
+      </div>
+    </div>
+
+    <p>Your HUD displays your <strong>current score</strong> and <strong>current height</strong> in real-time. Score is calculated from your highest point reached during the run — dying and respawning does not erase your peak height score.</p>
+
+    <div class="tip">
+      <span class="tip-label">STRATEGY</span>
+      <p>Even failed runs accumulate score. On a fresh level, prioritise reaching new heights quickly rather than perfecting each platform — every metre you haven't reached before is guaranteed new points.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 5: HAZARDS -->
+  <div class="chapter">
+    <div class="chapter-number">Chapter 05</div>
+    <div class="chapter-title">Hazards &amp; Obstacles</div>
+
+    <p>The Lattice machinery has been running without maintenance for longer than anyone knows. Much of it wants to push you back down.</p>
+
+    <div class="obstacle">
+      <div class="obstacle-icon">⚙</div>
+      <div>
+        <div class="obstacle-name">Pendulum Hammer</div>
+        <p class="obstacle-desc">A heavy mallet mounted on an arm, swinging in a fixed arc across a gap or vertical shaft. Predictable rhythm — study the swing, wait for the backswing, then cross. Common in corridor sections.</p>
+      </div>
+    </div>
+
+    <div class="obstacle">
+      <div class="obstacle-icon">◈</div>
+      <div>
+        <div class="obstacle-name">Rotating Cube Cluster</div>
+        <p class="obstacle-desc">Multiple dark cubes orbiting a central axis with emissive ring markers. The cluster rotates continuously and fills vertical jump lanes. Time your jumps through the gaps between cubes rather than trying to avoid the whole cluster.</p>
+      </div>
+    </div>
+
+    <div class="obstacle">
+      <div class="obstacle-icon">⛓</div>
+      <div>
+        <div class="obstacle-name">Flail &amp; Mace</div>
+        <p class="obstacle-desc">A spiked ball on a chain, swung in wide arcs. Appears in late-level challenge sections and boss approaches. The chain radius is larger than it looks — give it full clearance. These typically guard high-value height gains near the goal platform.</p>
+      </div>
+    </div>
+
+    <div class="obstacle">
+      <div class="obstacle-icon">▽</div>
+      <div>
+        <div class="obstacle-name">Void Shaft</div>
+        <p class="obstacle-desc">Open vertical drops between platform clusters. These are not obstacles themselves but fall hazards — miss a jump and there may be no platform below to catch you. Map the route before committing to a cross-gap jump.</p>
+      </div>
+    </div>
+
+    <div class="obstacle">
+      <div class="obstacle-icon">✦</div>
+      <div>
+        <div class="obstacle-name">Crystal Formations</div>
+        <p class="obstacle-desc">Purple amethyst crystals embedded in walls and rising from platforms. Purely environmental — they cannot harm you, but they do obstruct sightlines and can confuse depth perception. Use the glow as a navigational landmark.</p>
+      </div>
+    </div>
+
+    <div class="tip warn">
+      <span class="tip-label">WARNING</span>
+      <p>Contact with any moving obstacle kills instantly — there are no hit points. One touch returns you to the dead state. Don't get greedy near rotating hazards; the gap you saw the first time may not be there on your next pass.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 6: LEVEL 1 -->
+  <div class="chapter">
+    <div class="chapter-number">Chapter 06</div>
+    <div class="chapter-title">Level 1 — The Lower Lattice</div>
+
+    <div class="lore">
+      "The first level doesn't teach you the rules. The platforms do. By the time you reach 26 metres you'll have learned everything the Lattice ever needed to say."
+      <cite>— Axiom Fragment, Level 1 Entry</cite>
+    </div>
+
+    <h3>Overview</h3>
+    <p>The Lower Lattice is an ascending corridor of 17 platforms rising through warm orange walls lit from within. Cyan emissive platforms provide landing surfaces; purple crystal formations line the walls as ambient markers. The environment transitions from open wide platforms near the base to narrow suspended pads near the top.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-value">17</div>
+        <div class="stat-label">Platforms</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-value">26.5m</div>
+        <div class="stat-label">Goal Height</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-value">2,650</div>
+        <div class="stat-label">Max Height Score</div>
+      </div>
+    </div>
+
+    <h3>Route Notes</h3>
+    <ul>
+      <li>The first three platforms are wide and forgiving — use them to calibrate your jump arc and mouse sensitivity before the gaps widen</li>
+      <li>Mid-section platforms narrow and begin offset-alternating; anticipate each jump before you land on the previous platform</li>
+      <li>The final cluster before the goal pad is the tightest spacing — a pendulum or rotating obstacle guards this zone on higher difficulty passes</li>
+      <li>The goal pad at Y = 26.5m is marked with a distinct emissive indicator — reaching it completes the stage</li>
+    </ul>
+
+    <h3>Art Direction</h3>
+    <p>The palette is warm orange walls with cool cyan platform emissives and purple accent crystals. The contrast between the warm enclosing walls and the cold floating platforms is intentional — the path is cyan, the world is orange, and the crystals tell you where to look.</p>
+  </div>
+
+  <!-- CHAPTER 7: TIPS -->
+  <div class="chapter">
+    <div class="chapter-number">Chapter 07</div>
+    <div class="chapter-title">Advanced Techniques</div>
+
+    <div class="tip">
+      <span class="tip-label">ROUTE</span>
+      <p>Look up before you jump. The emissive cyan tops of platforms are visible from below — plan your route two or three platforms ahead rather than reacting to each jump as it comes.</p>
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">TIMING</span>
+      <p>Use the jump buffer. When approaching a platform edge at speed, press Space 0.1 seconds before landing to auto-trigger on contact. This removes hesitation from back-to-back jumps.</p>
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">EDGE WORK</span>
+      <p>The five-point ground cast means platform edges are fully usable. A corner-land is still a land. You don't need to centre yourself on every platform — running across the very lip of a platform is valid and often faster.</p>
+    </div>
+
+    <div class="tip warn">
+      <span class="tip-label">OBSTACLE</span>
+      <p>Rotating hazards have consistent timing. If you miss the window, wait for the next full rotation — forcing a gap that isn't there is the most common death in mid and late sections.</p>
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">SCORE</span>
+      <p>Your peak height score persists across deaths in a run. After a respawn you don't need to reclimb cautiously — sprint back to your last position to resume scoring new altitude quickly.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 8: GRAPHICS -->
+  <div class="chapter">
+    <div class="chapter-number">Chapter 08</div>
+    <div class="chapter-title">Ra Engine &amp; RTX Graphics</div>
+
+    <p>Launch Up runs on <strong>Ra Engine</strong>, a custom Vulkan 1.4 renderer with hardware ray tracing. The visual quality you see is physically simulated — every shadow, reflection, and emissive glow is calculated via RTX ray tracing in real-time.</p>
+
+    <h3>Key Visual Features</h3>
+    <ul>
+      <li><strong>Emissive Global Illumination</strong> — cyan platform surfaces cast real light onto surrounding geometry; the orange walls glow from reflected bounce lighting</li>
+      <li><strong>Hardware-accelerated shadows</strong> — every light casts accurate ray-traced shadows; moving obstacles cast dynamic shadows in real-time</li>
+      <li><strong>Reflective surfaces</strong> — glass platforms and certain crystal materials reflect the environment using ray-traced reflections</li>
+      <li><strong>Exponential depth fog</strong> — vertical shafts accumulate atmospheric haze with height, adding depth to long ascent corridors</li>
+    </ul>
+
+    <h3>Performance Settings (F2 Menu)</h3>
+    <ul>
+      <li><strong>GI Samples</strong> — Off / 1 / 2 / 4 — reduce for performance; 1 sample is usually sufficient for visible bounce light</li>
+      <li><strong>Reflections</strong> — toggle ray-traced reflections on glass and crystal surfaces</li>
+      <li><strong>Max Bounces</strong> — number of recursive ray bounces; 1–2 is the recommended range</li>
+      <li><strong>ACES Tonemapping</strong> — cinematic tone curve; disable for a vivid linear look (studio-recommended default: off)</li>
+    </ul>
+
+    <div class="tip">
+      <span class="tip-label">NOTE</span>
+      <p>Ra Engine targets RTX 2060 class hardware. Arc A380 and RX 6600 are also supported. On lower-spec cards, disabling GI samples and reflections provides the largest frame rate improvement while retaining the theatrical emissive lighting feel.</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">∮ FLUX STUDIOS</div>
+    <div class="footer-sub">Color It Company LLC · Ra Engine · Vulkan 1.4 RTX</div>
+    <br>
+    <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:#3a3f52; letter-spacing:0.15em; margin-top:8px;">
+      LAUNCH UP™ — ALL RIGHTS RESERVED
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
