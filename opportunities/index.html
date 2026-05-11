@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opportunities — Color It Company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --magenta: #FF00AA;
+    --magenta-dim: #CC0088;
+    --cyan: #00EEFF;
+    --orange: #FF6B2B;
+    --purple: #4B1D8F;
+    --bg: #0A0008;
+    --bg2: #110010;
+    --surface: #1A0018;
+    --surface2: #220020;
+    --text: #F0E8EE;
+    --text-dim: #9A8A96;
+    --border: rgba(255,0,170,0.15);
+    --border-bright: rgba(255,0,170,0.4);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* === NOISE OVERLAY === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* === AMBIENT GLOW === */
+  .ambient {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ambient-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,0,170,0.12) 0%, transparent 70%);
+    top: -200px; left: -100px;
+    animation: drift1 18s ease-in-out infinite;
+  }
+  .ambient-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,238,255,0.07) 0%, transparent 70%);
+    bottom: 10%; right: -100px;
+    animation: drift2 22s ease-in-out infinite;
+  }
+  .ambient-3 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(75,29,143,0.2) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    animation: drift3 14s ease-in-out infinite;
+  }
+
+  @keyframes drift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(60px, 40px); } }
+  @keyframes drift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-40px, -60px); } }
+  @keyframes drift3 { 0%,100% { transform: translate(-50%,-50%); } 50% { transform: translate(-45%,-55%); } }
+
+  /* === HEADER === */
+  header {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    margin-bottom: 4rem;
+  }
+
+  .wordmark-symbol {
+    font-size: 1.8rem;
+    color: var(--magenta);
+    line-height: 1;
+    filter: drop-shadow(0 0 8px var(--magenta));
+  }
+
+  .wordmark-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .hero {
+    position: relative;
+    padding: 0 2rem 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.4s;
+  }
+
+  .hero-title span {
+    color: var(--magenta);
+    display: block;
+    text-shadow: 0 0 40px rgba(255,0,170,0.4);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 540px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.6s;
+  }
+
+  .hero-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--magenta), transparent);
+    margin: 3rem auto 0;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1s;
+  }
+
+  /* === MAIN CONTENT === */
+  main {
+    position: relative;
+    z-index: 10;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem 8rem;
+  }
+
+  /* === ROLE CARD === */
+  .role {
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, var(--surface) 0%, var(--bg2) 100%);
+    border-radius: 2px;
+    padding: 3rem 3.5rem;
+    margin-bottom: 1.5px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .role.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease;
+  }
+
+  .role::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--magenta), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .role:hover {
+    border-color: var(--border-bright);
+  }
+
+  .role:hover::before {
+    opacity: 1;
+  }
+
+  .role-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--magenta);
+    opacity: 0.6;
+    margin-bottom: 1rem;
+  }
+
+  .role h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 0.04em;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .role p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    max-width: 640px;
+  }
+
+  .role p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .role-looking {
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .role-looking-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.75rem;
+  }
+
+  /* === MENTORSHIP BLOCK === */
+  .mentorship {
+    border: 1px solid rgba(0,238,255,0.2);
+    background: linear-gradient(135deg, rgba(0,238,255,0.04) 0%, var(--bg2) 100%);
+    border-radius: 2px;
+    padding: 3rem 3.5rem;
+    margin-bottom: 1.5px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .mentorship.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .mentorship::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--cyan), transparent);
+  }
+
+  .mentorship-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 1rem;
+  }
+
+  .mentorship h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: 0.04em;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .mentorship p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    max-width: 640px;
+  }
+
+  .mentorship p strong {
+    color: var(--cyan);
+    font-weight: 500;
+  }
+
+  /* === FOOTER DISCLAIMER === */
+  .disclaimer {
+    margin-top: 4rem;
+    padding: 3rem 3.5rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--magenta);
+    background: var(--surface);
+    border-radius: 2px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .disclaimer.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .disclaimer-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 1rem;
+  }
+
+  .disclaimer p {
+    font-size: 0.98rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+    max-width: 660px;
+  }
+
+  .disclaimer p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .disclaimer p em {
+    color: var(--magenta);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* === FOOTER === */
+  footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 3rem 2rem 4rem;
+    border-top: 1px solid var(--border);
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    opacity: 0.5;
+  }
+
+  footer .symbol {
+    color: var(--magenta);
+    filter: drop-shadow(0 0 4px var(--magenta));
+  }
+
+  /* === ANIMATIONS === */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* === SCROLLBAR === */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--magenta-dim); border-radius: 3px; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 640px) {
+    .role, .mentorship, .disclaimer { padding: 2rem 1.5rem; }
+    .hero { padding: 0 1.5rem 4rem; }
+    main { padding: 0 1.5rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+<div class="ambient ambient-3"></div>
+
+<header>
+  <a class="wordmark" href="/">
+    <span class="wordmark-symbol">∮</span>
+    <span class="wordmark-text">Color It Company</span>
+  </a>
+
+  <div class="hero">
+    <p class="hero-label">Open Positions</p>
+    <h1 class="hero-title">
+      Build<br>
+      <span>Something</span><br>
+      Real.
+    </h1>
+    <p class="hero-sub">We're a small independent studio making games powered by hardware ray tracing. We're looking for people who want to be part of it from the start.</p>
+    <div class="hero-line"></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ROLE 01: PRODUCTION ASSISTANT -->
+  <div class="role">
+    <div class="role-number">ROLE / 01</div>
+    <h2>Production Assistant</h2>
+    <p><strong>Color It Company LLC</strong> is looking for a Production Assistant to help keep our projects moving smoothly behind the scenes.</p>
+    <p>You'll handle the operational side of game and media production — researching and filing trademark applications, licensing music and audio assets, clearing rights for third-party content, and coordinating with external vendors and legal contacts. You'll also help maintain organized records of agreements, deadlines, and submission statuses so nothing falls through the cracks. This is a detail-oriented role that keeps our creative pipeline legally clean and moving.</p>
+    <div class="role-looking">
+      <div class="role-looking-label">What we're looking for</div>
+      <p>A self-starter comfortable navigating IP law basics, music licensing platforms, and trademark databases. You take initiative, communicate clearly, and understand that production infrastructure is what makes creative work sustainable. Prior experience in media production, entertainment law support, or a related field is a plus.</p>
+    </div>
+  </div>
+
+  <!-- ROLE 02: LEVEL DESIGNER -->
+  <div class="role">
+    <div class="role-number">ROLE / 02</div>
+    <h2>Level Designer</h2>
+    <p><strong>Color It Company LLC</strong> is seeking a Level Designer to craft worlds inside the <strong>Ra Engine</strong> — our proprietary, bleeding-edge RTX-only ray tracing engine built on Vulkan 1.4.</p>
+    <p>You'll design and build levels for our titles including <strong>Launch Up</strong> and beyond, working directly in a hardware ray-traced environment where lighting, materials, and spatial composition are first-class concerns. You'll author scenes in GLTF format, place lights with intention, and think carefully about how a player moves through and reads a space. This is not a Unity/Unreal role — our pipeline is custom, hands-on, and deeply technical.</p>
+    <div class="role-looking">
+      <div class="role-looking-label">What we're looking for</div>
+      <p>Strong spatial design instincts, comfort with GLTF-based scene authoring, and genuine excitement about RTX lighting as a design tool. You see light not just as illumination but as storytelling. Theatrical or architectural lighting sensibility is a major plus.</p>
+    </div>
+  </div>
+
+  <!-- ROLE 03: WRITER -->
+  <div class="role">
+    <div class="role-number">ROLE / 03</div>
+    <h2>Writer</h2>
+    <p><strong>Color It Company LLC</strong> is looking for a Writer to shape the narrative fabric of our games and universe.</p>
+    <p>You'll develop characters, write in-world lore, craft dialogue, and help define the story logic across our titles. You'll also contribute to naming conventions, world-building documents, and the kind of background detail that makes a fictional universe feel lived-in and coherent. Our worlds are visually rich and arcade-expressive — your writing should match that energy while giving players something to care about.</p>
+    <div class="role-looking">
+      <div class="role-looking-label">What we're looking for</div>
+      <p>A generalist writer with range — able to write punchy UI copy, deep character backstory, and everything in between. You're comfortable working without a fully defined brief and can bring creative structure to early-stage ideas. Game writing experience preferred but not required; strong portfolio matters most.</p>
+    </div>
+  </div>
+
+  <!-- MENTORSHIP BLOCK -->
+  <div class="mentorship">
+    <div class="mentorship-label">Studio Culture</div>
+    <h2>A Note on Mentorship</h2>
+    <p>Every contributor at Color It Company has the opportunity to work directly alongside a <strong>leading technologist with deep expertise in C++ and systems-level programming</strong>. This isn't a studio where you submit work into a void — it's a collaborative environment where the people building the engine are the same people you'll be working with day to day.</p>
+    <p>Whether you're a designer learning how a ray tracing pipeline actually processes your scene, a writer curious about how narrative systems get implemented in code, or a production assistant who wants to understand the technical scope of what you're supporting — that knowledge is available to you here. We believe that cross-discipline understanding makes everyone's work stronger, and we actively encourage it.</p>
+    <p>For contributors with a technical background or aspirations, the opportunity to learn from someone operating at the frontier of <strong>real-time ray tracing in C++ and Vulkan</strong> is genuinely rare. We're building something from scratch, and we're doing it in the open.</p>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <div class="disclaimer-label">Compensation</div>
+    <p>These positions are currently volunteer-based. Color It Company is an independent studio at the start of its journey, and we're looking for people who want to build something real from the ground up. As we grow toward our first revenue milestone, contributors will transition to compensated roles — and with <em>Launch Up</em> heading to Steam, that milestone is in sight. <strong>You're not just joining a project. You're joining at the ground floor.</strong></p>
+  </div>
+
+</main>
+
+<footer>
+  <p><span class="symbol">∮</span> &nbsp; Color It Company LLC &nbsp; — &nbsp; All rights reserved</p>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in for cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.role, .mentorship, .disclaimer').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
