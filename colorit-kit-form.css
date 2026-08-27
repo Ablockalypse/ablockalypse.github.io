@@ -1,0 +1,317 @@
+/* ==========================================================================
+   Color It Company — Kit form theme  ·  "Splatter" (neon)
+   Form data-uid: 1a6cf414d8
+
+   Paste into Kit → Form → Settings → Custom CSS, or into your site's
+   stylesheet AFTER the embed script.
+
+   Scoped to form.formkit-form[data-uid="1a6cf414d8"] so it cannot leak onto
+   other forms. The leading `form.` is deliberate: it outranks Kit's own
+   generated block, which Kit injects at runtime and which would otherwise
+   win ties on source order.
+
+   !important appears only where Kit writes the value as an inline style
+   attribute from its colour pickers, or as !important in its own base
+   sheet. Each is marked INLINE or BASE below.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+form.formkit-form[data-uid="1a6cf414d8"] {
+  --cic-ink:      #0B0510;  /* card floor, black pushed to violet */
+  --cic-well:     #0E0716;  /* field fill */
+  --cic-cyan:     #35D6FF;  /* field edge, focus */
+  --cic-violet:   #A855F7;  /* divider */
+  --cic-magenta:  #FF2E9A;  /* CTA, right half of the sweep */
+  --cic-ember:    #FF8A2B;  /* CTA, left half of the sweep */
+  --cic-orchid:   #F04FD0;  /* subhead */
+  --cic-paper:    #FFFFFF;
+  --cic-mute:     #B9A5C6;
+  --cic-sweep:    320ms cubic-bezier(.2, .7, .2, 1);
+
+  max-width: 1080px !important;                     /* BASE (420px cap) */
+  width: 100%;
+}
+
+/* ── Frame ──────────────────────────────────────────────────────────────── */
+
+form.formkit-form[data-uid="1a6cf414d8"] [data-style="full"] {
+  border-radius: 14px !important;                   /* BASE + INLINE (--border-radius) */
+  min-height: 640px;
+  background: var(--cic-ink);
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-background {
+  background-color: var(--cic-ink);
+  /* `cover` crops the plate horizontally at card ratios narrower than 16:9,
+     so anything near the left or right edge of the artwork — the wordmark —
+     can lose a few pixels. Centred splits the loss evenly. */
+  background-position: center center;
+}
+
+/* The artwork lives on the right, the copy on the left, so the scrim runs
+   horizontally rather than Kit's default top-to-bottom. Vertical fade at the
+   foot keeps the small print legible over the splatter. */
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-container {
+  background: linear-gradient(90deg,
+      rgba(11, 5, 16, 0.88)  0%,
+      rgba(11, 5, 16, 0.84) 30%,
+      rgba(11, 5, 16, 0.50) 56%,
+      rgba(11, 5, 16, 0.06) 82%,
+      rgba(11, 5, 16, 0)   100%
+    ) !important;                                   /* INLINE (--bg-color set) */
+  justify-content: center;
+  padding: clamp(28px, 4vw, 56px);
+}
+
+/* ── Type ───────────────────────────────────────────────────────────────── */
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-header {
+  font-family: 'Archivo', system-ui, sans-serif;
+  color: var(--cic-paper) !important;               /* INLINE (header colour) */
+  font-size: clamp(32px, 4.6vw, 58px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  max-width: 13ch;
+  text-wrap: balance;                               /* evens the wrap, no orphan */
+  margin-bottom: 18px;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-header h2 {
+  font: inherit;
+  letter-spacing: inherit;
+  margin: 0;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-content {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  color: var(--cic-orchid) !important;              /* INLINE (content colour) */
+  font-size: clamp(16px, 1.5vw, 19px);
+  font-weight: 500;
+  line-height: 1.45;
+  max-width: 46ch;
+  margin-bottom: 30px;
+}
+
+/* ── Fields ─────────────────────────────────────────────────────────────── */
+/* Flex column with explicit order so the divider can sit between the input
+   and the button — Kit's markup has no element there to hang it on. */
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 520px;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-field {
+  order: 1;
+  width: 100%;
+  margin: 0;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-input {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background-color: var(--cic-well) !important;     /* INLINE (field bg) */
+  color: var(--cic-paper) !important;               /* INLINE (field text) */
+  border: 2px solid rgba(53, 214, 255, 0.75);
+  border-radius: 8px !important;                    /* INLINE (field radius) */
+  box-shadow:
+    0 0 18px rgba(53, 214, 255, 0.22),
+    inset 0 0 14px rgba(53, 214, 255, 0.07);
+  font-size: 17px;                                  /* ≥16px stops iOS zoom-on-focus */
+  padding: 18px 18px;
+  transition: border-color var(--cic-sweep), box-shadow var(--cic-sweep);
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-input::placeholder {
+  color: var(--cic-mute);
+  opacity: 0.66;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-input:focus {
+  outline: none;
+  border-color: var(--cic-cyan);
+  box-shadow:
+    0 0 0 4px rgba(53, 214, 255, 0.18),
+    0 0 30px rgba(53, 214, 255, 0.40),
+    inset 0 0 16px rgba(53, 214, 255, 0.12);
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────── */
+/* Decorative. Delete this block if you'd rather the button sit straight
+   under the field. */
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-fields::after {
+  content: "\2295";                                 /* ⊕ circled plus */
+  order: 2;
+  width: 100%;
+  margin: 22px 0 24px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--cic-violet);
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.85);
+  background:
+    linear-gradient(90deg, rgba(168, 85, 247, 0.85), rgba(168, 85, 247, 0.85))
+      left center / calc(50% - 24px) 1px no-repeat,
+    linear-gradient(90deg, rgba(168, 85, 247, 0.85), rgba(168, 85, 247, 0.85))
+      right center / calc(50% - 24px) 1px no-repeat;
+}
+
+/* ── Submit ─────────────────────────────────────────────────────────────── */
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit {
+  order: 3;
+  width: min(320px, 100%) !important;               /* BASE (width:100%) */
+  margin: 0 !important;                             /* BASE (margin-top:15px) */
+  border-radius: 10px !important;                   /* INLINE (button radius) */
+  background-color: transparent !important;         /* INLINE (button bg) */
+  background-image: linear-gradient(
+    90deg,
+    var(--cic-ember) 0%,
+    var(--cic-magenta) 55%,
+    var(--cic-ember) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0% 0;
+  box-shadow:
+    0 8px 28px rgba(255, 46, 154, 0.42),
+    0 0 46px rgba(255, 138, 43, 0.22);
+  overflow: hidden;
+  transition: background-position var(--cic-sweep), box-shadow var(--cic-sweep);
+}
+
+/* Signature: the ember-to-magenta sweep travels left to right on hover —
+   the same gesture, same curve, as the focus glow on the field above. */
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit:hover,
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit:focus-visible {
+  background-position: 100% 0;
+  box-shadow:
+    0 10px 34px rgba(255, 46, 154, 0.55),
+    0 0 60px rgba(255, 138, 43, 0.30);
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit > span {
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--cic-paper);
+  padding: 18px 32px;
+  background-color: transparent !important;         /* BASE (black hover veil) */
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit:active {
+  transform: translateY(1px);
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit:focus-visible {
+  outline: 2px solid var(--cic-cyan);
+  outline-offset: 3px;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-spinner > div {
+  background-color: var(--cic-paper);
+}
+
+/* ── Small print ────────────────────────────────────────────────────────── */
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-disclaimer {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  color: rgba(255, 255, 255, 0.78) !important;      /* INLINE (disclaimer) */
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 520px;
+  margin-top: 26px;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-powered-by-convertkit-container {
+  justify-content: flex-start;
+  margin-top: 18px;
+  opacity: 0.35;
+  transition: opacity var(--cic-sweep);
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-powered-by-convertkit-container:hover {
+  opacity: 0.75;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-powered-by-convertkit {
+  margin: 0;
+}
+
+/* ── Alerts ─────────────────────────────────────────────────────────────── */
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-alert {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  border-radius: 8px;
+  font-size: 14px;
+  max-width: 520px;
+  margin: 0 0 16px;
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-alert-error {
+  background: rgba(255, 46, 154, 0.14);
+  border-color: var(--cic-magenta);
+  color: var(--cic-paper);
+}
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-alert-success {
+  background: rgba(53, 214, 255, 0.14);
+  border-color: var(--cic-cyan);
+  color: var(--cic-paper);
+}
+
+/* ── Background swap ────────────────────────────────────────────────────── */
+/* Kit writes the background image as an inline style, so the URL can only be
+   changed in the builder — or forced here. Preferred: upload the splatter
+   art in Kit → Form → Background. Fallback, uncomment and paste the new
+   filekitcdn URL:
+
+form.formkit-form[data-uid="1a6cf414d8"] .formkit-background {
+  background-image: url("PASTE_URL_HERE") !important;
+}
+*/
+
+/* ── Narrow ─────────────────────────────────────────────────────────────── */
+/* Below ~860px there's no room for art beside the copy, so the scrim goes
+   back to vertical and the card reads as a single stacked column. */
+
+@media (max-width: 860px) {
+  form.formkit-form[data-uid="1a6cf414d8"] [data-style="full"] {
+    min-height: 560px;
+  }
+  form.formkit-form[data-uid="1a6cf414d8"] .formkit-container {
+    justify-content: flex-end;
+    background: linear-gradient(
+      180deg,
+      rgba(11, 5, 16, 0.10)  0%,
+      rgba(11, 5, 16, 0.74) 42%,
+      rgba(11, 5, 16, 0.95) 70%,
+      var(--cic-ink)       100%
+    ) !important;                                   /* INLINE (--bg-color set) */
+  }
+  form.formkit-form[data-uid="1a6cf414d8"] .formkit-background {
+    background-position: center center;
+  }
+  form.formkit-form[data-uid="1a6cf414d8"] .formkit-header {
+    max-width: 16ch;
+  }
+  form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit {
+    width: 100% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  form.formkit-form[data-uid="1a6cf414d8"] .formkit-input,
+  form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit,
+  form.formkit-form[data-uid="1a6cf414d8"] .formkit-powered-by-convertkit-container {
+    transition: none;
+  }
+  form.formkit-form[data-uid="1a6cf414d8"] .formkit-submit:hover {
+    background-position: 100% 0;
+  }
+}
