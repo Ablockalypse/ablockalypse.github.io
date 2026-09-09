@@ -317,6 +317,26 @@
             line-height: 1.25;
             margin-bottom: 0.45rem;
         }
+        .bbs-card h2 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .bbs-card h2 a:hover { color: var(--primary); }
+        .connect-btn {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #111113;
+            background: var(--primary);
+            border-radius: 999px;
+            padding: 0.35rem 0.75rem;
+            text-decoration: none;
+        }
+        .connect-btn:hover { background: var(--primary-dark); color: #fff; }
+
 
         .meta {
             display: flex;
@@ -624,6 +644,21 @@
                 return blob.indexOf(query) !== -1;
             }
 
+            function telnetPort(system) {
+                if (system.port) return String(system.port);
+                if (system.telnet && !system.sshPort) return "23";
+                return "";
+            }
+
+            function telnetPage(system) {
+                var host = text(system.telnet).trim();
+                var port = telnetPort(system);
+                if (!host || !port) return "";
+                return "/telnet/?host=" + encodeURIComponent(host) +
+                    "&port=" + encodeURIComponent(port) +
+                    "&name=" + encodeURIComponent(text(system.name));
+            }
+
             function hostUri(host) {
                 var value = text(host);
                 if (value.indexOf(":") !== -1 && value.charAt(0) !== "[") {
@@ -668,15 +703,19 @@
                 html += '<code class="addr">' + escapeHtml(shown) + "</code>";
                 html += '<button type="button" class="copy-btn" data-copy="' + escapeHtml(shown) + '">Copy</button>';
                 if (scheme === "telnet" && host && port) {
-                    html += '<a class="text-link" href="telnet://' + escapeHtml(hostUri(host)) + ":" + encodeURIComponent(port) + '">telnet://</a>';
+                    html += '<a class="connect-btn" href="/telnet/?host=' + encodeURIComponent(host) + "&port=" + encodeURIComponent(port) + '">Telnet</a>';
+                    html += '<a class="text-link" href="telnet://' + escapeHtml(hostUri(host)) + ":" + encodeURIComponent(port) + '">local client</a>';
                 }
                 html += "</div>";
                 return html;
             }
 
             function cardHtml(system) {
+                var page = telnetPage(system);
                 var html = '<article class="bbs-card">';
-                html += "<h2>" + escapeHtml(system.name) + "</h2>";
+                html += "<h2>" + (page
+                    ? '<a href="' + escapeHtml(page) + '">' + escapeHtml(system.name) + "</a>"
+                    : escapeHtml(system.name)) + "</h2>";
                 var meta = [];
                 if (system.sysop) meta.push("<li><strong>Sysop</strong> " + escapeHtml(system.sysop) + "</li>");
                 if (system.location) meta.push("<li><strong>Location</strong> " + escapeHtml(system.location) + "</li>");
@@ -698,7 +737,7 @@
                 if (system.telnet && system.port) {
                     html += addressRow("", system.telnet, system.port, "telnet");
                 } else if (system.telnet && !system.sshPort) {
-                    html += addressRow("", system.telnet, "", "");
+                    html += addressRow("", system.telnet, "23", "telnet");
                 } else if (system.telnet && system.sshPort && !system.port) {
                     html += addressRow("SSH", system.telnet, system.sshPort, "");
                 }
