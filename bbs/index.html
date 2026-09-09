@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Worldwide active BBS directory — Color It Company</title>
-    <meta name="description" content="Worldwide active BBS directory with language, connection-type, and status filters. Systems from public lists including non-English boards.">
+    <title>Active BBS directory — Color It Company</title>
+    <meta name="description" content="Worldwide active BBS directory with language filter and in-browser telnet. Systems from live public BBS lists for coloritcompany.com/bbs.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -248,33 +248,6 @@
             color: #fff;
         }
 
-        .bbs-card h2 a {
-            color: inherit;
-            text-decoration: none;
-        }
-        .bbs-card h2 a:hover { color: var(--primary); }
-        .connect-btn {
-            display: inline-flex;
-            align-items: center;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: #111113;
-            background: var(--primary);
-            border-radius: 999px;
-            padding: 0.35rem 0.75rem;
-            text-decoration: none;
-        }
-        .connect-btn:hover { filter: brightness(1.08); }
-        .lang-label {
-            font-size: 0.72rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin: 0.85rem 0 0.35rem;
-        }
-
         .software-wrap {
             margin-left: auto;
             display: flex;
@@ -292,6 +265,78 @@
             color: var(--text-muted);
             font-weight: 600;
         }
+
+
+        .language-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            min-width: min(100%, 14rem);
+            flex: 1 1 14rem;
+        }
+
+        .language-wrap label {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .language-select {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--dark);
+            border: 1px solid var(--dark-lighter);
+            border-radius: 8px;
+            padding: 0.55rem 0.7rem;
+            max-width: 100%;
+            flex: 1 1 auto;
+        }
+
+        .lang-meta {
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            letter-spacing: 0.02em;
+        }
+
+        .lang-meta strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .connect-primary {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: #fff;
+            background: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 999px;
+            padding: 0.28rem 0.75rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .connect-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            color: #fff;
+        }
+
+        .connect-local {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .connect-local:hover { color: var(--primary); }
 
         .software-select {
             font-family: 'Inter', sans-serif;
@@ -591,16 +636,16 @@
     <main>
         <section class="page-hero">
             <p class="hero-eyebrow">Public listings</p>
-            <h1>Worldwide active BBS <em>directory</em></h1>
+            <h1>Active BBS <em>directory</em></h1>
             <div class="hero-rule"></div>
-            <p class="lede">A worldwide directory of systems currently published in the live public BBS lists fetched for this page — including boards in Chinese, Spanish, Portuguese, Russian, German, Japanese, and other languages — not every unpublished private board. Filter by language, connection type, or check status. Primary credit: Telnet BBS Guide, with companion files from that guide and the Synchronet public list. Also folded in the 8-Bit Boyz directory, the Chinese-language Telnet BBS List, the Dock Sud Latinoamerica list, the FLY BBS Russian telnet list, the Commodore 64 BBS List, and The BBS List. Names, hosts, ports, sysops, locations, and language tags come from those pages and location/source hints and are not invented here. The light on each card is a connection check from this directory, not a login test.</p>
+            <p class="lede">A worldwide directory of systems currently published in the live public BBS lists fetched for this page — not every unpublished private board. Filter by language or search across English, Chinese, Japanese, Spanish, Portuguese, German, French, Russian, and more. Primary credit: Telnet BBS Guide, with companion files from that guide and the Synchronet public list. Also folded in the 8-Bit Boyz directory, the Chinese-language Telnet BBS List, the Dock Sud Latinoamerica list, the FLY BBS Russian telnet list, the Commodore 64 BBS List, The BBS List, Japanese grass-roots lists, Brazil’s RBT national list, and other current public directories. Names, hosts, ports, sysops, locations, and languages come from those pages and careful location cues — they are not invented here. Telnet boards open in the in-browser client at /telnet/. The light on each card is a connection check from this directory, not a login test.</p>
             <p class="source-line" id="summary">Loading the directory…</p>
         </section>
 
         <section class="directory" id="directory" aria-labelledby="dir-heading">
             <h2 id="dir-heading" class="search-label">Find a board</h2>
             <div class="controls">
-                <label class="search-label" for="q">Search name, sysop, location, language, software, host, web, or modem</label>
+                <label class="search-label" for="q">Search name, sysop, location, software, language, host, web, or modem</label>
                 <input id="q" class="search-input" type="search" autocomplete="off" placeholder="Search the published lists" enterkeyhint="search">
                 <div class="filters" role="group" aria-label="Connection type">
                     <button type="button" class="chip" data-conn="all" aria-pressed="true">All</button>
@@ -608,6 +653,12 @@
                     <button type="button" class="chip" data-conn="ssh" aria-pressed="false">SSH</button>
                     <button type="button" class="chip" data-conn="web" aria-pressed="false">Web</button>
                     <button type="button" class="chip" data-conn="dial" aria-pressed="false">Dial-up</button>
+                    <div class="language-wrap">
+                        <label for="language">Language</label>
+                        <select id="language" class="language-select" aria-label="Filter by language">
+                            <option value="">All languages</option>
+                        </select>
+                    </div>
                     <div class="software-wrap">
                         <label for="software">Software</label>
                         <select id="software" class="software-select">
@@ -621,10 +672,6 @@
                     <button type="button" class="chip status-chip" data-status="yellow" aria-pressed="false">Recent</button>
                     <button type="button" class="chip status-chip" data-status="red" aria-pressed="false">Down</button>
                     <button type="button" class="chip status-chip" data-status="unchecked" aria-pressed="false">Not checked</button>
-                </div>
-                <p class="lang-label" id="lang-label">Language</p>
-                <div class="filters" id="lang-filters" role="group" aria-labelledby="lang-label">
-                    <button type="button" class="chip lang-chip" data-lang="all" aria-pressed="true">All languages</button>
                 </div>
                 <p class="legend">
                     <span><i class="status-dot green" aria-hidden="true"></i> Up in the last 24 hours</span>
@@ -662,6 +709,12 @@
                     <li><a href="http://flybbs.ru/fly">FLY BBS Russian Telnet list</a> — fetched 2026-09-09</li>
                     <li><a href="https://www.c64bbslist.com/">Commodore 64 BBS List</a> — spreadsheet export fetched 2026-09-09</li>
                     <li><a href="https://bbs-list.net/">The BBS List</a> — category pages fetched 2026-09-09; site Last-Modified 2026-03-02 19:39:46 GMT (12:39:46 PM PT)</li>
+                    <li><a href="https://balloon-jp.vercel.app/bbs/">Japanese grass-roots BBS list</a> (balloon-jp) — fetched 2026-09-09</li>
+                    <li><a href="https://wwwmid.kinet.ne.jp/">Midnight Driving</a> official wiki — fetched 2026-09-09</li>
+                    <li><a href="https://ja.wikipedia.org/wiki/%E8%8D%89%E3%81%AE%E6%A0%B9BBS">Wikipedia 草の根BBS</a> — current hosts only; fetched 2026-09-09</li>
+                    <li><a href="https://www.rbt.net.br/nacional.htm">RBT Lista Nacional de BBSs</a> (Brazil, Nov 2025) — fetched 2026-09-09</li>
+                    <li><a href="https://www.cyberiada.org/r34.htm">FidoNet Región 34 España</a> — nodelist 16.1.2026; Telnet rows only</li>
+                    <li><a href="http://bbslink.net/list.php">BBSlink active BBS list</a> — fetched 2026-09-09</li>
                 </ul>
             </div>
         </div>
@@ -676,35 +729,7 @@
             var systems = [];
             var conn = "all";
             var statusFilter = "all";
-            var langFilter = "all";
-            var langChips = [];
-            var LANG_LABELS = {
-                all: "All languages",
-                en: "English",
-                es: "Spanish",
-                zh: "Chinese",
-                ru: "Russian",
-                de: "German",
-                fr: "French",
-                pt: "Portuguese",
-                ja: "Japanese",
-                nl: "Dutch",
-                it: "Italian",
-                pl: "Polish",
-                ko: "Korean",
-                sv: "Swedish",
-                fi: "Finnish",
-                no: "Norwegian",
-                da: "Danish",
-                el: "Greek",
-                cs: "Czech",
-                uk: "Ukrainian",
-                sr: "Serbian",
-                bg: "Bulgarian",
-                hu: "Hungarian",
-                sl: "Slovenian",
-                unknown: "Unknown"
-            };
+            var languageFilter = "";
             var statusCounts = { green: 0, yellow: 0, red: 0, unchecked: 0 };
             var statusLabel = {
                 green: "Up in the last 24 hours",
@@ -714,6 +739,7 @@
             };
             var qEl = document.getElementById("q");
             var softwareEl = document.getElementById("software");
+            var languageEl = document.getElementById("language");
             var listEl = document.getElementById("list");
             var showingEl = document.getElementById("showing");
             var summaryEl = document.getElementById("summary");
@@ -740,56 +766,23 @@
                 return !!system.sshPort;
             }
 
-            function systemLanguages(system) {
-                var value = system.language;
-                if (Array.isArray(value)) {
-                    return value.map(function (item) { return text(item).trim().toLowerCase(); }).filter(Boolean);
-                }
-                var single = text(value).trim().toLowerCase();
-                return single ? [single] : ["unknown"];
-            }
-
-            function languageLabel(code) {
-                return LANG_LABELS[code] || code;
-            }
-
-            function telnetPort(system) {
-                if (system.port) return String(system.port);
-                if (system.telnet && !system.sshPort) return "23";
-                return "";
-            }
-
-            function telnetPage(system) {
-                var host = text(system.telnet).trim();
-                var port = telnetPort(system);
-                if (!host || !port) return "";
-                return "/telnet/?host=" + encodeURIComponent(host) +
-                    "&port=" + encodeURIComponent(port) +
-                    "&name=" + encodeURIComponent(text(system.name));
-            }
-
             function matches(system) {
                 if (conn === "telnet" && !hasTelnet(system)) return false;
                 if (conn === "ssh" && !hasSsh(system)) return false;
                 if (conn === "web" && !system.web) return false;
                 if (conn === "dial" && !system.modem) return false;
                 if (statusFilter !== "all" && (system.status || "unchecked") !== statusFilter) return false;
-                if (langFilter !== "all") {
-                    var langs = systemLanguages(system);
-                    if (langs.indexOf(langFilter) === -1) return false;
-                }
                 var software = softwareEl.value;
                 if (software && text(system.software) !== software) return false;
+                if (languageFilter && text(system.language) !== languageFilter) return false;
                 var query = qEl.value.trim().toLowerCase();
                 if (!query) return true;
                 var host = text(system.telnet);
-                var langText = systemLanguages(system).map(languageLabel).join(" ");
                 var blob = [
                     system.name,
                     system.sysop,
                     system.location,
                     system.software,
-                    langText,
                     system.language,
                     host,
                     system.port,
@@ -839,15 +832,29 @@
                 document.body.removeChild(area);
             }
 
-            function addressRow(label, host, port, scheme, name) {
+            function telnetHostAllowed(host) {
+                return /^[A-Za-z0-9._:-]+$/.test(text(host));
+            }
+
+            function browserTelnetHref(host, port, name) {
+                return "/telnet/?host=" + encodeURIComponent(host) +
+                    "&port=" + encodeURIComponent(port) +
+                    "&name=" + encodeURIComponent(name || "");
+            }
+
+            function addressRow(label, host, port, scheme, boardName) {
                 var shown = host + (port ? ":" + port : "");
                 var html = '<div class="addr-row">';
                 if (label) html += '<span class="tag">' + escapeHtml(label) + "</span>";
                 html += '<code class="addr">' + escapeHtml(shown) + "</code>";
                 html += '<button type="button" class="copy-btn" data-copy="' + escapeHtml(shown) + '">Copy</button>';
                 if (scheme === "telnet" && host && port) {
-                    html += '<a class="connect-btn" href="/telnet/?host=' + encodeURIComponent(host) + "&port=" + encodeURIComponent(port) + "&name=" + encodeURIComponent(text(name)) + '">In browser</a>';
-                    html += '<a class="text-link" href="telnet://' + escapeHtml(hostUri(host)) + ":" + encodeURIComponent(port) + '">telnet://</a>';
+                    if (telnetHostAllowed(host)) {
+                        html += '<a class="connect-primary" href="' + escapeHtml(browserTelnetHref(host, port, boardName)) + '">Open in browser</a>';
+                        html += '<a class="connect-local" href="telnet://' + escapeHtml(hostUri(host)) + ":" + encodeURIComponent(port) + '" title="Open in a local telnet client">local client</a>';
+                    } else {
+                        html += '<a class="text-link" href="telnet://' + escapeHtml(hostUri(host)) + ":" + encodeURIComponent(port) + '">telnet://</a>';
+                    }
                 }
                 html += "</div>";
                 return html;
@@ -856,18 +863,14 @@
             function cardHtml(system) {
                 var status = system.status || "unchecked";
                 var label = statusLabel[status] || statusLabel.unchecked;
-                var page = telnetPage(system);
                 var html = '<article class="bbs-card">';
                 html += '<span class="status-dot ' + escapeHtml(status) + '" role="img" aria-label="' + escapeHtml(label) + '" title="' + escapeHtml(label) + '"></span>';
-                html += "<h2>" + (page
-                    ? '<a href="' + escapeHtml(page) + '">' + escapeHtml(system.name) + "</a>"
-                    : escapeHtml(system.name)) + "</h2>";
+                html += "<h2>" + escapeHtml(system.name) + "</h2>";
                 var meta = [];
                 if (system.sysop) meta.push("<li><strong>Sysop</strong> " + escapeHtml(system.sysop) + "</li>");
                 if (system.location) meta.push("<li><strong>Location</strong> " + escapeHtml(system.location) + "</li>");
-                var langs = systemLanguages(system);
-                meta.push("<li><strong>Language</strong> " + escapeHtml(langs.map(languageLabel).join(", ")) + "</li>");
                 if (system.software) meta.push("<li><strong>Software</strong> " + escapeHtml(system.software) + "</li>");
+                if (system.language) meta.push('<li class="lang-meta"><strong>Language</strong> ' + escapeHtml(system.language) + "</li>");
                 if (meta.length) html += '<ul class="meta">' + meta.join("") + "</ul>";
 
                 var tags = [];
@@ -885,7 +888,7 @@
                 if (system.telnet && system.port) {
                     html += addressRow("", system.telnet, system.port, "telnet", system.name);
                 } else if (system.telnet && !system.sshPort) {
-                    html += addressRow("", system.telnet, "23", "telnet", system.name);
+                    html += addressRow("", system.telnet, "", "");
                 } else if (system.telnet && system.sshPort && !system.port) {
                     html += addressRow("SSH", system.telnet, system.sshPort, "");
                 }
@@ -934,41 +937,32 @@
                 });
             }
 
-            function fillLanguages() {
-                var wrap = document.getElementById("lang-filters");
-                if (!wrap) return;
+            function fillLanguage(languageCounts) {
                 var counts = Object.create(null);
-                systems.forEach(function (system) {
-                    systemLanguages(system).forEach(function (code) {
-                        counts[code] = (counts[code] || 0) + 1;
+                if (languageCounts && typeof languageCounts === "object") {
+                    Object.keys(languageCounts).forEach(function (key) {
+                        counts[key] = languageCounts[key];
                     });
-                });
-                var codes = Object.keys(counts).sort(function (a, b) {
-                    if (a === "unknown") return 1;
-                    if (b === "unknown") return -1;
-                    var la = languageLabel(a).toLowerCase();
-                    var lb = languageLabel(b).toLowerCase();
-                    return la < lb ? -1 : la > lb ? 1 : 0;
-                });
-                // keep the All button; append the rest
-                codes.forEach(function (code) {
-                    var button = document.createElement("button");
-                    button.type = "button";
-                    button.className = "chip lang-chip";
-                    button.setAttribute("data-lang", code);
-                    button.setAttribute("aria-pressed", "false");
-                    button.textContent = languageLabel(code) + " (" + counts[code] + ")";
-                    wrap.appendChild(button);
-                });
-                langChips = Array.prototype.slice.call(wrap.querySelectorAll(".chip[data-lang]"));
-                langChips.forEach(function (chip) {
-                    chip.addEventListener("click", function () {
-                        langFilter = chip.getAttribute("data-lang");
-                        langChips.forEach(function (other) {
-                            other.setAttribute("aria-pressed", other === chip ? "true" : "false");
-                        });
-                        render();
+                } else {
+                    systems.forEach(function (system) {
+                        if (!system.language) return;
+                        counts[system.language] = (counts[system.language] || 0) + 1;
                     });
+                }
+                var names = Object.keys(counts).sort(function (a, b) {
+                    if (counts[b] !== counts[a]) return counts[b] - counts[a];
+                    return a.toLowerCase() < b.toLowerCase() ? -1 : a.toLowerCase() > b.toLowerCase() ? 1 : 0;
+                });
+                languageEl.innerHTML = "";
+                var all = document.createElement("option");
+                all.value = "";
+                all.textContent = "All languages";
+                languageEl.appendChild(all);
+                names.forEach(function (name) {
+                    var option = document.createElement("option");
+                    option.value = name;
+                    option.textContent = name + " (" + counts[name] + ")";
+                    languageEl.appendChild(option);
                 });
             }
 
@@ -994,6 +988,10 @@
 
             qEl.addEventListener("input", render);
             softwareEl.addEventListener("change", render);
+            languageEl.addEventListener("change", function () {
+                languageFilter = languageEl.value;
+                render();
+            });
             listEl.addEventListener("click", function (event) {
                 var button = event.target.closest ? event.target.closest("[data-copy]") : null;
                 if (!button) return;
@@ -1041,7 +1039,7 @@
                         summaryEl.innerHTML += " The file count field does not match the systems array.";
                     }
                     fillSoftware();
-                    fillLanguages();
+                    fillLanguage(data.languageCounts || null);
                     render();
                 })
                 .catch(function (err) {
