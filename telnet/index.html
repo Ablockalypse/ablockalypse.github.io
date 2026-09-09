@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telnet — Color It Company</title>
+<meta name="description" content="Open a BBS from the Color It Company directory in the browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  :root { --primary:#e07a5f; --dark:#111113; --dark-light:#1c1c1f; --line:#2e2e32; --text:#f0f0f0; --muted:#909090; }
+  html, body { margin:0; min-height:100%; background:var(--dark); color:var(--text); font-family:Inter, system-ui, sans-serif; }
+  .bar { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; padding:14px 20px; border-bottom:1px solid var(--line); }
+  .bar a { color:var(--muted); text-decoration:none; font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
+  .bar a:hover, .bar a[aria-current="page"] { color:var(--text); }
+  .brand { font-family:Archivo, sans-serif; letter-spacing:.04em; }
+  h1 { font-family:Archivo, sans-serif; font-weight:600; font-size:clamp(28px, 5vw, 44px); margin:18px 20px 6px; }
+  .lede { margin:0 20px 14px; color:var(--muted); max-width:68ch; font-size:14px; line-height:1.6; }
+  .meta { display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; margin:0 20px 14px; font-family:"IBM Plex Mono", monospace; font-size:13px; }
+  .meta code { background:var(--dark-light); border:1px solid var(--line); border-radius:6px; padding:4px 8px; }
+  .meta a, .meta button { color:var(--primary); background:transparent; border:0; font:inherit; cursor:pointer; text-decoration:none; }
+  #term { margin:0 12px 20px; min-height:70vh; background:#000; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .empty { margin:24px 20px; color:var(--muted); }
+  .empty a { color:var(--primary); }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <a class="brand" href="/">Color It Company</a>
+    <div>
+      <a href="/bbs/">BBS directory</a>
+      <a href="/telnet/" aria-current="page">Telnet</a>
+    </div>
+  </div>
+  <h1 id="title">Telnet</h1>
+  <p class="lede" id="lede">Pick a board from the directory and it opens here. The session runs in the browser through fTelnet's public proxy. A local client is still listed if you want that instead.</p>
+  <div class="meta" id="meta" hidden></div>
+  <div id="empty" class="empty" hidden>No board selected. <a href="/bbs/">Choose one from the directory.</a></div>
+  <div id="term"></div>
+<script src="https://embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js"></script>
+<script>
+(function () {
+  function param(name) {
+    return new URLSearchParams(window.location.search).get(name) || "";
+  }
+  function hostOk(host) {
+    return /^[A-Za-z0-9._:-]+$/.test(host) && host.indexOf("..") === -1;
+  }
+  var host = param("host").trim();
+  var port = parseInt(param("port") || "23", 10);
+  var name = param("name").trim();
+  if (!hostOk(host) || !port || port < 1 || port > 65535) {
+    document.getElementById("empty").hidden = false;
+    document.getElementById("term").hidden = true;
+    return;
+  }
+  document.title = (name || host) + " — Telnet — Color It Company";
+  document.getElementById("title").textContent = name || host;
+  var shown = host + ":" + port;
+  var meta = document.getElementById("meta");
+  meta.hidden = false;
+  meta.innerHTML = "<code>" + shown.replace(/&/g,"&amp;").replace(/</g,"&lt;") + "</code>" +
+    '<a href="telnet://' + encodeURI(host) + ":" + port + '">Open in a local client</a>' +
+    '<a href="/bbs/">Back to the directory</a>';
+  var Options = new fTelnetOptions();
+  Options.Hostname = host;
+  Options.Port = port;
+  Options.ConnectionType = "telnet";
+  Options.Emulation = "ansi-bbs";
+  Options.Font = "cp437";
+  Options.ProxyHostname = "p-us-west.ftelnet.ca";
+  Options.ProxyPort = 80;
+  Options.ProxyPortSecure = 443;
+  Options.ScreenColumns = 80;
+  Options.ScreenRows = 25;
+  var client = new fTelnetClient("term", Options);
+  client.Connect();
+})();
+</script>
+</body>
+</html>
