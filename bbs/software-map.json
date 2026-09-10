@@ -1,0 +1,1219 @@
+{
+  "canonical": {
+    "synchronet": {
+      "name": "Synchronet",
+      "aliases": [
+        "SBBS",
+        "Sycro",
+        "Synchronet",
+        "Synchronet 3.18c",
+        "SynchroNet 3.19b",
+        "Synchronet v3.18C",
+        "Syncronet"
+      ],
+      "count": 427,
+      "homepage": "https://www.synchro.net/",
+      "blurb": "Modern multi-protocol open-source BBS suite."
+    },
+    "image-bbs": {
+      "name": "Image BBS",
+      "aliases": [
+        "Image",
+        "Image 1.2",
+        "Image 1.2a",
+        "Image 2.0",
+        "image 3.0",
+        "Image 3.0",
+        "Image BBS",
+        "Image BBS v3.0"
+      ],
+      "count": 33,
+      "blurb": "Commodore 64 BBS software (Image BBS)."
+    },
+    "mystic": {
+      "name": "Mystic BBS",
+      "aliases": [
+        "MYSTIC",
+        "Mystic",
+        "Mystic BBS",
+        "Mystic, Retro",
+        "Mystic/Synchronet",
+        "MysticBBS"
+      ],
+      "count": 237,
+      "homepage": "https://www.mysticbbs.com/",
+      "blurb": "Popular cross-platform hobbyist BBS package."
+    },
+    "spitfire": {
+      "name": "Spitfire",
+      "aliases": [
+        "Spitfire"
+      ],
+      "count": 3,
+      "homepage": "https://en.wikipedia.org/wiki/Spitfire_(BBS)",
+      "blurb": "Shareware DOS BBS package."
+    },
+    "color-64": {
+      "name": "Color 64",
+      "aliases": [
+        "Color 64",
+        "Color 64 V8",
+        "Color64"
+      ],
+      "count": 18,
+      "blurb": "Commodore 64 BBS software."
+    },
+    "subtext": {
+      "name": "SubText",
+      "aliases": [
+        "SubText"
+      ],
+      "count": 2,
+      "blurb": "Listed as SubText in public directories."
+    },
+    "maxs-pro": {
+      "name": "MAX's PRO",
+      "aliases": [
+        "MAX's PRO",
+        "MAXsBBS"
+      ],
+      "count": 3,
+      "blurb": "Listed as MAX's PRO / MAXsBBS in public directories."
+    },
+    "anetbbs": {
+      "name": "ANetBBS",
+      "aliases": [
+        "ANetBBS"
+      ],
+      "count": 2
+    },
+    "c-net": {
+      "name": "C-Net",
+      "aliases": [
+        "Amiga C-Net",
+        "C-Net",
+        "C-Net 128 T2.R2",
+        "C-Net 5.21",
+        "C-Net Amiga Pro 5.34b",
+        "C-Net BBS v5.21",
+        "C-Net DS2.5",
+        "C-Net/5 Amiga Pro",
+        "C-Net64 DS II",
+        "CNet",
+        "CNet DS2",
+        "CNet Pro"
+      ],
+      "count": 25,
+      "blurb": "C-Net BBS family (C64/Amiga lineages)."
+    },
+    "custom": {
+      "name": "Custom / unknown package",
+      "aliases": [
+        "Custom",
+        "Custom Internet Browser"
+      ],
+      "count": 62,
+      "blurb": "No known package name published in the source list."
+    },
+    "photon-bbs": {
+      "name": "Photon BBS",
+      "aliases": [
+        "Photon BBS"
+      ],
+      "count": 1
+    },
+    "twgs": {
+      "name": "TWGS",
+      "aliases": [
+        "TWGS"
+      ],
+      "count": 35,
+      "blurb": "Listed as TWGS in public BBS directories."
+    },
+    "wildcat": {
+      "name": "Wildcat!",
+      "aliases": [
+        "Wilcat!",
+        "Wildcat",
+        "Wildcat!",
+        "WildCat/WinServer"
+      ],
+      "count": 29,
+      "homepage": "https://en.wikipedia.org/wiki/Wildcat!_BBS",
+      "blurb": "Classic commercial BBS package (Mustang Software)."
+    },
+    "yawc": {
+      "name": "YAWC",
+      "aliases": [
+        "YAWC"
+      ],
+      "count": 2
+    },
+    "maximus": {
+      "name": "Maximus",
+      "aliases": [
+        "Maximus",
+        "Maximus/2"
+      ],
+      "count": 7,
+      "homepage": "https://en.wikipedia.org/wiki/Maximus_(BBS)",
+      "blurb": "Classic FidoNet-oriented BBS package."
+    },
+    "majorbbs": {
+      "name": "The Major BBS",
+      "aliases": [
+        "MajorBBS",
+        "MajorBBS 6.25",
+        "MajorBBS, Worldgroup",
+        "The MajorBBS v10"
+      ],
+      "count": 22,
+      "homepage": "https://en.wikipedia.org/wiki/The_Major_BBS",
+      "blurb": "Galacticomm multi-line BBS; predecessor to Worldgroup."
+    },
+    "apple-ii": {
+      "name": "Apple II",
+      "aliases": [
+        "Apple II"
+      ],
+      "count": 2
+    },
+    "wwiv": {
+      "name": "WWIV",
+      "aliases": [
+        "WWIV",
+        "WWIV Development Branch",
+        "WWIV v5.1",
+        "WWIV V5.5"
+      ],
+      "count": 26,
+      "homepage": "https://www.wwivbbs.org/",
+      "blurb": "Long-running BBS lineage; modern open-source WWIV 5.x."
+    },
+    "bbs-express": {
+      "name": "BBS Express",
+      "aliases": [
+        "BBS Express Pro",
+        "BBS Express St",
+        "BBS Express!",
+        "BBS Express! ST"
+      ],
+      "count": 8,
+      "blurb": "Atari ST / Amiga BBS Express family."
+    },
+    "renegade": {
+      "name": "Renegade",
+      "aliases": [
+        "RENEGADE",
+        "Renegade",
+        "Renegade 1.22/DOS"
+      ],
+      "count": 11,
+      "homepage": "https://en.wikipedia.org/wiki/Renegade_(BBS)",
+      "blurb": "DOS BBS software in the Telegard/WWIV family."
+    },
+    "elebbs": {
+      "name": "EleBBS",
+      "aliases": [
+        "EleBBS"
+      ],
+      "count": 7,
+      "blurb": "Elegant BBS (EleBBS) hobbyist package."
+    },
+    "c-base": {
+      "name": "C-Base",
+      "aliases": [
+        "C*Base",
+        "C-Base",
+        "CBase"
+      ],
+      "count": 14,
+      "blurb": "Commodore BBS software (C-Base)."
+    },
+    "amiga-cbm": {
+      "name": "Amiga CBM",
+      "aliases": [
+        "Amiga CBM"
+      ],
+      "count": 1
+    },
+    "amiexpress": {
+      "name": "AmiExpress",
+      "aliases": [
+        "AmiExpress",
+        "AmiExpress 4.20"
+      ],
+      "count": 19,
+      "homepage": "https://en.wikipedia.org/wiki/AmiExpress",
+      "blurb": "Classic Amiga BBS software."
+    },
+    "atari": {
+      "name": "Atari",
+      "aliases": [
+        "Atari"
+      ],
+      "count": 5
+    },
+    "enigma-1-2": {
+      "name": "Enigma 1/2",
+      "aliases": [
+        "Enigma 1/2"
+      ],
+      "count": 41,
+      "homepage": "https://enigma-bbs.github.io/",
+      "blurb": "Modern Node.js BBS platform (Enigma ½)."
+    },
+    "waffle-bbs": {
+      "name": "Waffle BBS",
+      "aliases": [
+        "Waffle BBS"
+      ],
+      "count": 1,
+      "blurb": "Unix BBS package (Waffle)."
+    },
+    "maplebbs": {
+      "name": "MapleBBS",
+      "aliases": [
+        "Maple3.02",
+        "Maple3.10-itoc",
+        "Maple3.10-itoc 20080508-PACK",
+        "Maple3.10-itoc easttownbbs",
+        "MapleBBS",
+        "MapleBBS-3.10-20121021-PACK.itoc"
+      ],
+      "count": 24,
+      "blurb": "Chinese telnet BBS lineage (Maple / MapleBBS)."
+    },
+    "worldgroup": {
+      "name": "Worldgroup",
+      "aliases": [
+        "Worldgroup",
+        "Worldgroup 2.0",
+        "Worldgroup 3"
+      ],
+      "count": 47,
+      "homepage": "https://en.wikipedia.org/wiki/The_Major_BBS",
+      "blurb": "Successor product line to The Major BBS."
+    },
+    "aria-cl": {
+      "name": "ARIA CL",
+      "aliases": [
+        "ARIA CL"
+      ],
+      "count": 1
+    },
+    "hermes": {
+      "name": "Hermes BBS",
+      "aliases": [
+        "Hermes",
+        "Hermes II 3.5.11"
+      ],
+      "count": 2,
+      "blurb": "Macintosh BBS software."
+    },
+    "virtual-advanced": {
+      "name": "Virtual Advanced",
+      "aliases": [
+        "Virtual Advanced"
+      ],
+      "count": 7,
+      "blurb": "Listed as Virtual Advanced in public directories."
+    },
+    "atdt-bbs-software": {
+      "name": "ATDT BBS Software",
+      "aliases": [
+        "ATDT BBS Software"
+      ],
+      "count": 1
+    },
+    "commodore": {
+      "name": "commodore",
+      "aliases": [
+        "commodore"
+      ],
+      "count": 6
+    },
+    "x84": {
+      "name": "x/84",
+      "aliases": [
+        "x/84",
+        "X/84"
+      ],
+      "count": 3,
+      "homepage": "https://github.com/jquast/x84",
+      "blurb": "Open-source Python telnet BBS framework."
+    },
+    "citadel": {
+      "name": "Citadel",
+      "aliases": [
+        "Citadel",
+        "Citadel-86",
+        "Cittadella/UX"
+      ],
+      "count": 7,
+      "homepage": "https://en.wikipedia.org/wiki/Citadel_(software)",
+      "blurb": "Long-lived Citadel BBS family and variants."
+    },
+    "turbo56k": {
+      "name": "TURBO56K",
+      "aliases": [
+        "TURBO56K"
+      ],
+      "count": 2,
+      "blurb": "Listed as TURBO56K in public directories."
+    },
+    "petscii-bbs": {
+      "name": "Petscii BBS",
+      "aliases": [
+        "Petscii BBS"
+      ],
+      "count": 1,
+      "blurb": "PETSCII-oriented BBS software/stack."
+    },
+    "gamesrv": {
+      "name": "GameSrv",
+      "aliases": [
+        "GameSrv"
+      ],
+      "count": 2,
+      "blurb": "Listed as GameSrv in public directories."
+    },
+    "bbbs": {
+      "name": "BBBS",
+      "aliases": [
+        "BBBS"
+      ],
+      "count": 6,
+      "homepage": "https://www.bbbs.net/",
+      "blurb": "BBS package published at bbbs.net."
+    },
+    "obbs": {
+      "name": "OBBS",
+      "aliases": [
+        "OBBS"
+      ],
+      "count": 1
+    },
+    "proboard": {
+      "name": "ProBoard",
+      "aliases": [
+        "ProBoard"
+      ],
+      "count": 3,
+      "homepage": "https://en.wikipedia.org/wiki/ProBoard",
+      "blurb": "Long-running hobbyist BBS package."
+    },
+    "rbbs": {
+      "name": "RBBS",
+      "aliases": [
+        "RBBS"
+      ],
+      "count": 2,
+      "blurb": "Early PC shareware BBS (RBBS-PC)."
+    },
+    "virtual-bbs": {
+      "name": "Virtual BBS",
+      "aliases": [
+        "Virtual BBS"
+      ],
+      "count": 1,
+      "blurb": "Listed as Virtual BBS in public directories."
+    },
+    "all-american": {
+      "name": "All American",
+      "aliases": [
+        "All American"
+      ],
+      "count": 1
+    },
+    "gbbs-pro": {
+      "name": "GBBS Pro",
+      "aliases": [
+        "GBBS Pro"
+      ],
+      "count": 4,
+      "homepage": "https://en.wikipedia.org/wiki/GBBS",
+      "blurb": "Classic Apple II BBS software."
+    },
+    "excelsior": {
+      "name": "Excelsior!",
+      "aliases": [
+        "Excelsior BBS",
+        "Excelsior!"
+      ],
+      "count": 2,
+      "blurb": "Listed as Excelsior! in public BBS directories."
+    },
+    "centipede": {
+      "name": "Centipede BBS",
+      "aliases": [
+        "Centipede",
+        "Centipede 128 BBS",
+        "Centipede BBS"
+      ],
+      "count": 8,
+      "blurb": "Commodore Centipede BBS software."
+    },
+    "scorpio-bbs": {
+      "name": "Scorpio BBS",
+      "aliases": [
+        "Scorpio BBS"
+      ],
+      "count": 1
+    },
+    "warp-six": {
+      "name": "Warp Six",
+      "aliases": [
+        "Warp Six"
+      ],
+      "count": 2
+    },
+    "probox": {
+      "name": "ProBOX",
+      "aliases": [
+        "ProBOX"
+      ],
+      "count": 1
+    },
+    "daydream": {
+      "name": "Daydream BBS",
+      "aliases": [
+        "Daydream"
+      ],
+      "count": 5,
+      "blurb": "Amiga BBS software."
+    },
+    "impulse": {
+      "name": "Impulse",
+      "aliases": [
+        "Impulse"
+      ],
+      "count": 1
+    },
+    "microbbs": {
+      "name": "MicroBBS",
+      "aliases": [
+        "microBBS",
+        "MicroBBS"
+      ],
+      "count": 2
+    },
+    "cbbs": {
+      "name": "CBBS",
+      "aliases": [
+        "CBBS"
+      ],
+      "count": 1,
+      "homepage": "https://en.wikipedia.org/wiki/CBBS",
+      "blurb": "The original 1978 CBBS software lineage."
+    },
+    "magnetar-bbs": {
+      "name": "Magnetar BBS",
+      "aliases": [
+        "Magnetar BBS"
+      ],
+      "count": 1
+    },
+    "abbs": {
+      "name": "ABBS",
+      "aliases": [
+        "ABBS"
+      ],
+      "count": 2
+    },
+    "pcboard": {
+      "name": "PCBoard",
+      "aliases": [
+        "PCBoard"
+      ],
+      "count": 5,
+      "homepage": "https://en.wikipedia.org/wiki/PCBoard",
+      "blurb": "Influential commercial PC BBS software."
+    },
+    "tbbs": {
+      "name": "TBBS",
+      "aliases": [
+        "TBBS",
+        "TBBS version 1.3"
+      ],
+      "count": 3,
+      "homepage": "https://en.wikipedia.org/wiki/TBBS",
+      "blurb": "Commercial multi-line BBS (The Bread Board System)."
+    },
+    "zeus": {
+      "name": "Zeus BBS",
+      "aliases": [
+        "Zeus",
+        "Zeus BBS"
+      ],
+      "count": 4,
+      "blurb": "Listed as Zeus BBS in public directories."
+    },
+    "binktermphp": {
+      "name": "BinkTermPHP",
+      "aliases": [
+        "BinktermPHP",
+        "BinkTermPhP"
+      ],
+      "count": 2,
+      "blurb": "Listed as BinkTermPHP in public directories."
+    },
+    "searchlight": {
+      "name": "Searchlight BBS",
+      "aliases": [
+        "Searchlight",
+        "Searchlight BBS"
+      ],
+      "count": 3,
+      "homepage": "https://en.wikipedia.org/wiki/Searchlight_BBS",
+      "blurb": "PC BBS package (Searchlight)."
+    },
+    "remoteaccess": {
+      "name": "RemoteAccess",
+      "aliases": [
+        "RA",
+        "RemoteAccess"
+      ],
+      "count": 5,
+      "homepage": "https://en.wikipedia.org/wiki/RemoteAccess",
+      "blurb": "Popular DOS-era BBS package (RA)."
+    },
+    "sixnet24": {
+      "name": "Sixnet24",
+      "aliases": [
+        "Sixnet24"
+      ],
+      "count": 1
+    },
+    "telegard": {
+      "name": "Telegard",
+      "aliases": [
+        "Telegard"
+      ],
+      "count": 3,
+      "homepage": "https://en.wikipedia.org/wiki/Telegard",
+      "blurb": "Classic DOS BBS package related to the WWIV lineage."
+    },
+    "blue-board": {
+      "name": "Blue Board",
+      "aliases": [
+        "Blue Board"
+      ],
+      "count": 1
+    },
+    "vic-bbs": {
+      "name": "VIC-BBS",
+      "aliases": [
+        "VIC-BBS"
+      ],
+      "count": 1
+    },
+    "nikom": {
+      "name": "NiKom",
+      "aliases": [
+        "NiKom"
+      ],
+      "count": 2,
+      "homepage": "http://www.nikom.org/",
+      "blurb": "Amiga BBS software (NiKom)."
+    },
+    "dreambbs": {
+      "name": "DreamBBS",
+      "aliases": [
+        "DreamBBS"
+      ],
+      "count": 2
+    },
+    "bbs100": {
+      "name": "BBS100",
+      "aliases": [
+        "BBS100",
+        "bbs100"
+      ],
+      "count": 3
+    },
+    "vbbs": {
+      "name": "VBBS",
+      "aliases": [
+        "VBBS"
+      ],
+      "count": 1
+    },
+    "iniquity": {
+      "name": "Iniquity",
+      "aliases": [
+        "Iniquity"
+      ],
+      "count": 2,
+      "blurb": "Listed as Iniquity in public directories."
+    },
+    "lbbs": {
+      "name": "LBBS",
+      "aliases": [
+        "LBBS"
+      ],
+      "count": 1
+    },
+    "tornado": {
+      "name": "Tornado",
+      "aliases": [
+        "Tornado"
+      ],
+      "count": 2
+    },
+    "forem-xe": {
+      "name": "Forem XE",
+      "aliases": [
+        "Forem XE",
+        "Phorem XE"
+      ],
+      "count": 2,
+      "blurb": "Atari 8-bit BBS software (Forem XE)."
+    },
+    "oasis": {
+      "name": "Oasis",
+      "aliases": [
+        "Oasis"
+      ],
+      "count": 1
+    },
+    "s-and-t": {
+      "name": "S&T",
+      "aliases": [
+        "S&T"
+      ],
+      "count": 1
+    },
+    "oblivion-2": {
+      "name": "Oblivion/2",
+      "aliases": [
+        "Oblivion/2"
+      ],
+      "count": 1,
+      "blurb": "Listed as Oblivion/2 in public directories."
+    },
+    "mbse": {
+      "name": "MBSE BBS",
+      "aliases": [
+        "MBSE"
+      ],
+      "count": 6,
+      "homepage": "https://sourceforge.net/projects/mbsebbs/",
+      "blurb": "Open-source FidoNet BBS (MBSE)."
+    },
+    "pttbbs": {
+      "name": "PttBBS / Open PTT",
+      "aliases": [
+        "Current PTT",
+        "Open Ptt",
+        "PttBBS git r5032+",
+        "PttBBS trunk r5284"
+      ],
+      "count": 5,
+      "homepage": "https://github.com/ptt/pttbbs",
+      "blurb": "Open-source PTT BBS software lineage."
+    },
+    "doc": {
+      "name": "DOC",
+      "aliases": [
+        "DOC"
+      ],
+      "count": 2
+    },
+    "armbbs": {
+      "name": "ArmBBS",
+      "aliases": [
+        "ArmBBS"
+      ],
+      "count": 3
+    },
+    "bbs-pc-4-20": {
+      "name": "BBS-PC! 4.20",
+      "aliases": [
+        "BBS-PC! 4.20"
+      ],
+      "count": 1
+    },
+    "diversi-dial": {
+      "name": "Diversi-Dial",
+      "aliases": [
+        "Diversi-Dial"
+      ],
+      "count": 1,
+      "blurb": "Apple II multi-line chat system (Diversi-Dial)."
+    },
+    "magicbbs": {
+      "name": "MagicBBS",
+      "aliases": [
+        "MagicBBS"
+      ],
+      "count": 1
+    },
+    "felixia": {
+      "name": "Felixia",
+      "aliases": [
+        "Felixia"
+      ],
+      "count": 1
+    },
+    "cgbbs": {
+      "name": "CGBBS",
+      "aliases": [
+        "CGBBS"
+      ],
+      "count": 1
+    },
+    "mash": {
+      "name": "MASH",
+      "aliases": [
+        "MASH"
+      ],
+      "count": 1
+    },
+    "gt-2000": {
+      "name": "GT-2000",
+      "aliases": [
+        "GT-2000"
+      ],
+      "count": 1,
+      "blurb": "Listed as GT-2000 in public directories."
+    },
+    "monochrome": {
+      "name": "Monochrome",
+      "aliases": [
+        "Monochrome"
+      ],
+      "count": 1,
+      "blurb": "Listed as Monochrome in public directories."
+    },
+    "pyroto-mountain-bbs": {
+      "name": "Pyroto Mountain BBS",
+      "aliases": [
+        "Pyroto Mountain BBS"
+      ],
+      "count": 1
+    },
+    "firebird-bbs": {
+      "name": "FireBird BBS",
+      "aliases": [
+        "Firebird",
+        "FireBird BBS 2.65M",
+        "FireBird BBS 2000",
+        "FireBird BBS 2000 fbbs",
+        "FireBird BBS KBS BBS 2.0",
+        "FireBird BBS KBS BBS 2.0 zixia BBS v21.2.1",
+        "FireBird BBS SMTH BBS 1.2 LilacBBS"
+      ],
+      "count": 8,
+      "blurb": "Chinese telnet BBS software family (FireBird)."
+    },
+    "sun-of-beach": {
+      "name": "Sun of Beach",
+      "aliases": [
+        "Sun of Beach"
+      ],
+      "count": 4
+    },
+    "premiere-bbs": {
+      "name": "Premiere BBS",
+      "aliases": [
+        "Premiere BBS"
+      ],
+      "count": 1
+    },
+    "tba": {
+      "name": "TBA",
+      "aliases": [
+        "TBA"
+      ],
+      "count": 1
+    },
+    "lightweight-bbs": {
+      "name": "Lightweight BBS",
+      "aliases": [
+        "Lightweight BBS"
+      ],
+      "count": 1
+    },
+    "hbbs": {
+      "name": "HBBS",
+      "aliases": [
+        "HBBS"
+      ],
+      "count": 1
+    },
+    "rybbs": {
+      "name": "RYBBS",
+      "aliases": [
+        "RYBBS"
+      ],
+      "count": 1
+    },
+    "magicka": {
+      "name": "Magicka",
+      "aliases": [
+        "Magicka"
+      ],
+      "count": 1
+    },
+    "powerbbs": {
+      "name": "PowerBBS",
+      "aliases": [
+        "PowerBBS"
+      ],
+      "count": 1,
+      "blurb": "Listed as PowerBBS in public directories."
+    },
+    "proline": {
+      "name": "ProLine",
+      "aliases": [
+        "ProLine"
+      ],
+      "count": 1,
+      "blurb": "Listed as ProLine in public directories."
+    },
+    "ebbs-128": {
+      "name": "EBBS 128",
+      "aliases": [
+        "EBBS 128"
+      ],
+      "count": 1
+    },
+    "concord": {
+      "name": "Concord",
+      "aliases": [
+        "Concord"
+      ],
+      "count": 1
+    },
+    "ezycom": {
+      "name": "Ezycom",
+      "aliases": [
+        "Ezycom"
+      ],
+      "count": 1,
+      "blurb": "Listed as Ezycom in public directories."
+    },
+    "champion": {
+      "name": "Champion",
+      "aliases": [
+        "Champion"
+      ],
+      "count": 1
+    },
+    "abbs-ii": {
+      "name": "ABBS II",
+      "aliases": [
+        "ABBS II"
+      ],
+      "count": 1
+    },
+    "ibbs": {
+      "name": "IBBS",
+      "aliases": [
+        "IBBS"
+      ],
+      "count": 1
+    },
+    "netbsd": {
+      "name": "NetBSD",
+      "aliases": [
+        "NetBSD"
+      ],
+      "count": 1
+    },
+    "quarkware": {
+      "name": "Quarkware",
+      "aliases": [
+        "Quarkware"
+      ],
+      "count": 1
+    },
+    "telehack": {
+      "name": "Telehack",
+      "aliases": [
+        "Telehack"
+      ],
+      "count": 1,
+      "homepage": "https://telehack.com/",
+      "blurb": "Public multi-user Telehack system."
+    },
+    "bboard": {
+      "name": "BBOARD",
+      "aliases": [
+        "BBOARD"
+      ],
+      "count": 1
+    },
+    "after-hours-bbs": {
+      "name": "After hours BBS",
+      "aliases": [
+        "After hours BBS"
+      ],
+      "count": 1
+    },
+    "superbbs": {
+      "name": "SuperBBS",
+      "aliases": [
+        "SuperBBS"
+      ],
+      "count": 1,
+      "blurb": "DOS-era SuperBBS package."
+    },
+    "dlg-professional": {
+      "name": "DLG Professional",
+      "aliases": [
+        "DLG Professional"
+      ],
+      "count": 2,
+      "blurb": "Amiga BBS software (DLG Professional)."
+    },
+    "nanobbs": {
+      "name": "NanoBBS",
+      "aliases": [
+        "NanoBBS"
+      ],
+      "count": 1
+    },
+    "pueblo": {
+      "name": "Pueblo",
+      "aliases": [
+        "Pueblo"
+      ],
+      "count": 1
+    },
+    "moonbbs": {
+      "name": "MoonBBS",
+      "aliases": [
+        "MoonBBS"
+      ],
+      "count": 1
+    },
+    "zelch-128": {
+      "name": "Zelch 128",
+      "aliases": [
+        "Zelch 128"
+      ],
+      "count": 1,
+      "blurb": "Commodore 128 BBS software."
+    },
+    "mtbbs": {
+      "name": "MTBBS",
+      "aliases": [
+        "MTBBS"
+      ],
+      "count": 1
+    },
+    "windtop-bbs-3-02-rev-20001103": {
+      "name": "WindTop BBS 3.02 Rev. 20001103",
+      "aliases": [
+        "WindTop BBS 3.02 Rev. 20001103"
+      ],
+      "count": 1
+    }
+  },
+  "aliasToSlug": {
+    "ABBS": "abbs",
+    "ABBS II": "abbs-ii",
+    "After hours BBS": "after-hours-bbs",
+    "All American": "all-american",
+    "AmiExpress": "amiexpress",
+    "AmiExpress 4.20": "amiexpress",
+    "Amiga C-Net": "c-net",
+    "Amiga CBM": "amiga-cbm",
+    "ANetBBS": "anetbbs",
+    "Apple II": "apple-ii",
+    "ARIA CL": "aria-cl",
+    "ArmBBS": "armbbs",
+    "Atari": "atari",
+    "ATDT BBS Software": "atdt-bbs-software",
+    "BBBS": "bbbs",
+    "BBOARD": "bboard",
+    "BBS Express Pro": "bbs-express",
+    "BBS Express St": "bbs-express",
+    "BBS Express!": "bbs-express",
+    "BBS Express! ST": "bbs-express",
+    "BBS-PC! 4.20": "bbs-pc-4-20",
+    "BBS100": "bbs100",
+    "bbs100": "bbs100",
+    "BinkTermPhP": "binktermphp",
+    "BinktermPHP": "binktermphp",
+    "Blue Board": "blue-board",
+    "C*Base": "c-base",
+    "C-Base": "c-base",
+    "C-Net": "c-net",
+    "C-Net 128 T2.R2": "c-net",
+    "C-Net 5.21": "c-net",
+    "C-Net Amiga Pro 5.34b": "c-net",
+    "C-Net BBS v5.21": "c-net",
+    "C-Net DS2.5": "c-net",
+    "C-Net/5 Amiga Pro": "c-net",
+    "C-Net64 DS II": "c-net",
+    "CBase": "c-base",
+    "CBBS": "cbbs",
+    "Centipede": "centipede",
+    "Centipede 128 BBS": "centipede",
+    "Centipede BBS": "centipede",
+    "CGBBS": "cgbbs",
+    "Champion": "champion",
+    "Citadel": "citadel",
+    "Citadel-86": "citadel",
+    "Cittadella/UX": "citadel",
+    "CNet": "c-net",
+    "CNet DS2": "c-net",
+    "CNet Pro": "c-net",
+    "Color 64": "color-64",
+    "Color 64 V8": "color-64",
+    "Color64": "color-64",
+    "commodore": "commodore",
+    "Concord": "concord",
+    "Current PTT": "pttbbs",
+    "Custom": "custom",
+    "Custom Internet Browser": "custom",
+    "Daydream": "daydream",
+    "Diversi-Dial": "diversi-dial",
+    "DLG Professional": "dlg-professional",
+    "DOC": "doc",
+    "DreamBBS": "dreambbs",
+    "EBBS 128": "ebbs-128",
+    "EleBBS": "elebbs",
+    "Enigma 1/2": "enigma-1-2",
+    "Excelsior BBS": "excelsior",
+    "Excelsior!": "excelsior",
+    "Ezycom": "ezycom",
+    "Felixia": "felixia",
+    "Firebird": "firebird-bbs",
+    "FireBird BBS 2.65M": "firebird-bbs",
+    "FireBird BBS 2000": "firebird-bbs",
+    "FireBird BBS 2000 fbbs": "firebird-bbs",
+    "FireBird BBS KBS BBS 2.0": "firebird-bbs",
+    "FireBird BBS KBS BBS 2.0 zixia BBS v21.2.1": "firebird-bbs",
+    "FireBird BBS SMTH BBS 1.2 LilacBBS": "firebird-bbs",
+    "Forem XE": "forem-xe",
+    "GameSrv": "gamesrv",
+    "GBBS Pro": "gbbs-pro",
+    "GT-2000": "gt-2000",
+    "HBBS": "hbbs",
+    "Hermes": "hermes",
+    "Hermes II 3.5.11": "hermes",
+    "IBBS": "ibbs",
+    "Image": "image-bbs",
+    "Image 1.2": "image-bbs",
+    "Image 1.2a": "image-bbs",
+    "Image 2.0": "image-bbs",
+    "image 3.0": "image-bbs",
+    "Image 3.0": "image-bbs",
+    "Image BBS": "image-bbs",
+    "Image BBS v3.0": "image-bbs",
+    "Impulse": "impulse",
+    "Iniquity": "iniquity",
+    "LBBS": "lbbs",
+    "Lightweight BBS": "lightweight-bbs",
+    "MagicBBS": "magicbbs",
+    "Magicka": "magicka",
+    "Magnetar BBS": "magnetar-bbs",
+    "MajorBBS": "majorbbs",
+    "MajorBBS 6.25": "majorbbs",
+    "MajorBBS, Worldgroup": "majorbbs",
+    "Maple3.02": "maplebbs",
+    "Maple3.10-itoc": "maplebbs",
+    "Maple3.10-itoc 20080508-PACK": "maplebbs",
+    "Maple3.10-itoc easttownbbs": "maplebbs",
+    "MapleBBS": "maplebbs",
+    "MapleBBS-3.10-20121021-PACK.itoc": "maplebbs",
+    "MASH": "mash",
+    "MAX's PRO": "maxs-pro",
+    "Maximus": "maximus",
+    "Maximus/2": "maximus",
+    "MAXsBBS": "maxs-pro",
+    "MBSE": "mbse",
+    "microBBS": "microbbs",
+    "MicroBBS": "microbbs",
+    "Monochrome": "monochrome",
+    "MoonBBS": "moonbbs",
+    "MTBBS": "mtbbs",
+    "Mystic": "mystic",
+    "MYSTIC": "mystic",
+    "Mystic BBS": "mystic",
+    "Mystic, Retro": "mystic",
+    "Mystic/Synchronet": "mystic",
+    "MysticBBS": "mystic",
+    "NanoBBS": "nanobbs",
+    "NetBSD": "netbsd",
+    "NiKom": "nikom",
+    "Oasis": "oasis",
+    "OBBS": "obbs",
+    "Oblivion/2": "oblivion-2",
+    "Open Ptt": "pttbbs",
+    "PCBoard": "pcboard",
+    "Petscii BBS": "petscii-bbs",
+    "Phorem XE": "forem-xe",
+    "Photon BBS": "photon-bbs",
+    "PowerBBS": "powerbbs",
+    "Premiere BBS": "premiere-bbs",
+    "ProBoard": "proboard",
+    "ProBOX": "probox",
+    "ProLine": "proline",
+    "PttBBS git r5032+": "pttbbs",
+    "PttBBS trunk r5284": "pttbbs",
+    "Pueblo": "pueblo",
+    "Pyroto Mountain BBS": "pyroto-mountain-bbs",
+    "Quarkware": "quarkware",
+    "RA": "remoteaccess",
+    "RBBS": "rbbs",
+    "RemoteAccess": "remoteaccess",
+    "Renegade": "renegade",
+    "RENEGADE": "renegade",
+    "Renegade 1.22/DOS": "renegade",
+    "RYBBS": "rybbs",
+    "S&T": "s-and-t",
+    "SBBS": "synchronet",
+    "Scorpio BBS": "scorpio-bbs",
+    "Searchlight": "searchlight",
+    "Searchlight BBS": "searchlight",
+    "Sixnet24": "sixnet24",
+    "Spitfire": "spitfire",
+    "SubText": "subtext",
+    "Sun of Beach": "sun-of-beach",
+    "SuperBBS": "superbbs",
+    "Sycro": "synchronet",
+    "Synchronet": "synchronet",
+    "Synchronet 3.18c": "synchronet",
+    "SynchroNet 3.19b": "synchronet",
+    "Synchronet v3.18C": "synchronet",
+    "Syncronet": "synchronet",
+    "TBA": "tba",
+    "TBBS": "tbbs",
+    "TBBS version 1.3": "tbbs",
+    "Telegard": "telegard",
+    "Telehack": "telehack",
+    "The MajorBBS v10": "majorbbs",
+    "Tornado": "tornado",
+    "TURBO56K": "turbo56k",
+    "TWGS": "twgs",
+    "VBBS": "vbbs",
+    "VIC-BBS": "vic-bbs",
+    "Virtual Advanced": "virtual-advanced",
+    "Virtual BBS": "virtual-bbs",
+    "Waffle BBS": "waffle-bbs",
+    "Warp Six": "warp-six",
+    "Wilcat!": "wildcat",
+    "Wildcat": "wildcat",
+    "Wildcat!": "wildcat",
+    "WildCat/WinServer": "wildcat",
+    "WindTop BBS 3.02 Rev. 20001103": "windtop-bbs-3-02-rev-20001103",
+    "Worldgroup": "worldgroup",
+    "Worldgroup 2.0": "worldgroup",
+    "Worldgroup 3": "worldgroup",
+    "WWIV": "wwiv",
+    "WWIV Development Branch": "wwiv",
+    "WWIV v5.1": "wwiv",
+    "WWIV V5.5": "wwiv",
+    "x/84": "x84",
+    "X/84": "x84",
+    "YAWC": "yawc",
+    "Zelch 128": "zelch-128",
+    "Zeus": "zeus",
+    "Zeus BBS": "zeus"
+  }
+}
