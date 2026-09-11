@@ -105,12 +105,11 @@
       "observed": "2026-09-11"
     }
   ],
-  "count": 1324,
+  "count": 1320,
   "statusCounts": {
-    "green": 1095,
-    "yellow": 22,
     "red": 207,
-    "unchecked": 0
+    "green": 1091,
+    "yellow": 22
   },
   "languageCounts": {
     "English": 841,
@@ -119,11 +118,11 @@
     "Chinese": 51,
     "Spanish": 35,
     "Swedish": 25,
-    "Portuguese": 24,
+    "Portuguese": 22,
     "Italian": 20,
-    "Japanese": 18,
     "Norwegian": 17,
     "French": 16,
+    "Japanese": 16,
     "Dutch": 14,
     "Finnish": 12,
     "Russian": 9,
@@ -6622,24 +6621,6 @@
       "checkedAt": "2026-09-11T18:43:17Z"
     },
     {
-      "name": "GrassRootsBBS",
-      "location": "Japan",
-      "language": "Japanese",
-      "web": "https://grbbs.midyuki.net/",
-      "status": "green",
-      "lastOk": "2026-09-11T18:43:17Z",
-      "checkedAt": "2026-09-11T18:43:17Z"
-    },
-    {
-      "name": "GrassRootsBBS",
-      "location": "Japan",
-      "language": "Japanese",
-      "web": "https://grbbs.midyuki.net/",
-      "status": "green",
-      "lastOk": "2026-09-11T18:43:17Z",
-      "checkedAt": "2026-09-11T18:43:17Z"
-    },
-    {
       "name": "Greenhead BBS",
       "location": "Toronto, ON, Canada",
       "software": "Synchronet",
@@ -7362,28 +7343,6 @@
       "sshPort": "2223",
       "web": "https://bbs.rclabs.com.br",
       "login": "Desired Handle",
-      "status": "green",
-      "lastOk": "2026-09-11T18:43:17Z",
-      "checkedAt": "2026-09-11T18:43:17Z"
-    },
-    {
-      "name": "Infonet BBS",
-      "sysop": "Regivaldo Costa",
-      "location": "Brasil",
-      "software": "Mystic",
-      "language": "Portuguese",
-      "web": "https://bbs.rclabs.com.br",
-      "status": "green",
-      "lastOk": "2026-09-11T18:43:17Z",
-      "checkedAt": "2026-09-11T18:43:17Z"
-    },
-    {
-      "name": "Infonet BBS",
-      "sysop": "Regivaldo Costa",
-      "location": "Brasil",
-      "software": "Mystic",
-      "language": "Portuguese",
-      "web": "https://bbs.rclabs.com.br",
       "status": "green",
       "lastOk": "2026-09-11T18:43:17Z",
       "checkedAt": "2026-09-11T18:43:17Z"
