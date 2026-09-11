@@ -105,9 +105,9 @@
       "observed": "2026-09-11"
     }
   ],
-  "count": 1332,
+  "count": 1320,
   "statusCounts": {
-    "green": 1107,
+    "green": 1095,
     "yellow": 12,
     "red": 213,
     "unchecked": 0
@@ -118,12 +118,12 @@
     "German": 62,
     "Chinese": 51,
     "Spanish": 35,
-    "Portuguese": 28,
     "Swedish": 25,
-    "Japanese": 22,
+    "Portuguese": 22,
     "Italian": 20,
     "Norwegian": 17,
     "French": 16,
+    "Japanese": 16,
     "Dutch": 14,
     "Finnish": 12,
     "Russian": 9,
@@ -6619,60 +6619,6 @@
       "checkedAt": "2026-09-11T00:30:14Z"
     },
     {
-      "name": "GrassRootsBBS",
-      "location": "Japan",
-      "language": "Japanese",
-      "web": "https://grbbs.midyuki.net/",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "GrassRootsBBS",
-      "location": "Japan",
-      "language": "Japanese",
-      "web": "https://grbbs.midyuki.net/",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "GrassRootsBBS",
-      "location": "Japan",
-      "language": "Japanese",
-      "web": "https://grbbs.midyuki.net/",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "GrassRootsBBS",
-      "location": "Japan",
-      "language": "Japanese",
-      "web": "https://grbbs.midyuki.net/",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "GrassRootsBBS",
-      "location": "Japan",
-      "language": "Japanese",
-      "web": "https://grbbs.midyuki.net/",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "GrassRootsBBS",
-      "location": "Japan",
-      "language": "Japanese",
-      "web": "https://grbbs.midyuki.net/",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
       "name": "Greenhead BBS",
       "location": "Toronto, ON, Canada",
       "software": "Synchronet",
@@ -7395,72 +7341,6 @@
       "sshPort": "2223",
       "web": "https://bbs.rclabs.com.br",
       "login": "Desired Handle",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "Infonet BBS",
-      "sysop": "Regivaldo Costa",
-      "location": "Brasil",
-      "software": "Mystic",
-      "language": "Portuguese",
-      "web": "https://bbs.rclabs.com.br",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "Infonet BBS",
-      "sysop": "Regivaldo Costa",
-      "location": "Brasil",
-      "software": "Mystic",
-      "language": "Portuguese",
-      "web": "https://bbs.rclabs.com.br",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "Infonet BBS",
-      "sysop": "Regivaldo Costa",
-      "location": "Brasil",
-      "software": "Mystic",
-      "language": "Portuguese",
-      "web": "https://bbs.rclabs.com.br",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "Infonet BBS",
-      "sysop": "Regivaldo Costa",
-      "location": "Brasil",
-      "software": "Mystic",
-      "language": "Portuguese",
-      "web": "https://bbs.rclabs.com.br",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "Infonet BBS",
-      "sysop": "Regivaldo Costa",
-      "location": "Brasil",
-      "software": "Mystic",
-      "language": "Portuguese",
-      "web": "https://bbs.rclabs.com.br",
-      "status": "green",
-      "lastOk": "2026-09-11T00:30:14Z",
-      "checkedAt": "2026-09-11T00:30:14Z"
-    },
-    {
-      "name": "Infonet BBS",
-      "sysop": "Regivaldo Costa",
-      "location": "Brasil",
-      "software": "Mystic",
-      "language": "Portuguese",
-      "web": "https://bbs.rclabs.com.br",
       "status": "green",
       "lastOk": "2026-09-11T00:30:14Z",
       "checkedAt": "2026-09-11T00:30:14Z"
