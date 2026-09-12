@@ -1,111 +1,111 @@
 {
-  "generated": "2026-09-11",
+  "generated": "2026-09-12",
   "probedAt": "2026-09-11T18:43:17Z",
   "sources": [
     {
       "name": "Telnet BBS Guide",
       "url": "https://www.telnetbbsguide.com/",
       "file": "bbslist.csv",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Telnet BBS Guide SyncTERM list",
       "url": "https://www.telnetbbsguide.com/bbslist/syncterm.lst",
       "file": "syncterm.lst",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Telnet BBS Guide dial directory",
       "url": "https://www.telnetbbsguide.com/bbslist/dialdirectory.xml",
       "file": "dialdirectory.xml",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Synchronet BBS List",
       "url": "https://www.synchro.net/sbbslist.html",
       "file": "sbbslist.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Synchronet SyncTERM list",
       "url": "https://www.synchro.net/syncterm.lst",
       "file": "synchro_syncterm.lst",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "8-Bit Boyz BBS Directory",
       "url": "https://8bitboyz.com/bbs-directory/",
       "file": "8bitboyz.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Chinese-language Telnet BBS List",
       "url": "https://bbslist.github.io/",
       "file": "bbslist_github_io.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Dock Sud Latinoamerica BBS List",
       "url": "https://bbs.docksud.com.ar/list",
       "file": "docksud.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "FLY BBS Russian Telnet list",
       "url": "http://flybbs.ru/fly",
       "file": "flybbs.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Commodore 64 BBS List",
       "url": "https://www.c64bbslist.com/",
       "file": "c64sheet.csv",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "The BBS List",
       "url": "https://bbs-list.net/",
       "file": "bbs-list-net.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Japanese grass-roots BBS list (balloon-jp)",
       "url": "https://balloon-jp.vercel.app/bbs/",
       "file": "balloon_jp_bbs.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Midnight Driving official wiki",
       "url": "https://wwwmid.kinet.ne.jp/",
       "file": "midnight_driving.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "Wikipedia 草の根BBS (current hosts)",
       "url": "https://ja.wikipedia.org/wiki/%E8%8D%89%E3%81%AE%E6%A0%B9BBS",
       "file": "wikipedia_kusano.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "RBT Lista Nacional de BBSs (Brazil)",
       "url": "https://www.rbt.net.br/nacional.htm",
       "file": "rbt_nacional.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "FidoNet Región 34 España",
       "url": "https://www.cyberiada.org/r34.htm",
       "file": "cyberiada_r34.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     },
     {
       "name": "BBSlink active BBS list",
       "url": "http://bbslink.net/list.php",
       "file": "bbslink_list.html",
-      "observed": "2026-09-11"
+      "observed": "2026-09-12"
     }
   ],
-  "count": 1320,
+  "count": 1323,
   "statusCounts": {
     "red": 207,
     "green": 1091,
@@ -113,16 +113,16 @@
   },
   "languageCounts": {
     "English": 841,
-    "Unknown": 160,
+    "Unknown": 161,
     "German": 62,
     "Chinese": 51,
     "Spanish": 35,
     "Swedish": 25,
-    "Portuguese": 22,
+    "Portuguese": 23,
     "Italian": 20,
+    "Japanese": 17,
     "Norwegian": 17,
     "French": 16,
-    "Japanese": 16,
     "Dutch": 14,
     "Finnish": 12,
     "Russian": 9,
@@ -6621,6 +6621,15 @@
       "checkedAt": "2026-09-11T18:43:17Z"
     },
     {
+      "name": "GrassRootsBBS",
+      "location": "Japan",
+      "language": "Japanese",
+      "web": "https://grbbs.midyuki.net/",
+      "status": "green",
+      "lastOk": "2026-09-11T18:43:17Z",
+      "checkedAt": "2026-09-11T18:43:17Z"
+    },
+    {
       "name": "Greenhead BBS",
       "location": "Toronto, ON, Canada",
       "software": "Synchronet",
@@ -7343,6 +7352,17 @@
       "sshPort": "2223",
       "web": "https://bbs.rclabs.com.br",
       "login": "Desired Handle",
+      "status": "green",
+      "lastOk": "2026-09-11T18:43:17Z",
+      "checkedAt": "2026-09-11T18:43:17Z"
+    },
+    {
+      "name": "Infonet BBS",
+      "sysop": "Regivaldo Costa",
+      "location": "Brasil",
+      "software": "Mystic",
+      "language": "Portuguese",
+      "web": "https://bbs.rclabs.com.br",
       "status": "green",
       "lastOk": "2026-09-11T18:43:17Z",
       "checkedAt": "2026-09-11T18:43:17Z"
@@ -13683,6 +13703,13 @@
       "status": "green",
       "lastOk": "2026-09-11T18:43:17Z",
       "checkedAt": "2026-09-11T18:43:17Z"
+    },
+    {
+      "name": "Tails1154 BBS",
+      "software": "Synchronet",
+      "language": "Unknown",
+      "telnet": "bbs.tails1154.com",
+      "port": "23"
     },
     {
       "name": "TARDIS",
