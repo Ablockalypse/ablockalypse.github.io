@@ -413,6 +413,52 @@
             font-size: 0.95rem;
         }
 
+        /* ── RA ENGINE VIDEO ── */
+        .ra-engine-intro {
+            margin-bottom: 2rem;
+            max-width: 640px;
+        }
+
+        .ra-engine-intro h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.4rem;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .ra-engine-intro p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .ra-engine-intro a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .ra-engine-intro a:hover { color: var(--primary-dark); }
+
+        .video-embed {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--dark-lighter);
+            background: var(--dark-light);
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         /* ── FOOTER ── */
         footer {
             border-top: 1px solid var(--dark-lighter);
@@ -482,6 +528,7 @@
             }
 
             .opp-inner { padding: 3rem 1.5rem; }
+            .ra-engine-intro h2 { font-size: 1.9rem; }
 
             .footer-inner {
                 grid-template-columns: 1fr;
@@ -810,6 +857,25 @@
                 <a href="./opportunities" class="btn-primary">See Open Roles →</a>
             </div>
         </div>
+
+        <!-- RA ENGINE -->
+        <section class="section" id="ra-engine">
+            <p class="section-label">Ra Engine</p>
+            <div class="ra-engine-intro">
+                <h2>Now on Steam</h2>
+                <p>Our RTX ray tracing engine — watch the trailer, then <a href="https://store.steampowered.com/app/4732830/Ra_Engine/" target="_blank" rel="noopener">wishlist it on Steam</a>.</p>
+            </div>
+            <div class="video-embed">
+                <iframe
+                    src="https://www.youtube.com/embed/iYLzO2uQa2w"
+                    title="Ra Engine on Steam"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+        </section>
 
     </main>
 
