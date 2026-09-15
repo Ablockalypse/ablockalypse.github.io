@@ -321,6 +321,54 @@
             color: var(--text-muted);
         }
 
+        /* ── OFFERING CARD ── */
+        .offering-card-info .offering-meta {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.65;
+            margin-bottom: 0;
+        }
+
+        .offering-visual {
+            flex-direction: column;
+            gap: 0.7rem;
+            padding: 2.5rem;
+        }
+
+        .offering-board {
+            position: relative;
+            z-index: 1;
+            width: min(260px, 86%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .offering-chip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            background: rgba(17, 17, 19, 0.72);
+            border: 1px solid var(--dark-lighter);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        .offering-chip span {
+            font-size: 0.65rem;
+            letter-spacing: 0.06em;
+            font-weight: 500;
+        }
+
+        .offering-chip-yes { border-color: rgba(109, 184, 196, 0.45); color: var(--shimmer-c); }
+        .offering-chip-later { border-color: rgba(196, 168, 130, 0.45); color: var(--shimmer-b); }
+        .offering-chip-no { border-color: rgba(224, 122, 95, 0.4); color: var(--primary); }
+
         /* ── ABOUT STRIP ── */
         .about-strip {
             border-top: 1px solid var(--dark-lighter);
@@ -742,11 +790,10 @@
             <a href="/" class="logo"><span>Color It</span> Company</a>
             <ul class="nav-links">
                 <li><a href="#games">Games</a></li>
+                <li><a href="#products">Products</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="https://blog.coloritcompany.com" target="_blank">Blog</a></li>
                 <li><a href="./opportunities">Opportunities</a></li>
-                <li><a href="/bbs">BBS</a></li>
-                <li><a href="https://stevenphilley.com/sell/">Suggest pages</a></li>
             </ul>
         </nav>
     </header>
@@ -823,6 +870,32 @@
             </div>
         </section>
 
+        <!-- PRODUCTS -->
+        <section class="section" id="products">
+            <p class="section-label">Products</p>
+
+            <a href="https://suggestpage.com/" class="game-card-link" target="_blank" rel="noopener">
+                <div class="game-card-featured">
+                    <div class="game-card-info offering-card-info">
+                        <div>
+                            <p class="game-tag">Color It Company &nbsp;·&nbsp; Suggestive</p>
+                            <h2>Suggest Page</h2>
+                            <p>Static suggestion form + public Yes / Later / No board.</p>
+                            <p class="offering-meta">Page Pack $39/yr · Site Care $39/mo. Demos at suggestpage.com/suggest/ and /suggestions/.</p>
+                        </div>
+                        <span class="btn-primary">Visit Suggest Page →</span>
+                    </div>
+                    <div class="game-card-visual offering-visual">
+                        <div class="offering-board" aria-hidden="true">
+                            <div class="offering-chip offering-chip-yes">Yes <span>Approved</span></div>
+                            <div class="offering-chip offering-chip-later">Later <span>Considering</span></div>
+                            <div class="offering-chip offering-chip-no">No <span>Archived</span></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </section>
+
         <!-- ABOUT -->
         <div class="about-strip" id="about">
             <div class="about-inner">
@@ -890,7 +963,7 @@
                 <p>Campbell, CA 95008</p>
                 <p><a href="mailto:steven@coloritcompany.com">steven@coloritcompany.com</a></p>
                 <p><a href="tel:+14083455412">408-345-5412</a></p>
-                <p><a href="https://stevenphilley.com/sell/">Suggestion pages — Page Pack &amp; Site Care</a></p>
+                <p><a href="https://suggestpage.com/" target="_blank" rel="noopener">Suggest Page — Page Pack &amp; Site Care</a></p>
             </div>
         </div>
         <div class="footer-bottom">
