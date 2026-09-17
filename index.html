@@ -48,6 +48,85 @@
             opacity: 0.7;
         }
 
+        /* ── ANNOUNCEMENT BAR ── */
+        .announce-bar {
+            background:
+                linear-gradient(90deg,
+                    rgba(224, 122, 95, 0.10) 0%,
+                    var(--dark-light) 38%,
+                    rgba(109, 184, 196, 0.07) 100%);
+            border-bottom: 1px solid var(--dark-lighter);
+        }
+
+        .announce-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.7rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+        }
+
+        .announce-copy {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            column-gap: 0.7rem;
+            row-gap: 0.2rem;
+            min-width: 0;
+        }
+
+        .announce-badge {
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--primary);
+            border: 1px solid rgba(224, 122, 95, 0.45);
+            padding: 0.12rem 0.5rem;
+            border-radius: 100px;
+            line-height: 1.4;
+        }
+
+        .announce-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        .announce-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .announce-meta {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+        }
+
+        .announce-cta {
+            flex-shrink: 0;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.5rem 1.15rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .announce-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
         /* ── NAV ── */
         header {
             background: rgba(17, 17, 19, 0.92);
@@ -562,6 +641,15 @@
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
+            .announce-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0.85rem 1.5rem;
+                gap: 0.75rem;
+            }
+
+            .announce-cta { width: 100%; text-align: center; }
+
             .hero { padding: 5rem 1.5rem 4rem; }
             .section { padding: 4rem 1.5rem; }
 
@@ -785,6 +873,18 @@
     </style>
 </head>
 <body>
+
+    <aside class="announce-bar" aria-label="Laser Tag announcement">
+        <div class="announce-inner">
+            <div class="announce-copy">
+                <span class="announce-badge">Announcement</span>
+                <strong class="announce-title">Laser Tag</strong>
+                <span class="announce-desc">Clear moving targets in a ray-traced arena, wave by wave.</span>
+                <span class="announce-meta">Coming Soon on Steam &nbsp;·&nbsp; Linux demo (Vulkan RTX GPU)</span>
+            </div>
+            <a class="announce-cta" href="https://coloritcompany.itch.io/laser-tag-demo" target="_blank" rel="noopener">Demo available on itch.io</a>
+        </div>
+    </aside>
 
     <header>
         <nav>
