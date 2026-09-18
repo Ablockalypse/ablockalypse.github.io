@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games — Color It Company</title>
+    <meta name="description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
+    <link rel="canonical" href="https://colorit.co/games/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Color It Company">
+    <meta property="og:title" content="Games — Color It Company">
+    <meta property="og:description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
+    <meta property="og:url" content="https://colorit.co/games/">
+    <meta property="og:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Games — Color It Company">
+    <meta name="twitter:description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
+    <meta name="twitter:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #e07a5f;
+            --primary-dark: #c4624a;
+            --dark: #111113;
+            --dark-light: #1c1c1f;
+            --dark-lighter: #2e2e32;
+            --text: #f0f0f0;
+            --text-muted: #909090;
+            --shimmer-a: #e07a5f;
+            --shimmer-b: #c4a882;
+            --shimmer-c: #6db8c4;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            display: block;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                var(--shimmer-a) 25%,
+                var(--shimmer-b) 50%,
+                var(--shimmer-c) 75%,
+                transparent 100%
+            );
+            opacity: 0.7;
+        }
+
+        header {
+            background: rgba(17, 17, 19, 0.92);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--dark-lighter);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.is-current { color: var(--primary); }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4.5rem 2rem 2.5rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-rule {
+            width: 3rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--shimmer-a), var(--shimmer-b), var(--shimmer-c));
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 460px;
+            line-height: 1.75;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem 5rem;
+        }
+
+        .game-card-link {
+            text-decoration: none;
+            display: block;
+        }
+
+        .game-card-featured {
+            background: var(--dark-light);
+            border: 1px solid var(--dark-lighter);
+            border-radius: 16px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 320px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .game-card-link + .game-card-link { margin-top: 1.25rem; }
+
+        .game-card-link:hover .game-card-featured {
+            border-color: transparent;
+            box-shadow:
+                0 20px 50px -15px rgba(224, 122, 95, 0.2),
+                -1px 0 18px rgba(224, 122, 95, 0.18),
+                1px 0 18px rgba(109, 184, 196, 0.14),
+                0 -1px 18px rgba(196, 168, 130, 0.12),
+                0 1px 18px rgba(224, 122, 95, 0.1);
+        }
+
+        .game-card-info {
+            padding: 2.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .status-badge {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text);
+            border: 1px solid var(--dark-lighter);
+            background: rgba(17, 17, 19, 0.55);
+            padding: 0.28rem 0.7rem;
+            border-radius: 100px;
+        }
+
+        .status-badge-live {
+            color: var(--primary);
+            border-color: rgba(224, 122, 95, 0.45);
+        }
+
+        .status-badge-soon {
+            color: var(--shimmer-b);
+            border-color: rgba(196, 168, 130, 0.4);
+        }
+
+        .status-badge-sys {
+            color: var(--shimmer-c);
+            border-color: rgba(109, 184, 196, 0.4);
+        }
+
+        .game-card-info h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.6rem;
+            line-height: 1.05;
+            color: var(--text);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .game-card-visual {
+            background: linear-gradient(135deg, #1c1c1f 0%, #2e2e32 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card-visual-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .launchup-visual {
+            background:
+                radial-gradient(circle at 50% 18%, rgba(0, 229, 200, 0.18) 0%, transparent 42%),
+                linear-gradient(180deg, #1a0e0a 0%, #2a140c 42%, #0d1018 100%);
+        }
+
+        .lattice {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 2rem;
+        }
+
+        .lattice span {
+            display: block;
+            height: 12px;
+            border-radius: 3px;
+            background: #00e5c8;
+            box-shadow: 0 0 16px rgba(0, 229, 200, 0.45);
+        }
+
+        .lattice span:nth-child(1) { width: 34%; }
+        .lattice span:nth-child(2) { width: 48%; margin-left: 18%; }
+        .lattice span:nth-child(3) { width: 42%; margin-right: 14%; }
+        .lattice span:nth-child(4) { width: 58%; }
+        .lattice span:nth-child(5) { width: 72%; }
+
+        footer {
+            border-top: 1px solid var(--dark-lighter);
+            padding: 3.5rem 0 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .footer-brand .logo {
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .footer-contact { text-align: right; }
+
+        .footer-contact p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 2;
+        }
+
+        .footer-contact a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-contact a:hover { color: var(--primary); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+            padding: 1.5rem 2rem 0;
+            border-top: 1px solid var(--dark-lighter);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 3.5rem 1.5rem 2rem; }
+            .section { padding: 0.5rem 1.5rem 4rem; }
+            .game-card-featured { grid-template-columns: 1fr; }
+            .game-card-visual { height: 180px; }
+            .game-card-info { padding: 2rem; }
+            .game-card-info h2 { font-size: 2.1rem; margin-bottom: 1.1rem; }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer-contact { text-align: left; }
+
+            .nav-links { gap: 1.25rem; }
+            .nav-links a { font-size: 0.72rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="../" class="logo"><span>Color It</span> Company</a>
+            <ul class="nav-links">
+                <li><a href="./" class="is-current" aria-current="page">Games</a></li>
+                <li><a href="../#products">Products</a></li>
+                <li><a href="../#about">About</a></li>
+                <li><a href="https://blog.coloritcompany.com" target="_blank" rel="noopener">Blog</a></li>
+                <li><a href="../opportunities/">Opportunities</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="hero-eyebrow">Studio catalog</p>
+            <h1>Games</h1>
+            <div class="hero-rule"></div>
+            <p class="hero-desc">Games from Color It Company</p>
+        </section>
+
+        <section class="section">
+            <a href="./lasertag/" class="game-card-link">
+                <div class="game-card-featured">
+                    <div class="game-card-info">
+                        <div>
+                            <div class="status-row" aria-label="Laser Tag availability">
+                                <span class="status-badge status-badge-live">Demo on itch</span>
+                                <span class="status-badge status-badge-soon">Coming Soon on Steam</span>
+                            </div>
+                            <h2>Laser Tag</h2>
+                        </div>
+                        <span class="btn-primary">Open page →</span>
+                    </div>
+                    <div class="game-card-visual game-card-visual-photo">
+                        <img src="./lasertag/assets/laser_tag_02_steam.png" alt="Laser Tag training lane: block targets in a ray-traced arena">
+                    </div>
+                </div>
+            </a>
+
+            <a href="./ablockalypse/" class="game-card-link">
+                <div class="game-card-featured">
+                    <div class="game-card-info">
+                        <div>
+                            <div class="status-row" aria-label="Ablockalypse availability">
+                                <span class="status-badge status-badge-live">Live</span>
+                                <span class="status-badge status-badge-sys">Early Access on Steam</span>
+                            </div>
+                            <h2>Ablockalypse</h2>
+                        </div>
+                        <span class="btn-primary">Open page →</span>
+                    </div>
+                    <div class="game-card-visual game-card-visual-photo">
+                        <img src="../ablockalypse-screenshot3.jpg" alt="Ablockalypse falling-block puzzle board">
+                    </div>
+                </div>
+            </a>
+
+            <a href="./launchup/" class="game-card-link">
+                <div class="game-card-featured">
+                    <div class="game-card-info">
+                        <div>
+                            <div class="status-row" aria-label="Launch Up availability">
+                                <span class="status-badge status-badge-live">Live</span>
+                                <span class="status-badge status-badge-sys">Available on Steam</span>
+                            </div>
+                            <h2>Launch Up</h2>
+                        </div>
+                        <span class="btn-primary">Open page →</span>
+                    </div>
+                    <div class="game-card-visual launchup-visual" aria-hidden="true">
+                        <div class="lattice">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="../" class="logo"><span>Color It</span> Company</a>
+                <p>Independent media &amp; games.<br>Campbell, California.</p>
+            </div>
+            <div class="footer-contact">
+                <p>500 East Hamilton Ave PMB #1116</p>
+                <p>Campbell, CA 95008</p>
+                <p><a href="mailto:steven@coloritcompany.com">steven@coloritcompany.com</a></p>
+                <p><a href="tel:+14083455412">408-345-5412</a></p>
+                <p><a href="https://suggestpage.com/" target="_blank" rel="noopener">Suggest Page — Page Pack &amp; Site Care</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Color It Company LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
