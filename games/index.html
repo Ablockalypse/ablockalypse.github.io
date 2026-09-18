@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games — Color It Company</title>
-    <meta name="description" content="Color It Company games: Laser Tag, Ablockalypse, and Launch Up. Demos, Early Access, and Steam releases from an independent studio in Campbell, California.">
+    <meta name="description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
     <link rel="canonical" href="https://colorit.co/games/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Color It Company">
     <meta property="og:title" content="Games — Color It Company">
-    <meta property="og:description" content="Color It Company games: Laser Tag, Ablockalypse, and Launch Up. Demos, Early Access, and Steam releases from an independent studio in Campbell, California.">
+    <meta property="og:description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
     <meta property="og:url" content="https://colorit.co/games/">
     <meta property="og:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Games — Color It Company">
-    <meta name="twitter:description" content="Color It Company games: Laser Tag, Ablockalypse, and Launch Up.">
+    <meta name="twitter:description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
     <meta name="twitter:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,7 +109,7 @@
         .hero {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 6rem 2rem 3.5rem;
+            padding: 4.5rem 2rem 2.5rem;
         }
 
         .hero-eyebrow {
@@ -118,27 +118,22 @@
             text-transform: uppercase;
             color: var(--primary);
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .hero h1 {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(3.2rem, 8vw, 6.4rem);
+            font-size: clamp(3rem, 7vw, 5.5rem);
             line-height: 0.95;
             letter-spacing: -0.02em;
-            margin-bottom: 1.4rem;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--primary);
+            margin-bottom: 1.25rem;
         }
 
         .hero-rule {
             width: 3rem;
             height: 2px;
             background: linear-gradient(90deg, var(--shimmer-a), var(--shimmer-b), var(--shimmer-c));
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.4rem;
         }
 
         .hero-desc {
@@ -154,41 +149,25 @@
             padding: 1rem 2rem 5rem;
         }
 
-        .section-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .game-card-link {
+            text-decoration: none;
+            display: block;
         }
 
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--dark-lighter), rgba(109, 184, 196, 0.25), transparent);
-        }
-
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-
-        .game-card {
+        .game-card-featured {
             background: var(--dark-light);
             border: 1px solid var(--dark-lighter);
             border-radius: 16px;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 320px;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        .game-card:hover {
+        .game-card-link + .game-card-link { margin-top: 1.25rem; }
+
+        .game-card-link:hover .game-card-featured {
             border-color: transparent;
             box-shadow:
                 0 20px 50px -15px rgba(224, 122, 95, 0.2),
@@ -198,15 +177,76 @@
                 0 1px 18px rgba(224, 122, 95, 0.1);
         }
 
-        .game-card-visual {
-            display: block;
-            height: 200px;
-            background: linear-gradient(135deg, #1c1c1f 0%, #2e2e32 100%);
-            overflow: hidden;
-            position: relative;
+        .game-card-info {
+            padding: 2.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .game-card-visual img {
+        .status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .status-badge {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text);
+            border: 1px solid var(--dark-lighter);
+            background: rgba(17, 17, 19, 0.55);
+            padding: 0.28rem 0.7rem;
+            border-radius: 100px;
+        }
+
+        .status-badge-live {
+            color: var(--primary);
+            border-color: rgba(224, 122, 95, 0.45);
+        }
+
+        .status-badge-soon {
+            color: var(--shimmer-b);
+            border-color: rgba(196, 168, 130, 0.4);
+        }
+
+        .status-badge-sys {
+            color: var(--shimmer-c);
+            border-color: rgba(109, 184, 196, 0.4);
+        }
+
+        .game-card-info h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.6rem;
+            line-height: 1.05;
+            color: var(--text);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .game-card-visual {
+            background: linear-gradient(135deg, #1c1c1f 0%, #2e2e32 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card-visual-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -226,13 +266,13 @@
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            gap: 0.7rem;
-            padding: 1.6rem 1.4rem 1.5rem;
+            gap: 0.85rem;
+            padding: 2rem;
         }
 
         .lattice span {
             display: block;
-            height: 10px;
+            height: 12px;
             border-radius: 3px;
             background: #00e5c8;
             box-shadow: 0 0 16px rgba(0, 229, 200, 0.45);
@@ -243,107 +283,6 @@
         .lattice span:nth-child(3) { width: 42%; margin-right: 14%; }
         .lattice span:nth-child(4) { width: 58%; }
         .lattice span:nth-child(5) { width: 72%; }
-
-        .game-card-body {
-            padding: 1.6rem 1.6rem 1.75rem;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .status-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-            margin-bottom: 0.85rem;
-        }
-
-        .status-badge {
-            font-size: 0.65rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: var(--text);
-            border: 1px solid var(--dark-lighter);
-            background: rgba(17, 17, 19, 0.55);
-            padding: 0.24rem 0.6rem;
-            border-radius: 100px;
-        }
-
-        .status-badge-live {
-            color: var(--primary);
-            border-color: rgba(224, 122, 95, 0.45);
-        }
-
-        .status-badge-soon {
-            color: var(--shimmer-b);
-            border-color: rgba(196, 168, 130, 0.4);
-        }
-
-        .game-card-body h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            line-height: 1.05;
-            font-weight: 400;
-            margin-bottom: 0.7rem;
-        }
-
-        .game-card-body h2 a {
-            color: var(--text);
-            text-decoration: none;
-        }
-
-        .game-card-body h2 a:hover { color: var(--primary); }
-
-        .game-card-body p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.7;
-            margin-bottom: 1.4rem;
-        }
-
-        .card-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.65rem;
-            margin-top: auto;
-            align-items: center;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-            padding: 0.7rem 1.25rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            transition: background 0.2s, transform 0.15s;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-
-        .btn-ghost {
-            color: var(--text);
-            padding: 0.7rem 1.25rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 500;
-            border: 1px solid var(--dark-lighter);
-            transition: border-color 0.2s, color 0.2s;
-            display: inline-block;
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
 
         footer {
             border-top: 1px solid var(--dark-lighter);
@@ -396,14 +335,13 @@
             font-size: 0.75rem;
         }
 
-        @media (max-width: 960px) {
-            .game-grid { grid-template-columns: 1fr; }
-            .game-card-visual { height: 220px; }
-        }
-
         @media (max-width: 768px) {
-            .hero { padding: 4.5rem 1.5rem 2.5rem; }
+            .hero { padding: 3.5rem 1.5rem 2rem; }
             .section { padding: 0.5rem 1.5rem 4rem; }
+            .game-card-featured { grid-template-columns: 1fr; }
+            .game-card-visual { height: 180px; }
+            .game-card-info { padding: 2rem; }
+            .game-card-info h2 { font-size: 2.1rem; margin-bottom: 1.1rem; }
 
             .footer-inner {
                 grid-template-columns: 1fr;
@@ -420,13 +358,13 @@
 
     <header>
         <nav>
-            <a href="/" class="logo"><span>Color It</span> Company</a>
+            <a href="../" class="logo"><span>Color It</span> Company</a>
             <ul class="nav-links">
-                <li><a href="/games/" class="is-current" aria-current="page">Games</a></li>
-                <li><a href="/#products">Products</a></li>
-                <li><a href="/#about">About</a></li>
+                <li><a href="./" class="is-current" aria-current="page">Games</a></li>
+                <li><a href="../#products">Products</a></li>
+                <li><a href="../#about">About</a></li>
                 <li><a href="https://blog.coloritcompany.com" target="_blank" rel="noopener">Blog</a></li>
-                <li><a href="/opportunities/">Opportunities</a></li>
+                <li><a href="../opportunities/">Opportunities</a></li>
             </ul>
         </nav>
     </header>
@@ -434,80 +372,78 @@
     <main>
         <section class="hero">
             <p class="hero-eyebrow">Studio catalog</p>
-            <h1>Color It<br><em>games.</em></h1>
+            <h1>Games</h1>
             <div class="hero-rule"></div>
-            <p class="hero-desc">Color It Company games. Focused originals from Campbell, California — puzzle, arena, and ascent.</p>
+            <p class="hero-desc">Games from Color It Company</p>
         </section>
 
-        <section class="section" id="games">
-            <p class="section-label">Now shipping</p>
-
-            <div class="game-grid">
-                <article class="game-card">
-                    <a class="game-card-visual" href="/games/lasertag/">
-                        <img src="/games/lasertag/assets/laser_tag_02_steam.png" alt="Laser Tag arena with block targets under a ray-traced ceiling strip">
-                    </a>
-                    <div class="game-card-body">
-                        <div class="status-row" aria-label="Laser Tag availability">
-                            <span class="status-badge status-badge-live">Demo on itch</span>
-                            <span class="status-badge status-badge-soon">Coming Soon on Steam</span>
+        <section class="section">
+            <a href="./lasertag/" class="game-card-link">
+                <div class="game-card-featured">
+                    <div class="game-card-info">
+                        <div>
+                            <div class="status-row" aria-label="Laser Tag availability">
+                                <span class="status-badge status-badge-live">Demo on itch</span>
+                                <span class="status-badge status-badge-soon">Coming Soon on Steam</span>
+                            </div>
+                            <h2>Laser Tag</h2>
                         </div>
-                        <h2><a href="/games/lasertag/">Laser Tag</a></h2>
-                        <p>Solo Arena Sweep / ray-traced arena demo. Clear moving targets wave by wave.</p>
-                        <div class="card-actions">
-                            <a class="btn-primary" href="/games/lasertag/">Open page →</a>
-                            <a class="btn-ghost" href="https://coloritcompany.itch.io/laser-tag-demo" target="_blank" rel="noopener">Play on itch.io</a>
+                        <span class="btn-primary">Open page →</span>
+                    </div>
+                    <div class="game-card-visual game-card-visual-photo">
+                        <img src="./lasertag/assets/laser_tag_02_steam.png" alt="Laser Tag training lane: block targets in a ray-traced arena">
+                    </div>
+                </div>
+            </a>
+
+            <a href="./ablockalypse/" class="game-card-link">
+                <div class="game-card-featured">
+                    <div class="game-card-info">
+                        <div>
+                            <div class="status-row" aria-label="Ablockalypse availability">
+                                <span class="status-badge status-badge-live">Live</span>
+                                <span class="status-badge status-badge-sys">Early Access on Steam</span>
+                            </div>
+                            <h2>Ablockalypse</h2>
+                        </div>
+                        <span class="btn-primary">Open page →</span>
+                    </div>
+                    <div class="game-card-visual game-card-visual-photo">
+                        <img src="../ablockalypse-screenshot3.jpg" alt="Ablockalypse falling-block puzzle board">
+                    </div>
+                </div>
+            </a>
+
+            <a href="./launchup/" class="game-card-link">
+                <div class="game-card-featured">
+                    <div class="game-card-info">
+                        <div>
+                            <div class="status-row" aria-label="Launch Up availability">
+                                <span class="status-badge status-badge-live">Live</span>
+                                <span class="status-badge status-badge-sys">Available on Steam</span>
+                            </div>
+                            <h2>Launch Up</h2>
+                        </div>
+                        <span class="btn-primary">Open page →</span>
+                    </div>
+                    <div class="game-card-visual launchup-visual" aria-hidden="true">
+                        <div class="lattice">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
-                </article>
-
-                <article class="game-card">
-                    <a class="game-card-visual" href="/ablockalypse/">
-                        <img src="/ablockalypse-screenshot3.jpg" alt="Ablockalypse falling-block puzzle board over a desert highway">
-                    </a>
-                    <div class="game-card-body">
-                        <div class="status-row" aria-label="Ablockalypse availability">
-                            <span class="status-badge status-badge-live">Live on Steam (Early Access)</span>
-                        </div>
-                        <h2><a href="/ablockalypse/">Ablockalypse</a></h2>
-                        <p>A fast-paced falling-block puzzle. Nine levels of increasing speed and difficulty.</p>
-                        <div class="card-actions">
-                            <a class="btn-primary" href="/ablockalypse/">Open page →</a>
-                            <a class="btn-ghost" href="https://store.steampowered.com/app/1674300/Ablockalypse/" target="_blank" rel="noopener">View on Steam</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="game-card">
-                    <a class="game-card-visual launchup-visual" href="/launchup/" aria-label="Launch Up — cyan platforms in an orange void">
-                        <div class="lattice" aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </a>
-                    <div class="game-card-body">
-                        <div class="status-row" aria-label="Launch Up availability">
-                            <span class="status-badge status-badge-live">Available on Steam</span>
-                        </div>
-                        <h2><a href="/launchup/">Launch Up</a></h2>
-                        <p>Climb the Lattice. Score. Survive. A first-person ascent through cyan platforms in an orange void.</p>
-                        <div class="card-actions">
-                            <a class="btn-primary" href="/launchup/">Open page →</a>
-                            <a class="btn-ghost" href="https://store.steampowered.com/app/4705880/Launch_Up/" target="_blank" rel="noopener">View on Steam</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
+                </div>
+            </a>
         </section>
     </main>
 
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <a href="/" class="logo"><span>Color It</span> Company</a>
+                <a href="../" class="logo"><span>Color It</span> Company</a>
                 <p>Independent media &amp; games.<br>Campbell, California.</p>
             </div>
             <div class="footer-contact">
