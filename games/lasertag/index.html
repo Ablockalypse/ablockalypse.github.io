@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laser Tag Demo — Color It Company</title>
+    <meta name="description" content="Laser Tag Demo: clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane. Windows and Linux. Demo available on itch.io. Coming Soon on Steam.">
+    <link rel="canonical" href="https://colorit.co/games/lasertag/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Color It Company">
+    <meta property="og:title" content="Laser Tag Demo — Color It Company">
+    <meta property="og:description" content="Clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane. Windows and Linux.">
+    <meta property="og:url" content="https://colorit.co/games/lasertag/">
+    <meta property="og:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Laser Tag Demo — Color It Company">
+    <meta name="twitter:description" content="Clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane. Windows and Linux.">
+    <meta name="twitter:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #e07a5f;
+            --primary-dark: #c4624a;
+            --dark: #111113;
+            --dark-light: #1c1c1f;
+            --dark-lighter: #2e2e32;
+            --text: #f0f0f0;
+            --text-muted: #909090;
+            --shimmer-a: #e07a5f;
+            --shimmer-b: #c4a882;
+            --shimmer-c: #6db8c4;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            display: block;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                var(--shimmer-a) 25%,
+                var(--shimmer-b) 50%,
+                var(--shimmer-c) 75%,
+                transparent 100%
+            );
+            opacity: 0.7;
+        }
+
+        header {
+            background: rgba(17, 17, 19, 0.92);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--dark-lighter);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 7rem 2rem 5rem;
+            background-image:
+                linear-gradient(105deg,
+                    rgba(17,17,19,0.96) 0%,
+                    rgba(17,17,19,0.88) 42%,
+                    rgba(17,17,19,0.42) 78%,
+                    rgba(17,17,19,0.18) 100%),
+                url('./assets/laser_tag_02_steam.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem 1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3.2rem, 8vw, 6.4rem);
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+        }
+
+        .demo-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--primary);
+            border: 1px solid rgba(224, 122, 95, 0.5);
+            padding: 0.28rem 0.65rem;
+            border-radius: 4px;
+            align-self: center;
+        }
+
+        .hero-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-hud {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--shimmer-c);
+            margin-bottom: 1.15rem;
+        }
+
+        .hero-rule {
+            width: 3rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--shimmer-a), var(--shimmer-b), var(--shimmer-c));
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 460px;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2.25rem;
+        }
+
+        .status-badge {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text);
+            border: 1px solid var(--dark-lighter);
+            background: rgba(17, 17, 19, 0.55);
+            padding: 0.28rem 0.7rem;
+            border-radius: 100px;
+        }
+
+        .status-badge-live {
+            color: var(--primary);
+            border-color: rgba(224, 122, 95, 0.45);
+        }
+
+        .status-badge-soon {
+            color: var(--shimmer-b);
+            border-color: rgba(196, 168, 130, 0.4);
+        }
+
+        .status-badge-sys {
+            color: var(--shimmer-c);
+            border-color: rgba(109, 184, 196, 0.4);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            transition: background 0.2s, transform 0.15s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .coming-soon {
+            color: var(--text-muted);
+            padding: 0.75rem 1.35rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px dashed var(--dark-lighter);
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--dark-lighter), rgba(109, 184, 196, 0.25), transparent);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-copy h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-copy h2 em {
+            font-style: italic;
+            color: var(--primary);
+        }
+
+        .about-copy p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.85;
+            margin-bottom: 1.1rem;
+        }
+
+        .sweep {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .sweep-step {
+            background: var(--dark-light);
+            border: 1px solid var(--dark-lighter);
+            border-radius: 12px;
+            padding: 1.15rem 1.3rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .sweep-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--primary);
+            min-width: 2.4rem;
+        }
+
+        .sweep-step h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.15rem;
+        }
+
+        .sweep-step p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.75rem;
+        }
+
+        .gallery button {
+            appearance: none;
+            border: 1px solid var(--dark-lighter);
+            background: var(--dark-light);
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 0;
+            cursor: zoom-in;
+            display: block;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .gallery button:hover,
+        .gallery button:focus-visible {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 16 / 9;
+        }
+
+        .gallery-item-wide {
+            grid-column: span 4;
+        }
+
+        .gallery-item {
+            grid-column: span 2;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .split-card {
+            background: var(--dark-light);
+            border: 1px solid var(--dark-lighter);
+            border-radius: 16px;
+            padding: 2.25rem;
+        }
+
+        .split-card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .split-card-not h2 { color: var(--text-muted); }
+
+        .split-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .split-card li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .split-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 50%;
+            background: var(--shimmer-c);
+        }
+
+        .split-card-not li::before {
+            background: transparent;
+            border: 1px solid var(--primary);
+        }
+
+        .req-note {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 640px;
+            margin-bottom: 2rem;
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .req-card {
+            background: var(--dark-light);
+            border: 1px solid var(--dark-lighter);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .req-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .req-row {
+            display: grid;
+            grid-template-columns: 7rem 1fr;
+            gap: 0.75rem;
+            padding: 0.65rem 0;
+            border-top: 1px solid var(--dark-lighter);
+            font-size: 0.9rem;
+        }
+
+        .req-row:first-of-type { border-top: 0; }
+
+        .req-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary);
+            padding-top: 0.2rem;
+        }
+
+        .req-card p { color: var(--text-muted); }
+
+        .engine-strip {
+            background: var(--dark-light);
+            border-top: 1px solid var(--dark-lighter);
+            border-bottom: 1px solid var(--dark-lighter);
+        }
+
+        .engine-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .engine-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .engine-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 560px;
+        }
+
+        .fullgame-strip {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .fullgame-card {
+            background: var(--dark-light);
+            border: 1px solid var(--dark-lighter);
+            border-radius: 16px;
+            padding: 2.25rem 2.5rem;
+        }
+
+        .fullgame-card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .fullgame-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            max-width: 640px;
+        }
+
+        .fullgame-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .btn-ghost {
+            color: var(--text);
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--dark-lighter);
+            transition: border-color 0.2s, color 0.2s;
+            display: inline-block;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        footer {
+            border-top: 1px solid var(--dark-lighter);
+            padding: 3.5rem 0 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .footer-brand .logo {
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .footer-contact { text-align: right; }
+
+        .footer-contact p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 2;
+        }
+
+        .footer-contact a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-contact a:hover { color: var(--primary); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+            padding: 1.5rem 2rem 0;
+            border-top: 1px solid var(--dark-lighter);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        dialog.lightbox {
+            border: 1px solid var(--dark-lighter);
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 0;
+            max-width: min(96vw, 1400px);
+            width: 96vw;
+        }
+
+        dialog.lightbox::backdrop {
+            background: rgba(8, 8, 10, 0.86);
+        }
+
+        dialog.lightbox img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 0.7rem;
+            right: 0.7rem;
+            background: rgba(17, 17, 19, 0.8);
+            color: var(--text);
+            border: 1px solid var(--dark-lighter);
+            border-radius: 100px;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 860px) {
+            .about-grid,
+            .split-grid,
+            .req-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item-wide,
+            .gallery-item {
+                grid-column: span 1;
+            }
+
+            .req-row { grid-template-columns: 1fr; gap: 0.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 4.5rem 1.5rem 3.5rem; }
+            .section { padding: 4rem 1.5rem; }
+            .engine-inner { padding: 2.5rem 1.5rem; }
+            .fullgame-strip { padding: 0 1.5rem 4rem; }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer-contact { text-align: left; }
+
+            .nav-links { gap: 1.25rem; }
+            .nav-links a { font-size: 0.72rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="/" class="logo"><span>Color It</span> Company</a>
+            <ul class="nav-links">
+                <li><a href="/#games">Games</a></li>
+                <li><a href="/#products">Products</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="https://blog.coloritcompany.com" target="_blank" rel="noopener">Blog</a></li>
+                <li><a href="/opportunities/">Opportunities</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <p class="hero-eyebrow">Training lane</p>
+            <div class="hero-title-row">
+                <h1>Laser Tag</h1>
+                <span class="demo-badge">Demo</span>
+            </div>
+            <p class="hero-kicker">Laser Tag Demo</p>
+            <div class="hero-rule"></div>
+            <p class="hero-hud">Arena Sweep — training lane</p>
+            <p class="hero-desc">Clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane.</p>
+            <div class="status-row" aria-label="Availability">
+                <span class="status-badge status-badge-live">Demo on itch</span>
+                <span class="status-badge status-badge-soon">Coming Soon on Steam</span>
+                <span class="status-badge status-badge-sys">Windows / Linux</span>
+                <span class="status-badge status-badge-sys">Vulkan RTX</span>
+            </div>
+            <div class="hero-actions">
+                <a class="btn-primary" href="https://coloritcompany.itch.io/laser-tag-demo" target="_blank" rel="noopener">Demo available on itch.io</a>
+                <span class="coming-soon">Coming Soon on Steam</span>
+            </div>
+        </section>
+
+        <section class="section" id="arena-sweep">
+            <p class="section-label">Arena Sweep</p>
+            <div class="about-grid">
+                <div class="about-copy">
+                    <h2>Prove the tag.<br><em>Clear the court.</em></h2>
+                    <p>Laser Tag Demo is a free Solo Arena Sweep sample — one training lane, first-person, precision tagging. Lane is live: nine targets, two waves. Score and accuracy count.</p>
+                    <p>Mirrored Home A / Home B court. Single-player only. No plot. No FMV. No networked play.</p>
+                </div>
+                <ol class="sweep">
+                    <li class="sweep-step">
+                        <span class="sweep-num">01</span>
+                        <div>
+                            <h3>Brief</h3>
+                            <p>Short training card. Then the lane unlocks.</p>
+                        </div>
+                    </li>
+                    <li class="sweep-step">
+                        <span class="sweep-num">02</span>
+                        <div>
+                            <h3>Wave 1</h3>
+                            <p>Home A and mid-field. Static and moving targets.</p>
+                        </div>
+                    </li>
+                    <li class="sweep-step">
+                        <span class="sweep-num">03</span>
+                        <div>
+                            <h3>Wave 2</h3>
+                            <p>Home B. Tag the remaining movers.</p>
+                        </div>
+                    </li>
+                    <li class="sweep-step">
+                        <span class="sweep-num">04</span>
+                        <div>
+                            <h3>Clear</h3>
+                            <p>Score, accuracy, time. Nine targets. Session done.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section" id="screenshots">
+            <p class="section-label">Arena stills</p>
+            <div class="gallery">
+                <button type="button" class="gallery-item-wide" data-full="./assets/laser_tag_02_steam.png" aria-label="Open screenshot: mirrored arena with block targets">
+                    <img src="./assets/laser_tag_02_steam.png" alt="Dark ray-traced arena with black block targets under a white ceiling strip">
+                </button>
+                <button type="button" class="gallery-item" data-full="./assets/laser_tag_01_steam.png" aria-label="Open screenshot: stepped platform in a red-lit room">
+                    <img src="./assets/laser_tag_01_steam.png" alt="Stepped black platforms in a red-lit arena corner">
+                </button>
+                <button type="button" class="gallery-item" data-full="./assets/laser_tag_03_steam.png" aria-label="Open screenshot: red room with a pale walkway">
+                    <img src="./assets/laser_tag_03_steam.png" alt="Red-lit arena with a pale walkway and a single block target">
+                </button>
+                <button type="button" class="gallery-item" data-full="./assets/laser_tag_04_steam.png" aria-label="Open screenshot: blue-lit hall with raised walkway">
+                    <img src="./assets/laser_tag_04_steam.png" alt="Blue-lit hall with a raised walkway and scattered block targets">
+                </button>
+                <button type="button" class="gallery-item" data-full="./assets/laser_tag_05_steam.png" aria-label="Open screenshot: blue arena with clustered blocks">
+                    <img src="./assets/laser_tag_05_steam.png" alt="Blue arena with clustered black blocks along a pale walkway">
+                </button>
+            </div>
+        </section>
+
+        <section class="section" id="what-you-get">
+            <p class="section-label">The demo</p>
+            <div class="split-grid">
+                <div class="split-card">
+                    <h2>What you get</h2>
+                    <ul>
+                        <li>One focused solo training lane — Arena Sweep, finishable in a short session</li>
+                        <li>Nine targets across two waves; score and accuracy on clear</li>
+                        <li>Digiflux / Vulkan ray-traced lighting (RTX-capable recommended)</li>
+                        <li>Windows and Linux builds on itch.io</li>
+                    </ul>
+                </div>
+                <div class="split-card split-card-not">
+                    <h2>What this is not</h2>
+                    <ul>
+                        <li>Not multiplayer — no local co-op, no networked laser tag</li>
+                        <li>Not the full Laser Tag product</li>
+                        <li>Not a story or FMV build — training only</li>
+                        <li>Not the Ra Engine SDK</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="requirements">
+            <p class="section-label">Requirements</p>
+            <p class="req-note">Windows and Linux. The ray-traced presentation is meant for RTX-capable GPUs. Expect reduced quality or performance on hardware without that support.</p>
+            <div class="req-grid">
+                <div class="req-card">
+                    <h3>Minimum</h3>
+                    <div class="req-row">
+                        <span class="req-label">OS</span>
+                        <p>Windows or Linux, 64-bit</p>
+                    </div>
+                    <div class="req-row">
+                        <span class="req-label">Memory</span>
+                        <p>8 GB RAM</p>
+                    </div>
+                    <div class="req-row">
+                        <span class="req-label">Graphics</span>
+                        <p>Vulkan-compatible GPU; RTX-capable recommended for ray tracing</p>
+                    </div>
+                    <div class="req-row">
+                        <span class="req-label">Storage</span>
+                        <p>2 GB available space</p>
+                    </div>
+                </div>
+                <div class="req-card">
+                    <h3>Recommended</h3>
+                    <div class="req-row">
+                        <span class="req-label">OS</span>
+                        <p>Windows or Linux, 64-bit</p>
+                    </div>
+                    <div class="req-row">
+                        <span class="req-label">Memory</span>
+                        <p>16 GB RAM</p>
+                    </div>
+                    <div class="req-row">
+                        <span class="req-label">Graphics</span>
+                        <p>RTX-capable GPU with up-to-date Vulkan drivers</p>
+                    </div>
+                    <div class="req-row">
+                        <span class="req-label">Storage</span>
+                        <p>2 GB available space</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="fullgame-strip" id="full-game">
+            <div class="fullgame-card">
+                <h2>Full Laser Tag</h2>
+                <p>Same Arena Sweep core. The full game is intended at $9.99, with sci-fi framing and FMV planned. Broader modes are not claimed here. Steam is Coming Soon — not a public download or wishlist yet.</p>
+                <p class="fullgame-meta">Steam 4740850 &nbsp;·&nbsp; Coming Soon &nbsp;·&nbsp; not this demo</p>
+            </div>
+        </div>
+
+        <div class="engine-strip">
+            <div class="engine-inner">
+                <div class="engine-text">
+                    <h2>Ra Engine — tech credit</h2>
+                    <p>Laser Tag is built on Ra Engine. Editor seat and renderer only — not a shared story world, and not included in this demo.</p>
+                </div>
+                <a class="btn-ghost" href="https://store.steampowered.com/app/4732830/Ra_Engine/" target="_blank" rel="noopener">Ra Engine on Steam</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="/" class="logo"><span>Color It</span> Company</a>
+                <p>Independent media &amp; games.<br>Campbell, California.</p>
+            </div>
+            <div class="footer-contact">
+                <p>500 East Hamilton Ave PMB #1116</p>
+                <p>Campbell, CA 95008</p>
+                <p><a href="mailto:steven@coloritcompany.com">steven@coloritcompany.com</a></p>
+                <p><a href="tel:+14083455412">408-345-5412</a></p>
+                <p><a href="https://suggestpage.com/" target="_blank" rel="noopener">Suggest Page — Page Pack &amp; Site Care</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Color It Company LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Screenshot">
+        <form method="dialog">
+            <button class="lightbox-close" type="submit">Close</button>
+        </form>
+        <img id="lightbox-img" alt="">
+    </dialog>
+
+    <script>
+        (function () {
+            var dialog = document.getElementById('lightbox');
+            var img = document.getElementById('lightbox-img');
+            if (!dialog || !img) return;
+
+            document.querySelectorAll('.gallery button').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var src = btn.getAttribute('data-full');
+                    var thumb = btn.querySelector('img');
+                    img.src = src;
+                    img.alt = thumb ? thumb.alt : '';
+                    if (typeof dialog.showModal === 'function') {
+                        dialog.showModal();
+                    }
+                });
+            });
+
+            dialog.addEventListener('click', function (event) {
+                if (event.target === dialog) dialog.close();
+            });
+        })();
+    </script>
+
+</body>
+</html>

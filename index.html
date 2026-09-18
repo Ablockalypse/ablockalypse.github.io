@@ -95,12 +95,18 @@
             font-weight: 400;
             color: var(--text);
             letter-spacing: -0.01em;
+            text-decoration: none;
         }
+
+        .announce-title:hover { color: var(--primary); }
 
         .announce-desc {
             color: var(--text-muted);
             font-size: 0.88rem;
+            text-decoration: none;
         }
+
+        .announce-desc:hover { color: var(--text); }
 
         .announce-meta {
             font-size: 0.72rem;
@@ -311,6 +317,10 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
+        .game-card-link + .game-card-link {
+            margin-top: 1.25rem;
+        }
+
         .game-card-link:hover .game-card-featured {
             border-color: transparent;
             box-shadow:
@@ -367,6 +377,15 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(circle at 55% 40%, rgba(224, 122, 95, 0.18) 0%, transparent 65%);
+        }
+
+        .game-card-visual-photo::before { display: none; }
+
+        .game-card-visual-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* Coming soon cards */
@@ -878,11 +897,11 @@
         <div class="announce-inner">
             <div class="announce-copy">
                 <span class="announce-badge">Announcement</span>
-                <strong class="announce-title">Laser Tag</strong>
-                <span class="announce-desc">Clear moving targets in a ray-traced arena, wave by wave.</span>
-                <span class="announce-meta">Coming Soon on Steam &nbsp;·&nbsp; Linux demo (Vulkan RTX GPU)</span>
+                <a class="announce-title" href="./games/lasertag/">Laser Tag Demo</a>
+                <a class="announce-desc" href="./games/lasertag/">Clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane.</a>
+                <span class="announce-meta">Coming Soon on Steam &nbsp;·&nbsp; Windows &amp; Linux (Vulkan RTX)</span>
             </div>
-            <a class="announce-cta" href="https://coloritcompany.itch.io/laser-tag-demo" target="_blank" rel="noopener">Demo available on itch.io</a>
+            <a class="announce-cta" href="./games/lasertag/">Learn more</a>
         </div>
     </aside>
 
@@ -954,6 +973,22 @@
                         <span class="btn-primary">Explore the Game →</span>
                     </div>
                     <div class="game-card-visual">🧱</div>
+                </div>
+            </a>
+
+            <a href="./games/lasertag/" class="game-card-link">
+                <div class="game-card-featured">
+                    <div class="game-card-info">
+                        <div>
+                            <p class="game-tag">Demo on itch.io &nbsp;·&nbsp; Coming Soon on Steam</p>
+                            <h2>Laser Tag</h2>
+                            <p>Clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane. Windows and Linux. Nine targets, two waves.</p>
+                        </div>
+                        <span class="btn-primary">Learn more →</span>
+                    </div>
+                    <div class="game-card-visual game-card-visual-photo">
+                        <img src="./games/lasertag/assets/laser_tag_02_steam.png" alt="Laser Tag arena with block targets under a ray-traced ceiling strip">
+                    </div>
                 </div>
             </a>
 
