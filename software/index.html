@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games — Color It Company</title>
-    <meta name="description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
-    <link rel="canonical" href="https://colorit.co/games/">
+    <title>Software — Color It Company</title>
+    <meta name="description" content="Software from Color It Company: Suggest Page and Digiflux / Ra Engine utilities.">
+    <link rel="canonical" href="https://colorit.co/software/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Color It Company">
-    <meta property="og:title" content="Games — Color It Company">
-    <meta property="og:description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
-    <meta property="og:url" content="https://colorit.co/games/">
-    <meta property="og:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Games — Color It Company">
-    <meta name="twitter:description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
-    <meta name="twitter:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
+    <meta property="og:title" content="Software — Color It Company">
+    <meta property="og:description" content="Software from Color It Company: Suggest Page and Digiflux / Ra Engine utilities.">
+    <meta property="og:url" content="https://colorit.co/software/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Software — Color It Company">
+    <meta name="twitter:description" content="Software from Color It Company: Suggest Page and Digiflux / Ra Engine utilities.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -224,7 +222,21 @@
             line-height: 1.05;
             color: var(--text);
             font-weight: 400;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-card-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .offering-meta {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.65;
+            margin-bottom: 0;
         }
 
         .btn-primary {
@@ -244,45 +256,78 @@
             background: linear-gradient(135deg, #1c1c1f 0%, #2e2e32 100%);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .game-card-visual-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .offering-visual {
+            flex-direction: column;
+            gap: 0.7rem;
+            padding: 2.5rem;
         }
 
-        .launchup-visual {
-            background:
-                radial-gradient(circle at 50% 18%, rgba(0, 229, 200, 0.18) 0%, transparent 42%),
-                linear-gradient(180deg, #1a0e0a 0%, #2a140c 42%, #0d1018 100%);
-        }
-
-        .lattice {
-            position: absolute;
-            inset: 0;
+        .offering-board {
+            position: relative;
+            z-index: 1;
+            width: min(260px, 86%);
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            gap: 0.6rem;
+        }
+
+        .offering-chip {
+            display: flex;
             align-items: center;
-            gap: 0.85rem;
-            padding: 2rem;
+            justify-content: space-between;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            background: rgba(17, 17, 19, 0.72);
+            border: 1px solid var(--dark-lighter);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
         }
 
-        .lattice span {
+        .offering-chip span {
+            font-size: 0.65rem;
+            letter-spacing: 0.06em;
+            font-weight: 500;
+        }
+
+        .offering-chip-yes { border-color: rgba(109, 184, 196, 0.45); color: var(--shimmer-c); }
+        .offering-chip-later { border-color: rgba(196, 168, 130, 0.45); color: var(--shimmer-b); }
+        .offering-chip-no { border-color: rgba(224, 122, 95, 0.4); color: var(--primary); }
+
+        .digiflux-visual {
+            background:
+                radial-gradient(circle at 62% 28%, rgba(109, 184, 196, 0.16) 0%, transparent 46%),
+                linear-gradient(135deg, #1c1c1f 0%, #2e2e32 100%);
+        }
+
+        .pipeline {
+            position: relative;
+            z-index: 1;
+            width: min(240px, 78%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .pipeline span {
             display: block;
-            height: 12px;
+            height: 10px;
             border-radius: 3px;
-            background: #00e5c8;
-            box-shadow: 0 0 16px rgba(0, 229, 200, 0.45);
+            background: linear-gradient(90deg, var(--shimmer-c), var(--shimmer-b));
+            box-shadow: 0 0 14px rgba(109, 184, 196, 0.28);
         }
 
-        .lattice span:nth-child(1) { width: 34%; }
-        .lattice span:nth-child(2) { width: 48%; margin-left: 18%; }
-        .lattice span:nth-child(3) { width: 42%; margin-right: 14%; }
-        .lattice span:nth-child(4) { width: 58%; }
-        .lattice span:nth-child(5) { width: 72%; }
+        .pipeline span:nth-child(1) { width: 42%; }
+        .pipeline span:nth-child(2) { width: 68%; margin-left: 12%; }
+        .pipeline span:nth-child(3) { width: 54%; margin-left: 6%; }
+        .pipeline span:nth-child(4) { width: 80%; }
 
         footer {
             border-top: 1px solid var(--dark-lighter);
@@ -341,7 +386,7 @@
             .game-card-featured { grid-template-columns: 1fr; }
             .game-card-visual { height: 180px; }
             .game-card-info { padding: 2rem; }
-            .game-card-info h2 { font-size: 2.1rem; margin-bottom: 1.1rem; }
+            .game-card-info h2 { font-size: 2.1rem; margin-bottom: 0.85rem; }
 
             .footer-inner {
                 grid-template-columns: 1fr;
@@ -360,8 +405,8 @@
         <nav>
             <a href="../" class="logo"><span>Color It</span> Company</a>
             <ul class="nav-links">
-                <li><a href="./" class="is-current" aria-current="page">Games</a></li>
-                <li><a href="../software/">Software</a></li>
+                <li><a href="../games/">Games</a></li>
+                <li><a href="./" class="is-current" aria-current="page">Software</a></li>
                 <li><a href="../#about">About</a></li>
                 <li><a href="https://blog.coloritcompany.com" target="_blank" rel="noopener">Blog</a></li>
                 <li><a href="../opportunities/">Opportunities</a></li>
@@ -372,63 +417,51 @@
     <main>
         <section class="hero">
             <p class="hero-eyebrow">Studio catalog</p>
-            <h1>Games</h1>
+            <h1>Software</h1>
             <div class="hero-rule"></div>
-            <p class="hero-desc">Games from Color It Company</p>
+            <p class="hero-desc">Software from Color It Company</p>
         </section>
 
         <section class="section">
-            <a href="./lasertag/" class="game-card-link">
+            <a href="https://suggestpage.com/" class="game-card-link" target="_blank" rel="noopener">
                 <div class="game-card-featured">
                     <div class="game-card-info">
                         <div>
-                            <div class="status-row" aria-label="Laser Tag availability">
-                                <span class="status-badge status-badge-live">Demo on itch</span>
-                                <span class="status-badge status-badge-soon">Coming Soon on Steam</span>
+                            <div class="status-row" aria-label="Suggest Page availability">
+                                <span class="status-badge status-badge-live">Live</span>
+                                <span class="status-badge status-badge-soon">Page Pack / Site Care</span>
                             </div>
-                            <h2>Laser Tag</h2>
+                            <h2>Suggest Page</h2>
+                            <p>Static suggestion form + public Yes / Later / No board.</p>
+                            <p class="offering-meta">Page Pack $39/yr · Site Care $39/mo. Demos at suggestpage.com/suggest/ and /suggestions/.</p>
                         </div>
-                        <span class="btn-primary">Open page →</span>
+                        <span class="btn-primary">Visit Suggest Page →</span>
                     </div>
-                    <div class="game-card-visual game-card-visual-photo">
-                        <img src="./lasertag/assets/laser_tag_02_steam.png" alt="Laser Tag training lane: block targets in a ray-traced arena">
+                    <div class="game-card-visual offering-visual">
+                        <div class="offering-board" aria-hidden="true">
+                            <div class="offering-chip offering-chip-yes">Yes <span>Approved</span></div>
+                            <div class="offering-chip offering-chip-later">Later <span>Considering</span></div>
+                            <div class="offering-chip offering-chip-no">No <span>Archived</span></div>
+                        </div>
                     </div>
                 </div>
             </a>
 
-            <a href="./ablockalypse/" class="game-card-link">
+            <a href="https://digiflux.one/" class="game-card-link" target="_blank" rel="noopener">
                 <div class="game-card-featured">
                     <div class="game-card-info">
                         <div>
-                            <div class="status-row" aria-label="Ablockalypse availability">
+                            <div class="status-row" aria-label="Digiflux availability">
                                 <span class="status-badge status-badge-live">Live</span>
-                                <span class="status-badge status-badge-sys">Early Access on Steam</span>
+                                <span class="status-badge status-badge-sys">Ra Engine utilities</span>
                             </div>
-                            <h2>Ablockalypse</h2>
+                            <h2>Digiflux / Ra Engine utilities</h2>
+                            <p>Ra Engine forum / utilities. Canonical site: digiflux.one.</p>
                         </div>
-                        <span class="btn-primary">Open page →</span>
+                        <span class="btn-primary">Visit Digiflux →</span>
                     </div>
-                    <div class="game-card-visual game-card-visual-photo">
-                        <img src="../ablockalypse-screenshot3.jpg" alt="Ablockalypse falling-block puzzle board">
-                    </div>
-                </div>
-            </a>
-
-            <a href="./launchup/" class="game-card-link">
-                <div class="game-card-featured">
-                    <div class="game-card-info">
-                        <div>
-                            <div class="status-row" aria-label="Launch Up availability">
-                                <span class="status-badge status-badge-live">Live</span>
-                                <span class="status-badge status-badge-sys">Available on Steam</span>
-                            </div>
-                            <h2>Launch Up</h2>
-                        </div>
-                        <span class="btn-primary">Open page →</span>
-                    </div>
-                    <div class="game-card-visual launchup-visual" aria-hidden="true">
-                        <div class="lattice">
-                            <span></span>
+                    <div class="game-card-visual digiflux-visual" aria-hidden="true">
+                        <div class="pipeline">
                             <span></span>
                             <span></span>
                             <span></span>
