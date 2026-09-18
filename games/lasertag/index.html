@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laser Tag — Color It Company</title>
-    <meta name="description" content="Laser Tag Demo: clear moving targets in a ray-traced arena, wave by wave. Solo Arena Sweep for Linux. Demo available on itch.io. Coming Soon on Steam.">
+    <title>Laser Tag Demo — Color It Company</title>
+    <meta name="description" content="Laser Tag Demo: clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane. Windows and Linux. Demo available on itch.io. Coming Soon on Steam.">
     <link rel="canonical" href="https://colorit.co/games/lasertag/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Color It Company">
-    <meta property="og:title" content="Laser Tag — Color It Company">
-    <meta property="og:description" content="Clear moving targets in a ray-traced arena, wave by wave. Solo Arena Sweep demo for Linux.">
+    <meta property="og:title" content="Laser Tag Demo — Color It Company">
+    <meta property="og:description" content="Clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane. Windows and Linux.">
     <meta property="og:url" content="https://colorit.co/games/lasertag/">
     <meta property="og:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Laser Tag — Color It Company">
-    <meta name="twitter:description" content="Clear moving targets in a ray-traced arena, wave by wave. Solo Arena Sweep demo for Linux.">
+    <meta name="twitter:title" content="Laser Tag Demo — Color It Company">
+    <meta name="twitter:description" content="Clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane. Windows and Linux.">
     <meta name="twitter:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,12 +132,32 @@
             margin-bottom: 1.5rem;
         }
 
+        .hero-title-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem 1rem;
+            margin-bottom: 0.6rem;
+        }
+
         .hero h1 {
             font-family: 'DM Serif Display', serif;
             font-size: clamp(3.2rem, 8vw, 6.4rem);
             line-height: 0.95;
             letter-spacing: -0.02em;
-            margin-bottom: 0.6rem;
+        }
+
+        .demo-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--primary);
+            border: 1px solid rgba(224, 122, 95, 0.5);
+            padding: 0.28rem 0.65rem;
+            border-radius: 4px;
+            align-self: center;
         }
 
         .hero-kicker {
@@ -146,6 +166,15 @@
             letter-spacing: 0.04em;
             color: var(--text-muted);
             margin-bottom: 1.4rem;
+        }
+
+        .hero-hud {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--shimmer-c);
+            margin-bottom: 1.15rem;
         }
 
         .hero-rule {
@@ -490,6 +519,40 @@
             max-width: 560px;
         }
 
+        .fullgame-strip {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .fullgame-card {
+            background: var(--dark-light);
+            border: 1px solid var(--dark-lighter);
+            border-radius: 16px;
+            padding: 2.25rem 2.5rem;
+        }
+
+        .fullgame-card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .fullgame-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            max-width: 640px;
+        }
+
+        .fullgame-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
         .btn-ghost {
             color: var(--text);
             padding: 0.75rem 1.75rem;
@@ -613,6 +676,7 @@
             .hero { padding: 4.5rem 1.5rem 3.5rem; }
             .section { padding: 4rem 1.5rem; }
             .engine-inner { padding: 2.5rem 1.5rem; }
+            .fullgame-strip { padding: 0 1.5rem 4rem; }
 
             .footer-inner {
                 grid-template-columns: 1fr;
@@ -643,15 +707,20 @@
     <main>
 
         <section class="hero">
-            <p class="hero-eyebrow">Demo product</p>
-            <h1>Laser Tag</h1>
+            <p class="hero-eyebrow">Training lane</p>
+            <div class="hero-title-row">
+                <h1>Laser Tag</h1>
+                <span class="demo-badge">Demo</span>
+            </div>
             <p class="hero-kicker">Laser Tag Demo</p>
             <div class="hero-rule"></div>
-            <p class="hero-desc">Clear moving targets in a ray-traced arena, wave by wave.</p>
+            <p class="hero-hud">Arena Sweep — training lane</p>
+            <p class="hero-desc">Clear moving targets in a ray-traced arena, wave by wave — Solo Arena Sweep training lane.</p>
             <div class="status-row" aria-label="Availability">
                 <span class="status-badge status-badge-live">Demo on itch</span>
                 <span class="status-badge status-badge-soon">Coming Soon on Steam</span>
-                <span class="status-badge status-badge-sys">Linux / Vulkan RTX</span>
+                <span class="status-badge status-badge-sys">Windows / Linux</span>
+                <span class="status-badge status-badge-sys">Vulkan RTX</span>
             </div>
             <div class="hero-actions">
                 <a class="btn-primary" href="https://coloritcompany.itch.io/laser-tag-demo" target="_blank" rel="noopener">Demo available on itch.io</a>
@@ -660,40 +729,40 @@
         </section>
 
         <section class="section" id="arena-sweep">
-            <p class="section-label">About</p>
+            <p class="section-label">Arena Sweep</p>
             <div class="about-grid">
                 <div class="about-copy">
-                    <h2>Solo <em>Arena Sweep.</em></h2>
-                    <p>Laser Tag Demo is a solo arena challenge built around precise tagging in a ray-traced space. One focused session: read the brief, clear two waves, walk out.</p>
-                    <p>The arena uses a mirrored A/B layout with spawn points. This demo is single-player only — no local co-op and no online multiplayer.</p>
+                    <h2>Prove the tag.<br><em>Clear the court.</em></h2>
+                    <p>Laser Tag Demo is a free Solo Arena Sweep sample — one training lane, first-person, precision tagging. Lane is live: nine targets, two waves. Score and accuracy count.</p>
+                    <p>Mirrored Home A / Home B court. Single-player only. No plot. No FMV. No networked play.</p>
                 </div>
                 <ol class="sweep">
                     <li class="sweep-step">
                         <span class="sweep-num">01</span>
                         <div>
                             <h3>Brief</h3>
-                            <p>A short setup before the arena opens.</p>
+                            <p>Short training card. Then the lane unlocks.</p>
                         </div>
                     </li>
                     <li class="sweep-step">
                         <span class="sweep-num">02</span>
                         <div>
                             <h3>Wave 1</h3>
-                            <p>Moving targets. Tag them cleanly.</p>
+                            <p>Home A and mid-field. Static and moving targets.</p>
                         </div>
                     </li>
                     <li class="sweep-step">
                         <span class="sweep-num">03</span>
                         <div>
                             <h3>Wave 2</h3>
-                            <p>The second pass. Stay precise.</p>
+                            <p>Home B. Tag the remaining movers.</p>
                         </div>
                     </li>
                     <li class="sweep-step">
                         <span class="sweep-num">04</span>
                         <div>
                             <h3>Clear</h3>
-                            <p>Empty the arena. Session done.</p>
+                            <p>Score, accuracy, time. Nine targets. Session done.</p>
                         </div>
                     </li>
                 </ol>
@@ -727,17 +796,19 @@
                 <div class="split-card">
                     <h2>What you get</h2>
                     <ul>
-                        <li>One focused solo mode you can finish in a short session</li>
-                        <li>A ray-traced look that shows the Digiflux / Vulkan lighting path</li>
-                        <li>A Linux build — RTX-capable hardware recommended</li>
+                        <li>One focused solo training lane — Arena Sweep, finishable in a short session</li>
+                        <li>Nine targets across two waves; score and accuracy on clear</li>
+                        <li>Digiflux / Vulkan ray-traced lighting (RTX-capable recommended)</li>
+                        <li>Windows and Linux builds on itch.io</li>
                     </ul>
                 </div>
                 <div class="split-card split-card-not">
                     <h2>What this is not</h2>
                     <ul>
-                        <li>Not multiplayer — no local co-op, no online play</li>
-                        <li>Not a Windows build (yet)</li>
+                        <li>Not multiplayer — no local co-op, no networked laser tag</li>
                         <li>Not the full Laser Tag product</li>
+                        <li>Not a story or FMV build — training only</li>
+                        <li>Not the Ra Engine SDK</li>
                     </ul>
                 </div>
             </div>
@@ -745,13 +816,13 @@
 
         <section class="section" id="requirements">
             <p class="section-label">Requirements</p>
-            <p class="req-note">Linux only. The ray-traced presentation is meant for RTX-capable GPUs. Expect reduced quality or performance on hardware without that support.</p>
+            <p class="req-note">Windows and Linux. The ray-traced presentation is meant for RTX-capable GPUs. Expect reduced quality or performance on hardware without that support.</p>
             <div class="req-grid">
                 <div class="req-card">
                     <h3>Minimum</h3>
                     <div class="req-row">
                         <span class="req-label">OS</span>
-                        <p>Linux 64-bit</p>
+                        <p>Windows or Linux, 64-bit</p>
                     </div>
                     <div class="req-row">
                         <span class="req-label">Memory</span>
@@ -770,7 +841,7 @@
                     <h3>Recommended</h3>
                     <div class="req-row">
                         <span class="req-label">OS</span>
-                        <p>Linux 64-bit</p>
+                        <p>Windows or Linux, 64-bit</p>
                     </div>
                     <div class="req-row">
                         <span class="req-label">Memory</span>
@@ -788,11 +859,19 @@
             </div>
         </section>
 
+        <div class="fullgame-strip" id="full-game">
+            <div class="fullgame-card">
+                <h2>Full Laser Tag</h2>
+                <p>Same Arena Sweep core. The full game is intended at $9.99, with sci-fi framing and FMV planned. Broader modes are not claimed here. Steam is Coming Soon — not a public download or wishlist yet.</p>
+                <p class="fullgame-meta">Steam 4740850 &nbsp;·&nbsp; Coming Soon &nbsp;·&nbsp; not this demo</p>
+            </div>
+        </div>
+
         <div class="engine-strip">
             <div class="engine-inner">
                 <div class="engine-text">
-                    <h2>Built in Ra Engine</h2>
-                    <p>The editor for this kind of arena — not the Laser Tag download. Ra Engine is on Steam if you want the tool behind the lighting path.</p>
+                    <h2>Ra Engine — tech credit</h2>
+                    <p>Laser Tag is built on Ra Engine. Editor seat and renderer only — not a shared story world, and not included in this demo.</p>
                 </div>
                 <a class="btn-ghost" href="https://store.steampowered.com/app/4732830/Ra_Engine/" target="_blank" rel="noopener">Ra Engine on Steam</a>
             </div>
