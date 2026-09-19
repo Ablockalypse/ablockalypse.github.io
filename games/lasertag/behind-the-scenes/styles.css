@@ -1,0 +1,196 @@
+/* Behind the Scenes — page-local overrides on shared Laser Tag studio styles */
+
+.hero {
+    background-image:
+        linear-gradient(105deg,
+            rgba(17,17,19,0.96) 0%,
+            rgba(17,17,19,0.88) 42%,
+            rgba(17,17,19,0.48) 78%,
+            rgba(17,17,19,0.28) 100%),
+        url('./ship/still-side-profile.png');
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.plan-card {
+    background: var(--dark-light);
+    border: 1px solid var(--dark-lighter);
+    border-radius: 14px;
+    padding: 1.35rem 1.2rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.plan-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    margin-bottom: 0.85rem;
+}
+
+.plan-shot {
+    appearance: none;
+    border: 1px solid var(--dark-lighter);
+    background: #0c0e12;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;
+    cursor: zoom-in;
+    display: block;
+    width: 100%;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.plan-shot:hover,
+.plan-shot:focus-visible {
+    border-color: var(--shimmer-c);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.plan-shot img {
+    width: 100%;
+    aspect-ratio: 760 / 560;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: #0c0e12;
+}
+
+.plan-caption {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    line-height: 1.65;
+    margin: 0.85rem 0 0.7rem;
+}
+
+.plan-svg {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    line-height: 1.55;
+    color: var(--shimmer-c);
+    text-decoration: none;
+    border-top: 1px solid var(--dark-lighter);
+    padding-top: 0.7rem;
+    margin-top: auto;
+}
+
+.plan-svg:hover {
+    color: var(--primary);
+}
+
+.lock-grid,
+.handoff-grid {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.lock-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.handoff-grid {
+    grid-template-columns: 1fr 1fr;
+}
+
+.lock-grid button,
+.handoff-grid button {
+    appearance: none;
+    border: 1px solid var(--dark-lighter);
+    background: var(--dark-light);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0;
+    cursor: zoom-in;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.lock-grid button:hover,
+.lock-grid button:focus-visible,
+.handoff-grid button:hover,
+.handoff-grid button:focus-visible {
+    border-color: var(--shimmer-c);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.lock-grid img,
+.handoff-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-fmv .gallery-cap,
+.lock-grid .gallery-cap,
+.handoff-grid .gallery-cap {
+    white-space: normal;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    font-size: 0.68rem;
+}
+
+.sfx-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.sfx-card {
+    background: var(--dark-light);
+    border: 1px solid var(--dark-lighter);
+    border-radius: 14px;
+    padding: 1.4rem 1.35rem 1.5rem;
+    margin: 0;
+}
+
+.sfx-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--shimmer-c);
+    margin-bottom: 0.4rem;
+}
+
+.sfx-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+}
+
+.sfx-caption {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.sfx-card audio {
+    width: 100%;
+    height: 36px;
+}
+
+@media (max-width: 960px) {
+    .plan-grid,
+    .lock-grid,
+    .sfx-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .handoff-grid {
+        grid-template-columns: 1fr;
+    }
+}

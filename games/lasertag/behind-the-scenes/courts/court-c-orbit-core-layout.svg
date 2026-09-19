@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560">
+  <rect width="760" height="560" fill="#0f1218"/>
+  <text x="24" y="32" fill="#e2e8f0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="600">Court C — Orbit Core · top-down (m)</text>
+  <text x="24" y="52" fill="#94a3b8" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12">32×22 floor · 6 m roof · Arena Sweep · 9 targets / 2 waves</text>
+  <!-- court: origin center mapped to (380, 300); scale 10px/m; X right, Z down (+Z = south) -->
+  <g transform="translate(380,300)">
+    <!-- floor -->
+    <rect x="-160" y="-110" width="320" height="220" fill="#1a2030" stroke="#64748b" stroke-width="2"/>
+    <!-- grid every 2m -->
+    <g stroke="#334155" stroke-width="0.5" opacity="0.5">
+      <path d="M -160,-110 V 110 M -140,-110 V 110 M -120,-110 V 110 M -100,-110 V 110 M -80,-110 V 110 M -60,-110 V 110 M -40,-110 V 110 M -20,-110 V 110 M 0,-110 V 110 M 20,-110 V 110 M 40,-110 V 110 M 60,-110 V 110 M 80,-110 V 110 M 100,-110 V 110 M 120,-110 V 110 M 140,-110 V 110 M 160,-110 V 110"/>
+      <path d="M -160,-110 H 160 M -160,-90 H 160 M -160,-70 H 160 M -160,-50 H 160 M -160,-30 H 160 M -160,-10 H 160 M -160,10 H 160 M -160,30 H 160 M -160,50 H 160 M -160,70 H 160 M -160,90 H 160 M -160,110 H 160"/>
+    </g>
+    <!-- axis (reference only — no spine wall) -->
+    <line x1="0" y1="-110" x2="0" y2="110" stroke="#e8008c" stroke-width="1" stroke-dasharray="4 4" opacity="0.35"/>
+    <text x="4" y="-98" fill="#e8008c" font-size="10" font-family="monospace">X=0 (no spine)</text>
+    <!-- orbit guide rings (faint) -->
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#334155" stroke-width="1" stroke-dasharray="3 3" opacity="0.7"/>
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#334155" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
+    <!-- CorePillar ~3.5m diameter -->
+    <circle cx="0" cy="0" r="17.5" fill="#475569" stroke="#7dd3fc" stroke-width="2"/>
+    <circle cx="0" cy="0" r="10" fill="#1e293b" stroke="#94a3b8" stroke-width="1"/>
+    <text x="0" y="4" fill="#7dd3fc" font-size="9" text-anchor="middle" font-family="ui-sans-serif,system-ui">Core</text>
+    <!-- Inner ring segments at ~5.5m radius; gaps N/E/S/W (−Z=N up) -->
+    <!-- RingSeg_NE (4,-4) -->
+    <rect x="25" y="-37" width="22" height="12" transform="rotate(-45 36 -31)" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+    <!-- RingSeg_SE (4,4) -->
+    <rect x="25" y="25" width="22" height="12" transform="rotate(45 36 31)" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+    <!-- RingSeg_SW (-4,4) -->
+    <rect x="-47" y="25" width="22" height="12" transform="rotate(-45 -36 31)" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+    <!-- RingSeg_NW (-4,-4) -->
+    <rect x="-47" y="-37" width="22" height="12" transform="rotate(45 -36 -31)" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+    <text x="55" y="-55" fill="#cbd5e1" font-size="9">Inner ring · gaps N/E/S/W</text>
+    <!-- gap markers -->
+    <text x="0" y="-68" fill="#64748b" font-size="8" text-anchor="middle">gap N</text>
+    <text x="68" y="4" fill="#64748b" font-size="8" text-anchor="middle">gap E</text>
+    <text x="0" y="78" fill="#64748b" font-size="8" text-anchor="middle">gap S</text>
+    <text x="-68" y="4" fill="#64748b" font-size="8" text-anchor="middle">gap W</text>
+    <!-- Home pads -->
+    <rect x="-140" y="-20" width="40" height="40" fill="#854d0e" stroke="#fbbf24" stroke-width="2" opacity="0.85"/>
+    <text x="-120" y="5" fill="#fde68a" font-size="11" text-anchor="middle" font-family="ui-sans-serif,system-ui">Home A</text>
+    <rect x="100" y="-20" width="40" height="40" fill="#854d0e" stroke="#fbbf24" stroke-width="2" opacity="0.85"/>
+    <text x="120" y="5" fill="#fde68a" font-size="11" text-anchor="middle" font-family="ui-sans-serif,system-ui">Home B</text>
+    <!-- RiserA north -X flank (z≈-7) -->
+    <rect x="-125" y="-80" width="30" height="20" fill="#334155" stroke="#7dd3fc" stroke-width="2"/>
+    <text x="-110" y="-66" fill="#7dd3fc" font-size="9" text-anchor="middle">RiserA +0.9m</text>
+    <!-- GalleryB south +X: z≈+7 to +9, x=+6 to +13 -->
+    <rect x="60" y="70" width="70" height="20" fill="#334155" stroke="#7dd3fc" stroke-width="2"/>
+    <text x="95" y="84" fill="#7dd3fc" font-size="9" text-anchor="middle">GalleryB +1.2m</text>
+    <!-- stairs facing -Z (toward midfield / up on plan) -->
+    <path d="M 70,70 L 70,60 L 90,60 L 90,70" fill="none" stroke="#7dd3fc" stroke-width="1.5"/>
+    <text x="80" y="58" fill="#67e8f9" font-size="7" text-anchor="middle">stairs −Z</text>
+    <!-- Outer ring bunker arc Home A -->
+    <rect x="-98" y="35" width="18" height="10" fill="#475569" stroke="#94a3b8"/>
+    <rect x="-98" y="-45" width="18" height="10" fill="#475569" stroke="#94a3b8"/>
+    <rect x="-105" y="5" width="10" height="10" fill="#64748b"/>
+    <!-- Home B dense cluster -->
+    <rect x="82" y="25" width="18" height="10" fill="#475569" stroke="#94a3b8"/>
+    <rect x="92" y="-28" width="18" height="10" fill="#475569" stroke="#94a3b8"/>
+    <rect x="75" y="-5" width="10" height="10" fill="#64748b"/>
+    <rect x="105" y="45" width="10" height="10" fill="#64748b"/>
+    <rect x="85" y="-55" width="10" height="10" fill="#64748b"/>
+    <!-- Flank corridor notes -->
+    <text x="0" y="-102" fill="#64748b" font-size="8" text-anchor="middle">flank z=−9</text>
+    <text x="0" y="108" fill="#64748b" font-size="8" text-anchor="middle">flank z=+9</text>
+    <!-- Spawns -->
+    <circle cx="-120" cy="0" r="5" fill="#22c55e"/><text x="-120" y="-10" fill="#86efac" font-size="9" text-anchor="middle">spawn_red</text>
+    <circle cx="120" cy="0" r="5" fill="#22c55e"/><text x="120" y="-10" fill="#86efac" font-size="9" text-anchor="middle">spawn_blue</text>
+    <!-- W1 targets cyan -->
+    <g fill="#22d3ee" stroke="#0891b2" stroke-width="1">
+      <circle cx="-100" cy="30" r="5"/><text x="-100" y="42" fill="#a5f3fc" font-size="8" text-anchor="middle">T1</text>
+      <circle cx="-60" cy="0" r="5"/><text x="-60" y="-10" fill="#a5f3fc" font-size="8" text-anchor="middle">T2</text>
+      <circle cx="-40" cy="-50" r="5"/><text x="-40" y="-58" fill="#a5f3fc" font-size="8" text-anchor="middle">T3</text>
+      <circle cx="0" cy="-60" r="5"/><text x="12" y="-68" fill="#a5f3fc" font-size="8" text-anchor="middle">T4</text>
+      <circle cx="50" cy="50" r="5"/><text x="50" y="62" fill="#a5f3fc" font-size="8" text-anchor="middle">T5</text>
+    </g>
+    <!-- W2 targets magenta -->
+    <g fill="#e879f9" stroke="#c026d3" stroke-width="1">
+      <circle cx="100" cy="20" r="5"/><text x="100" y="32" fill="#f5d0fe" font-size="8" text-anchor="middle">T6</text>
+      <circle cx="90" cy="-40" r="5"/><text x="90" y="-48" fill="#f5d0fe" font-size="8" text-anchor="middle">T7</text>
+      <circle cx="80" cy="80" r="5"/><text x="80" y="92" fill="#f5d0fe" font-size="8" text-anchor="middle">T8</text>
+      <circle cx="60" cy="0" r="5"/><text x="60" y="-10" fill="#f5d0fe" font-size="8" text-anchor="middle">T9</text>
+    </g>
+  </g>
+  <!-- legend -->
+  <g font-family="ui-sans-serif,system-ui" font-size="11" fill="#cbd5e1">
+    <text x="24" y="520">Legend:</text>
+    <circle cx="90" cy="516" r="5" fill="#22d3ee"/><text x="100" y="520">W1 target</text>
+    <circle cx="180" cy="516" r="5" fill="#e879f9"/><text x="190" y="520">W2 target</text>
+    <circle cx="280" cy="516" r="5" fill="#22c55e"/><text x="290" y="520">spawn</text>
+    <rect x="360" y="508" width="16" height="12" fill="#334155" stroke="#7dd3fc"/><text x="382" y="520">raised</text>
+    <rect x="450" y="508" width="16" height="12" fill="#475569"/><text x="472" y="520">bunker/crate</text>
+    <circle cx="575" cy="516" r="7" fill="none" stroke="#7dd3fc" stroke-width="2"/><text x="588" y="520">core</text>
+    <text x="640" y="520" fill="#94a3b8">10 px = 1 m</text>
+  </g>
+</svg>
