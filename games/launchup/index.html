@@ -3,523 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Launch Up — Game Manual</title>
-<meta name="description" content="Launch Up — Game Manual. Available on Steam.">
+<title>Launch Up — Color It Company</title>
+<meta name="description" content="Launch Up: Mine. Build the escape ship. Climb the Lattice until you can leave. Playable now: vertical Lattice climb — height is score. Coming: dig → refine → fabricate → escape vehicle → automation.">
 <link rel="canonical" href="https://colorit.co/games/launchup/">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cyan: #00e5c8;
-    --cyan-dim: #00a89480;
-    --orange: #ff7a2f;
-    --orange-dim: #c0521560;
-    --purple: #9b59f5;
-    --purple-dim: #7c3aed50;
-    --magenta: #e040fb;
-    --dark: #080a10;
-    --dark2: #0d1018;
-    --dark3: #131620;
-    --dark4: #1a1e2c;
-    --text: #dde4f0;
-    --text-dim: #7a849e;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--dark);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 1.65;
-    min-height: 100vh;
-  }
-
-  /* Subtle grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--cyan-dim) 1px, transparent 1px),
-      linear-gradient(90deg, var(--cyan-dim) 1px, transparent 1px);
-    background-size: 60px 60px;
-    opacity: 0.07;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── COVER ── */
-  .cover {
-    text-align: center;
-    padding: 72px 0 56px;
-    border-bottom: 1px solid var(--dark4);
-    margin-bottom: 56px;
-  }
-
-  .studio-tag {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: var(--cyan);
-    text-transform: uppercase;
-    opacity: 0.75;
-    margin-bottom: 20px;
-  }
-
-  .game-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 96px;
-    letter-spacing: -0.02em;
-    line-height: 0.9;
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow:
-      0 0 40px var(--cyan),
-      0 0 80px var(--cyan-dim);
-    margin-bottom: 8px;
-  }
-
-  .game-title span {
-    display: block;
-    color: var(--cyan);
-    font-size: 52px;
-    letter-spacing: 0.25em;
-    text-shadow: 0 0 30px var(--cyan);
-  }
-
-  .cover-sub {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    letter-spacing: 0.4em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    margin-top: 28px;
-  }
-
-  .cover-divider {
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-    margin: 28px auto;
-  }
-
-  .platform-badge {
-    display: inline-block;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    padding: 5px 14px;
-    border: 1px solid var(--cyan-dim);
-    color: var(--cyan);
-    text-transform: uppercase;
-  }
-
-  /* ── CHAPTER HEADERS ── */
-  .chapter {
-    margin-bottom: 52px;
-  }
-
-  .chapter-number {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.35em;
-    color: var(--cyan);
-    opacity: 0.6;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .chapter-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 34px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #fff;
-    border-left: 3px solid var(--orange);
-    padding-left: 14px;
-    margin-bottom: 28px;
-    line-height: 1.1;
-  }
-
-  /* ── LORE BLOCK ── */
-  .lore {
-    background: var(--dark3);
-    border-left: 3px solid var(--purple);
-    padding: 22px 24px;
-    margin-bottom: 28px;
-    font-style: italic;
-    font-size: 14.5px;
-    line-height: 1.8;
-    color: #b4b9cc;
-  }
-
-  .lore cite {
-    display: block;
-    margin-top: 12px;
-    font-style: normal;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--purple);
-    opacity: 0.7;
-    text-transform: uppercase;
-  }
-
-  /* ── BODY TEXT ── */
-  p {
-    margin-bottom: 16px;
-    color: var(--text);
-  }
-
-  /* ── CONTROLS TABLE ── */
-  .controls-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-
-  .control-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--dark3);
-    padding: 10px 14px;
-    border: 1px solid var(--dark4);
-  }
-
-  .key {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    background: var(--dark4);
-    border: 1px solid #2a2f3e;
-    border-bottom: 2px solid #1a1e2c;
-    padding: 3px 9px;
-    color: var(--cyan);
-    white-space: nowrap;
-    min-width: 52px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-
-  .control-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-
-  /* ── STAT CARDS ── */
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-
-  .stat-card {
-    background: var(--dark3);
-    border: 1px solid var(--dark4);
-    border-top: 2px solid var(--cyan);
-    padding: 16px 14px;
-    text-align: center;
-  }
-
-  .stat-value {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--cyan);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-  }
-
-  .stat-card.orange { border-top-color: var(--orange); }
-  .stat-card.orange .stat-value { color: var(--orange); }
-  .stat-card.purple { border-top-color: var(--purple); }
-  .stat-card.purple .stat-value { color: var(--purple); }
-
-  /* ── OBSTACLE ENTRIES ── */
-  .obstacle {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-    background: var(--dark3);
-    padding: 16px 18px;
-    border: 1px solid var(--dark4);
-  }
-
-  .obstacle-icon {
-    width: 44px;
-    height: 44px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    background: var(--dark4);
-  }
-
-  .obstacle-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 4px;
-  }
-
-  .obstacle-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  /* ── TIP BOXES ── */
-  .tip {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    background: var(--dark3);
-    border-left: 3px solid var(--cyan);
-  }
-
-  .tip-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--cyan);
-    text-transform: uppercase;
-    margin-top: 1px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .tip p {
-    font-size: 13.5px;
-    color: var(--text-dim);
-    margin: 0;
-  }
-
-  .tip.warn { border-left-color: var(--orange); }
-  .tip.warn .tip-label { color: var(--orange); }
-
-  /* ── SCORING ── */
-  .score-diagram {
-    background: var(--dark3);
-    border: 1px solid var(--dark4);
-    padding: 24px;
-    margin-bottom: 28px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .score-diagram::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--magenta), var(--purple), var(--cyan));
-  }
-
-  .score-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--dark4);
-    font-size: 13.5px;
-  }
-
-  .score-row:last-child { border-bottom: none; }
-
-  .score-event { color: var(--text-dim); }
-
-  .score-pts {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    color: var(--cyan);
-  }
-
-  .score-pts.orange { color: var(--orange); }
-  .score-pts.red { color: #ff4466; }
-  .score-pts.purple { color: var(--purple); }
-
-  /* ── SECTION RULE ── */
-  .rule {
-    border: none;
-    border-top: 1px solid var(--dark4);
-    margin: 48px 0;
-  }
-
-  /* ── STATE DIAGRAM ── */
-  .states {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    margin-bottom: 28px;
-    flex-wrap: wrap;
-  }
-
-  .state-node {
-    background: var(--dark4);
-    border: 1px solid var(--dark4);
-    padding: 12px 20px;
-    text-align: center;
-    min-width: 110px;
-  }
-
-  .state-node.active { border-color: var(--cyan); }
-  .state-node.danger { border-color: #ff4466; }
-  .state-node.recover { border-color: var(--purple); }
-
-  .state-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .state-node.active .state-name { color: var(--cyan); }
-  .state-node.danger .state-name { color: #ff4466; }
-  .state-node.recover .state-name { color: var(--purple); }
-
-  .state-desc {
-    font-size: 10px;
-    color: var(--text-dim);
-    margin-top: 3px;
-  }
-
-  .state-arrow {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    color: var(--text-dim);
-    padding: 0 10px;
-    text-align: center;
-    line-height: 1.3;
-  }
-
-  /* ── FOOTER ── */
-  .footer {
-    text-align: center;
-    padding: 40px 0 0;
-    border-top: 1px solid var(--dark4);
-  }
-
-  .footer-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    letter-spacing: 0.1em;
-    color: var(--magenta);
-    text-shadow: 0 0 20px var(--magenta);
-    margin-bottom: 6px;
-  }
-
-  .footer-sub {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-  }
-
-  /* ── INLINE CODE ── */
-  code {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    color: var(--cyan);
-    background: var(--dark4);
-    padding: 1px 6px;
-  }
-
-  /* ── HEADING LEVELS ── */
-  h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 17px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 12px;
-    margin-top: 28px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-  }
-
-  ul li {
-    padding: 5px 0 5px 18px;
-    position: relative;
-    font-size: 14px;
-    color: var(--text-dim);
-    border-bottom: 1px solid var(--dark4);
-  }
-
-  ul li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--cyan);
-    font-size: 10px;
-    top: 7px;
-  }
-
-  ul li:last-child { border-bottom: none; }
-
-  strong { color: var(--text); font-weight: 500; }
-</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Color It Company">
+<meta property="og:title" content="Launch Up — Color It Company">
+<meta property="og:description" content="Mine. Build the escape ship. Climb the Lattice until you can leave. Playable now: vertical Lattice climb. Coming: dig → refine → fabricate → escape.">
+<meta property="og:url" content="https://colorit.co/games/launchup/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Launch Up — Color It Company">
+<meta name="twitter:description" content="Mine. Build the escape ship. Climb the Lattice until you can leave. Playable now: vertical Lattice climb. Coming: dig → refine → fabricate → escape.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+<a class="skip-link" href="#overview">Skip to content</a>
+
+<header class="studio-bar">
+  <nav aria-label="Studio">
+    <a href="/" class="studio-logo"><span>Color It</span> Company</a>
+    <ul class="studio-links">
+      <li><a href="/games/" class="is-current">Games</a></li>
+      <li><a href="/software/">Software</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="https://blog.coloritcompany.com" target="_blank" rel="noopener">Blog</a></li>
+      <li><a href="/opportunities/">Opportunities</a></li>
+    </ul>
+  </nav>
+</header>
+
 <div class="container">
 
-  <!-- COVER -->
-  <div class="cover">
+  <!-- COVER / OVERVIEW -->
+  <header class="cover" id="overview">
     <div class="studio-tag">∮ Flux Studios · Color It Company LLC</div>
-    <div class="game-title">
-      LAUNCH<span>UP</span>
-    </div>
+    <h1 class="game-title">LAUNCH<span>UP</span></h1>
     <div class="cover-divider"></div>
-    <div class="cover-sub">Game Manual · First Edition</div>
+    <p class="hero-line">Mine. Build the escape ship. Climb the Lattice until you can leave.</p>
+    <p class="cover-sub">Game Manual · First Edition</p>
     <br>
     <span class="platform-badge">Available on Steam</span>
-  </div>
+
+    <div class="layer-grid">
+      <article class="layer-card now">
+        <div class="layer-kicker">Playable now · Prototype climb</div>
+        <p><strong>Vertical Lattice climb — height is score.</strong> Controls, jump physics, hazards, and Level 1 Lower Lattice are in the current build.</p>
+      </article>
+      <article class="layer-card soon">
+        <div class="layer-kicker">Coming · Not in the current build</div>
+        <p><strong>Dig → refine → fabricate → escape vehicle → automation.</strong> Mine, smelt, and print an escape craft. Roadmap — not shipped yet.</p>
+      </article>
+    </div>
+
+    <blockquote class="lore" style="text-align:left;margin-top:24px;margin-bottom:0;">
+      “The Lattice was built to leave. When the route failed, we learned to dig.”
+      <cite>— Found inscription</cite>
+    </blockquote>
+
+    <nav class="jump-nav" aria-label="On this page">
+      <a href="#overview">Overview</a>
+      <a href="#playable">Playable now</a>
+      <a href="#coming">Coming</a>
+      <a href="#ores">Ores</a>
+      <a href="#parts">Parts</a>
+      <a href="#tech-tree">Tech tree</a>
+      <a href="#ra-engine">Ra Engine</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <nav class="local-nav" aria-label="Launch Up pages">
+      <a href="./" class="is-current" aria-current="page">Guide</a>
+      <a href="./ores/">Ores</a>
+      <a href="./parts/">Parts</a>
+      <a href="./tech-tree/">Tech tree</a>
+    </nav>
+  </header>
+
+  <section class="chapter" id="vision">
+    <div class="chapter-number">Overview</div>
+    <h2 class="chapter-title">The way out</h2>
+    <p>Mine the crust. Build an escape vehicle. Automate the outpost — then climb what’s left of the old way out.</p>
+    <p>The <strong>Lattice</strong> is the ruined vertical infrastructure of an old evacuation / skyhook route — floating platforms in a warm void between crystal walls. After the collapse, the only path that still “works” is <strong>up</strong>.</p>
+    <p>The full fantasy is: <strong>dig and fabricate an escape craft</strong> so you aren’t trapped in climb-or-die forever — then return with better ships and automation. Until that loop ships in code, players experience the Lattice climb (height score, hazards, Level 1 Lower Lattice).</p>
+  </section>
+
+  <!-- PLAYABLE NOW -->
+  <section class="chapter" id="playable">
+    <div class="chapter-number">Layer B · Shipped</div>
+    <h2 class="chapter-title">Playable now — Lattice climb</h2>
+    <div class="section-banner">
+      <span class="badge now">Playable now</span>
+      <span class="badge now">Prototype climb</span>
+      <p>Climb the Lattice. Height is score. Don’t fall past Y = −5 m.</p>
+    </div>
+    <p>You still wake at the bottom. Until the escape loop ships, the climb is the playable slice — cyan platforms, height score, hazards. Dig, smelt, and escape-vehicle assembly are <strong>not in the current build</strong>.</p>
+  </section>
 
   <!-- CHAPTER 1: STORY -->
-  <div class="chapter">
-    <div class="chapter-number">Chapter 01</div>
-    <div class="chapter-title">The World & Your Mission</div>
+  <div class="chapter" id="world">
+    <div class="chapter-number">Chapter 01 · Playable now</div>
+    <h2 class="chapter-title">The World &amp; Your Mission</h2>
 
     <div class="lore">
-      "The Lattice was built to reach something. Nobody remembers what. After the collapse, the platforms kept floating — suspended in the orange void between the crystal walls. The only way out was always the same: up."
+      “The Lattice was built to leave. When the route failed, we learned to dig.”
       <cite>— Found inscription, Level 1 Entry Platform</cite>
     </div>
 
@@ -529,9 +117,9 @@
   </div>
 
   <!-- CHAPTER 2: CONTROLS -->
-  <div class="chapter">
-    <div class="chapter-number">Chapter 02</div>
-    <div class="chapter-title">Controls</div>
+  <div class="chapter" id="controls">
+    <div class="chapter-number">Chapter 02 · Playable now</div>
+    <h2 class="chapter-title">Controls</h2>
 
     <h3>Movement</h3>
     <div class="controls-grid">
@@ -580,9 +168,9 @@
   </div>
 
   <!-- CHAPTER 3: MECHANICS -->
-  <div class="chapter">
-    <div class="chapter-number">Chapter 03</div>
-    <div class="chapter-title">Core Mechanics</div>
+  <div class="chapter" id="mechanics">
+    <div class="chapter-number">Chapter 03 · Playable now</div>
+    <h2 class="chapter-title">Core Mechanics</h2>
 
     <h3>Jump Physics</h3>
     <div class="stat-row">
@@ -637,9 +225,9 @@
   </div>
 
   <!-- CHAPTER 4: SCORING -->
-  <div class="chapter">
-    <div class="chapter-number">Chapter 04</div>
-    <div class="chapter-title">Scoring System</div>
+  <div class="chapter" id="scoring">
+    <div class="chapter-number">Chapter 04 · Playable now</div>
+    <h2 class="chapter-title">Scoring System</h2>
 
     <p>Your score is tied directly to how high you climb. The Lattice rewards altitude above all else.</p>
 
@@ -671,9 +259,9 @@
   </div>
 
   <!-- CHAPTER 5: HAZARDS -->
-  <div class="chapter">
-    <div class="chapter-number">Chapter 05</div>
-    <div class="chapter-title">Hazards &amp; Obstacles</div>
+  <div class="chapter" id="hazards">
+    <div class="chapter-number">Chapter 05 · Playable now</div>
+    <h2 class="chapter-title">Hazards &amp; Obstacles</h2>
 
     <p>The Lattice machinery has been running without maintenance for longer than anyone knows. Much of it wants to push you back down.</p>
 
@@ -724,9 +312,9 @@
   </div>
 
   <!-- CHAPTER 6: LEVEL 1 -->
-  <div class="chapter">
-    <div class="chapter-number">Chapter 06</div>
-    <div class="chapter-title">Level 1 — The Lower Lattice</div>
+  <div class="chapter" id="level-1">
+    <div class="chapter-number">Chapter 06 · Playable now</div>
+    <h2 class="chapter-title">Level 1 — The Lower Lattice</h2>
 
     <div class="lore">
       "The first level doesn't teach you the rules. The platforms do. By the time you reach 26 metres you'll have learned everything the Lattice ever needed to say."
@@ -764,9 +352,9 @@
   </div>
 
   <!-- CHAPTER 7: TIPS -->
-  <div class="chapter">
-    <div class="chapter-number">Chapter 07</div>
-    <div class="chapter-title">Advanced Techniques</div>
+  <div class="chapter" id="techniques">
+    <div class="chapter-number">Chapter 07 · Playable now</div>
+    <h2 class="chapter-title">Advanced Techniques</h2>
 
     <div class="tip">
       <span class="tip-label">ROUTE</span>
@@ -794,10 +382,425 @@
     </div>
   </div>
 
+  <hr class="rule">
+
+  <!-- COMING -->
+  <section class="chapter" id="coming">
+    <div class="chapter-number">Layer A · Roadmap</div>
+    <h2 class="chapter-title">Coming — Escape loop</h2>
+    <div class="section-banner">
+      <span class="badge soon">Coming</span>
+      <span class="badge soon">Not in the current build</span>
+      <p>Dig the crust, print an escape vehicle, automate the rest.</p>
+    </div>
+    <p>You wake at the bottom with workable <strong>crust and ice</strong>. The vision loop is mine → refine → fabricate → assemble an <strong>escape vehicle</strong> → unlock automation and bigger ships. This first-hour checklist is design SoT — it is <strong>not playable yet</strong>.</p>
+
+    <h3>First-hour checklist</h3>
+    <ol class="checklist">
+      <li><span><strong>Dig starter ores.</strong> Hand-drill regolith, ice, iron, copper, and carbonaceous rock.</span></li>
+      <li><span><strong>Stand up the bench.</strong> Smelt steel / copper → hand drill, scaffold, smelter, fabricator.</span></li>
+      <li><span><strong>Reach escape-tier materials.</strong> Mine silicon sand, aluminum ore, and sulfur → glass, silicon, aluminum, propellant chem.</span></li>
+      <li><span><strong>Print the MVE kit.</strong> Fabricate the nine minimum-viable-escape parts and assemble them on a pad.</span></li>
+      <li><span><strong>Launch.</strong> First escape unlocks automation (auto-drill, sorter, electric smelter, assembler) and the titanium flight tier.</span></li>
+    </ol>
+    <p>Every ore has a clear next use within one or two tiers. The escape kit stays at nine part types so the first craft feels buildable in one session. Mass, thrust, and fuel matter — aluminum vs steel is a real trade.</p>
+  </section>
+
+  <!-- ORES -->
+  <section class="chapter" id="ores">
+    <div class="chapter-number">Roadmap · Ores</div>
+    <h2 class="chapter-title">Ores &amp; refining</h2>
+    <div class="section-banner">
+      <span class="badge soon">Coming</span>
+      <span class="badge soon">Roadmap</span>
+      <p>Public table for Tiers 0–4. Tier 5 names are deferred (TBD / coming).</p>
+    </div>
+    <p>Dig surface and crust for raw ore. Refine into materials. Fabricate parts. Assemble the escape vehicle, then larger ships. Automation comes online after the first escape chassis flies.</p>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <caption>Mineable ores → refined materials (not in the current build)</caption>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Ore (mine)</th>
+            <th>Refined</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0 · Surface</td>
+            <td class="ore-name">Regolith</td>
+            <td>Fill / ballast</td>
+            <td>Early terrain fill, cheap mass</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td class="ore-name">Ice</td>
+            <td>Water / O₂ precursor</td>
+            <td>Life support, coolant, fuel chemistry later</td>
+          </tr>
+          <tr>
+            <td>1 · Starter</td>
+            <td class="ore-name">Iron ore</td>
+            <td>Iron / Steel</td>
+            <td>Frames, tools, basic plating</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td class="ore-name">Copper ore</td>
+            <td>Copper</td>
+            <td>Wire, coils, basic electronics</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td class="ore-name">Carbonaceous rock</td>
+            <td>Carbon / Coal-analogue</td>
+            <td>Fuel for early smelters, composites later</td>
+          </tr>
+          <tr>
+            <td>2 · Escape</td>
+            <td class="ore-name">Silicon sand</td>
+            <td>Silicon / Glass</td>
+            <td>Cockpit, circuits, solar</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td class="ore-name">Aluminum ore</td>
+            <td>Aluminum</td>
+            <td>Light frames, tanks</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td class="ore-name">Sulfur / reactive</td>
+            <td>Acids / propellant chem</td>
+            <td>Early solid/hybrid fuel grains</td>
+          </tr>
+          <tr>
+            <td>3 · Flight</td>
+            <td class="ore-name">Titanium ore</td>
+            <td>Titanium</td>
+            <td>High-stress spars, thruster bells</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td class="ore-name">Nickel ore</td>
+            <td>Nickel alloys</td>
+            <td>Heat-resistant joints, bearings</td>
+          </tr>
+          <tr>
+            <td>4 · Advanced</td>
+            <td class="ore-name">Rare-earth pocket</td>
+            <td>Magnets / catalysts</td>
+            <td>Efficient motors, advanced electronics</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td class="ore-name">Volatile ice (CH₄/NH₃)</td>
+            <td>Cryo fuel / feedstock</td>
+            <td>High-Isp thrusters</td>
+          </tr>
+          <tr class="coming-row">
+            <td>5 · Endgame</td>
+            <td class="ore-name">Dense metal (placeholder name TBD)</td>
+            <td>Superalloy</td>
+            <td>Capital ship spines — coming</td>
+          </tr>
+          <tr class="coming-row">
+            <td>5</td>
+            <td class="ore-name">Exotic crystal (TBD)</td>
+            <td>Power crystals</td>
+            <td>Reactor / jump tech — coming</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <a class="more-link" href="./ores/">Open the ores page →</a>
+  </section>
+
+  <!-- PARTS -->
+  <section class="chapter" id="parts">
+    <div class="chapter-number">Roadmap · Parts</div>
+    <h2 class="chapter-title">Parts catalog</h2>
+    <div class="section-banner">
+      <span class="badge soon">Coming</span>
+      <span class="badge soon">Roadmap</span>
+      <p>Tools → structures → minimum viable escape → post-escape → automation.</p>
+    </div>
+
+    <h3>Tools (hand / early automatable)</h3>
+    <ul>
+      <li>Hand drill → Power drill → Mining laser head</li>
+      <li>Ore scanner (copper + silicon)</li>
+      <li>Welder / cutter</li>
+    </ul>
+
+    <h3>Structures (base / pad)</h3>
+    <ul>
+      <li>Scaffold frame (steel)</li>
+      <li>Smelter (steel + carbon fuel)</li>
+      <li>Fabricator bench (steel + copper)</li>
+      <li>Small conveyor / hopper (steel)</li>
+      <li>Solar panel (silicon + aluminum) — optional pre-escape</li>
+    </ul>
+
+    <h3>Escape vehicle — minimum viable escape kit (MVE)</h3>
+    <p>Required to leave the pocket / crater. All MVE parts fabricated and assembled on a pad unlocks the first launch mission.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <caption>Nine part types — first craft, one session (not in the current build)</caption>
+        <thead>
+          <tr>
+            <th>Part</th>
+            <th>Materials (sketch)</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ore-name">Escape chassis (pod frame)</td>
+            <td>Steel + aluminum</td>
+            <td>Physics body; seats 1</td>
+          </tr>
+          <tr>
+            <td class="ore-name">Pressure hull plates</td>
+            <td>Steel / aluminum</td>
+            <td>Integrity for vacuum</td>
+          </tr>
+          <tr>
+            <td class="ore-name">Cockpit canopy</td>
+            <td>Glass (silicon)</td>
+            <td>Visibility</td>
+          </tr>
+          <tr>
+            <td class="ore-name">RCS thruster ×4</td>
+            <td>Steel + copper coils</td>
+            <td>Attitude</td>
+          </tr>
+          <tr>
+            <td class="ore-name">Main thruster (chemical)</td>
+            <td>Steel + propellant chem</td>
+            <td>Boost out of gravity well</td>
+          </tr>
+          <tr>
+            <td class="ore-name">Propellant tank (S)</td>
+            <td>Aluminum</td>
+            <td>Paired with main thruster</td>
+          </tr>
+          <tr>
+            <td class="ore-name">Battery pack (S)</td>
+            <td>Copper + carbon</td>
+            <td>Bus power</td>
+          </tr>
+          <tr>
+            <td class="ore-name">Flight computer</td>
+            <td>Copper + silicon</td>
+            <td>Controllable craft</td>
+          </tr>
+          <tr>
+            <td class="ore-name">Landing legs</td>
+            <td>Steel</td>
+            <td>Soft touchdown</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Post-escape — ship expansion</h3>
+    <ul>
+      <li>Medium frame / spine (titanium)</li>
+      <li>Cargo bay module</li>
+      <li>Fuel tank (M/L)</li>
+      <li>Ion thruster (rare-earth magnets + volatiles)</li>
+      <li>Hab module (life support: water + O₂ loop)</li>
+      <li>Docking ring</li>
+      <li>Drill gantry (automates mining)</li>
+      <li>Refinery module (on-ship)</li>
+      <li>Autopilot / nav (advanced electronics)</li>
+    </ul>
+
+    <h3>Automation (after first escape)</h3>
+    <ul>
+      <li>Auto-drill bit</li>
+      <li>Ore sorter</li>
+      <li>Electric smelter</li>
+      <li>Assembler arm</li>
+      <li>Power bus / transformer</li>
+    </ul>
+    <a class="more-link" href="./parts/">Open the parts catalog →</a>
+  </section>
+
+  <!-- TECH TREE -->
+  <section class="chapter" id="tech-tree">
+    <div class="chapter-number">Roadmap · Dependencies</div>
+    <h2 class="chapter-title">Tech tree</h2>
+    <div class="section-banner">
+      <span class="badge soon">Coming</span>
+      <span class="badge soon">Roadmap</span>
+      <p>Type-only v1. Surface crust → starter benches → MVE → escape → automation.</p>
+    </div>
+
+    <div class="diagram" role="img" aria-labelledby="tree-caption-index">
+      <p class="diagram-caption" id="tree-caption-index">Launch Up tech tree · Tiers 0–4 public · Tier 5 deferred</p>
+
+      <div class="tree-tier">
+        <h3>Tier 0 · Surface</h3>
+        <div class="tree-flow">
+          <div class="tree-chain">
+            <span class="node ore">Regolith</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Ballast</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node ore">Ice</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Water</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-tier">
+        <h3>Tier 1 · Starter</h3>
+        <div class="tree-flow">
+          <div class="tree-chain">
+            <span class="node ore">Iron ore</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Steel</span>
+            <span class="tree-arrow">→</span>
+            <span class="node part">Hand drill</span>
+            <span class="node part">Scaffold</span>
+            <span class="node part">Smelter</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node ore">Copper ore</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Copper</span>
+            <span class="tree-arrow">→</span>
+            <span class="node part">Fabricator</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node ore">Carbon rock</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Carbon</span>
+            <span class="tree-arrow">→</span>
+            <span class="node part">Smelter fuel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-tier">
+        <h3>Tier 2 · Escape materials</h3>
+        <p style="font-size:13px;color:var(--steel);margin-bottom:10px;">Fabricator unlocks Glass, Aluminum, and Propellant chem. Smelter unlocks Steel and Copper.</p>
+        <div class="tree-flow">
+          <div class="tree-chain">
+            <span class="node ore">Silicon sand</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Glass</span>
+            <span class="node mat">Silicon</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node ore">Aluminum ore</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Aluminum</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node ore">Sulfur</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Propellant chem</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-tier">
+        <h3>Minimum Viable Escape</h3>
+        <div class="mve-grid">
+          <span class="node part">Chassis ← Steel + Al</span>
+          <span class="node part">Hull plates ← Steel / Al</span>
+          <span class="node part">Canopy ← Glass</span>
+          <span class="node part">RCS ← Steel + Cu</span>
+          <span class="node part">Main thruster ← Steel + chem</span>
+          <span class="node part">Tank (S) ← Aluminum</span>
+          <span class="node part">Battery (S) ← Cu + C</span>
+          <span class="node part">Flight computer ← Cu + Si</span>
+          <span class="node part">Landing legs ← Steel</span>
+        </div>
+        <div class="tree-flow">
+          <div class="tree-chain">
+            <span class="node mat">All MVE parts</span>
+            <span class="tree-arrow">→</span>
+            <span class="node goal">Escape vehicle</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-tier">
+        <h3>Post-escape</h3>
+        <div class="tree-flow">
+          <div class="tree-chain">
+            <span class="node goal">Escape vehicle</span>
+            <span class="tree-arrow">→</span>
+            <span class="node part">Auto-drill</span>
+            <span class="node part">Sorter</span>
+            <span class="node part">Electric smelter</span>
+            <span class="node part">Assembler arm</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node ore">Titanium ore</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Titanium</span>
+            <span class="tree-arrow">→</span>
+            <span class="node part">Med frame</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node ore">Rare-earth</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Magnets</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node ore">Volatile ice</span>
+            <span class="tree-arrow">→</span>
+            <span class="node mat">Cryo fuel</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node mat">Magnets</span>
+            <span class="node mat">Cryo fuel</span>
+            <span class="tree-arrow">→</span>
+            <span class="node part">Ion thruster</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node mat">Water</span>
+            <span class="tree-arrow">→</span>
+            <span class="node part">Hab module</span>
+          </div>
+          <div class="tree-chain">
+            <span class="node part">Med frame</span>
+            <span class="node part">Ion thruster</span>
+            <span class="node part">Hab module</span>
+            <span class="tree-arrow">→</span>
+            <span class="node goal">Bigger ships</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Text dependency (no-JS / accessibility)</h3>
+    <ol class="dep-list">
+      <li><strong>Regolith, Ice</strong> — always available</li>
+      <li><strong>Iron + Copper + Carbon</strong> → Steel/Copper/Carbon → <strong>Hand drill, Scaffold, Smelter, Fabricator</strong></li>
+      <li><strong>Silicon + Aluminum + Sulfur</strong> → Glass/Silicon/Aluminum/Propellant → <strong>MVE parts</strong> → <strong>Escape vehicle</strong></li>
+      <li><strong>Escape vehicle</strong> gates <strong>Automation</strong> (auto-drill, sorter, electric smelter, assembler)</li>
+      <li><strong>Titanium + Nickel</strong> → advanced frames / heat parts</li>
+      <li><strong>Rare-earth + Volatile ices</strong> → ion / high-Isp</li>
+      <li><strong>Tier 5</strong> — deferred names</li>
+    </ol>
+    <a class="more-link" href="./tech-tree/">Open the tech tree page →</a>
+  </section>
+
   <!-- CHAPTER 8: GRAPHICS -->
-  <div class="chapter">
+  <div class="chapter" id="ra-engine">
     <div class="chapter-number">Chapter 08</div>
-    <div class="chapter-title">Ra Engine &amp; RTX Graphics</div>
+    <h2 class="chapter-title">Ra Engine &amp; RTX Graphics</h2>
 
     <p>Launch Up runs on <strong>Ra Engine</strong>, a custom Vulkan 1.4 renderer with hardware ray tracing. The visual quality you see is physically simulated — every shadow, reflection, and emissive glow is calculated via RTX ray tracing in real-time.</p>
 
@@ -823,17 +826,43 @@
     </div>
   </div>
 
+  <!-- FAQ -->
+  <section class="chapter" id="faq">
+    <div class="chapter-number">FAQ</div>
+    <h2 class="chapter-title">Short FAQ</h2>
+
+    <article class="faq-item">
+      <h3>Is mining in the game yet?</h3>
+      <p>No. Dig, smelt, fabricate, and the escape vehicle are <strong>not in the current build</strong>. The playable slice is the Lattice climb — height is score. Mining is Coming / roadmap.</p>
+    </article>
+    <article class="faq-item">
+      <h3>What can I play right now?</h3>
+      <p>The vertical Lattice climb prototype: WASD + jump, coyote time and jump buffer, height scoring, hazards, and Level 1 Lower Lattice. Available on Steam.</p>
+    </article>
+    <article class="faq-item">
+      <h3>Is there multiplayer?</h3>
+      <p>Not claimed. Launch Up is presented as a single-player climb (now) and a single-player mine / build / escape loop (vision). No networked play is listed.</p>
+    </article>
+    <article class="faq-item">
+      <h3>What is the Lattice?</h3>
+      <p>Ruined vertical infrastructure of an old evacuation / skyhook route — floating platforms in a warm void between crystal walls. It was built to leave. When the route failed, we learned to dig.</p>
+    </article>
+  </section>
+
   <hr class="rule">
 
-  <!-- FOOTER -->
-  <div class="footer">
+  <footer class="footer">
     <div class="footer-logo">∮ FLUX STUDIOS</div>
     <div class="footer-sub">Color It Company LLC · Ra Engine · Vulkan 1.4 RTX</div>
-    <br>
-    <div style="font-family:'Share Tech Mono',monospace; font-size:10px; color:#3a3f52; letter-spacing:0.15em; margin-top:8px;">
-      LAUNCH UP™ — ALL RIGHTS RESERVED
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/games/">Games</a>
+      <a href="./ores/">Ores</a>
+      <a href="./parts/">Parts</a>
+      <a href="./tech-tree/">Tech tree</a>
     </div>
-  </div>
+    <div class="legal">LAUNCH UP™ — ALL RIGHTS RESERVED</div>
+  </footer>
 
 </div>
 </body>
