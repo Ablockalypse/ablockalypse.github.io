@@ -50,8 +50,8 @@
             pointer-events: none;
             z-index: 0;
             background:
-                radial-gradient(ellipse 90% 42% at 50% -8%, rgba(168, 196, 216, 0.16) 0%, transparent 62%),
-                linear-gradient(180deg, var(--base-lift) 0%, var(--base) 38%, var(--base) 100%);
+                radial-gradient(ellipse 110% 58% at 50% -4%, rgba(168, 196, 216, 0.30) 0%, rgba(168, 196, 216, 0.08) 42%, transparent 70%),
+                linear-gradient(180deg, #141820 0%, #0B0D10 46%, #0B0D10 100%);
         }
 
         .skip-link {
@@ -176,6 +176,14 @@
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: #F4F7FA;
+            margin-bottom: 1.1rem;
+        }
+
+        .hero-rule {
+            width: 3.25rem;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.7;
             margin-bottom: 1.35rem;
         }
 
@@ -392,6 +400,7 @@
         <header class="hero" id="hero">
             <p class="badge">In design</p>
             <h1 class="wordmark">Verticities</h1>
+            <div class="hero-rule" aria-hidden="true"></div>
             <p class="one-liner"><strong>Cities that grow up.</strong> Stacked districts, skybridges, and life between the floors.</p>
             <p class="inscription">They didn’t expand outward. They stacked the sky.</p>
         </header>
@@ -404,7 +413,7 @@
 
         <section class="section" aria-labelledby="mood-heading">
             <p class="section-label">Mood</p>
-            <h2 id="mood-heading">Shared spine</h2>
+            <h2 id="mood-heading">Aspiration, silhouette, scale</h2>
             <ul class="mood">
                 <li>
                     <strong>Upward aspiration</strong>
@@ -423,7 +432,7 @@
 
         <section class="section" aria-labelledby="directions-heading">
             <p class="section-label">Directions under exploration</p>
-            <h2 id="directions-heading">Three equal reads</h2>
+            <h2 id="directions-heading">A · B · C</h2>
             <div class="directions">
                 <article class="direction">
                     <p class="direction-letter">A</p>
