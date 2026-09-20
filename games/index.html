@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games — Color It Company</title>
-    <meta name="description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
+    <meta name="description" content="Games from Color It Company: Laser Tag, Ablockalypse, Launch Up, and Verticities.">
     <link rel="canonical" href="https://colorit.co/games/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Color It Company">
     <meta property="og:title" content="Games — Color It Company">
-    <meta property="og:description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
+    <meta property="og:description" content="Games from Color It Company: Laser Tag, Ablockalypse, Launch Up, and Verticities.">
     <meta property="og:url" content="https://colorit.co/games/">
     <meta property="og:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Games — Color It Company">
-    <meta name="twitter:description" content="Games from Color It Company: Laser Tag, Ablockalypse, and Launch Up.">
+    <meta name="twitter:description" content="Games from Color It Company: Laser Tag, Ablockalypse, Launch Up, and Verticities.">
     <meta name="twitter:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -301,6 +301,28 @@
         .lattice span:nth-child(4) { width: 58%; }
         .lattice span:nth-child(5) { width: 72%; }
 
+        .verticities-visual {
+            background:
+                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(168, 196, 216, 0.2) 0%, transparent 58%),
+                linear-gradient(180deg, #141820 0%, #0B0D10 100%);
+        }
+
+        .verticities-mark {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+            font-weight: 600;
+            font-size: 1.35rem;
+            letter-spacing: 0.42em;
+            text-transform: uppercase;
+            color: rgba(196, 165, 116, 0.88);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
         footer {
             border-top: 1px solid var(--dark-lighter);
             padding: 3.5rem 0 2rem;
@@ -454,6 +476,26 @@
                             <span></span>
                             <span></span>
                         </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="./verticities/" class="game-card-link">
+                <div class="game-card-featured">
+                    <div class="game-card-info">
+                        <div>
+                            <div class="status-row" aria-label="Verticities availability">
+                                <span class="status-badge status-badge-soon">In design</span>
+                                <span class="status-badge">City sim</span>
+                            </div>
+                            <h2>Verticities</h2>
+                            <p class="game-card-blurb">Cities that grow up. Stacked districts, skybridges, and life between the floors.</p>
+                            <p class="game-card-meta">Holding page — creative directions on the table; playable build not public yet.</p>
+                        </div>
+                        <span class="btn-primary">Open page →</span>
+                    </div>
+                    <div class="game-card-visual verticities-visual" aria-hidden="true">
+                        <div class="verticities-mark">Verticities</div>
                     </div>
                 </div>
             </a>

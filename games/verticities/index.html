@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verticities — Color It Company</title>
+    <meta name="description" content="Verticities: cities that grow up. Stacked districts, skybridges, and life between the floors. In design.">
+    <link rel="canonical" href="https://colorit.co/games/verticities/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Color It Company">
+    <meta property="og:title" content="Verticities — Color It Company">
+    <meta property="og:description" content="Verticities: cities that grow up. Stacked districts, skybridges, and life between the floors. In design.">
+    <meta property="og:url" content="https://colorit.co/games/verticities/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Verticities — Color It Company">
+    <meta name="twitter:description" content="Verticities: cities that grow up. Stacked districts, skybridges, and life between the floors. In design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --base: #0B0D10;
+            --base-mid: #10141A;
+            --base-lift: #141820;
+            --line: rgba(168, 196, 216, 0.14);
+            --sky: #A8C4D8;
+            --gold: #C4A574;
+            --text: #E8EEF3;
+            --text-dim: #9AA8B4;
+            --studio: #e07a5f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--base);
+            color: var(--text);
+            font-family: 'Source Serif 4', 'Georgia', serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 90% 42% at 50% -8%, rgba(168, 196, 216, 0.16) 0%, transparent 62%),
+                linear-gradient(180deg, var(--base-lift) 0%, var(--base) 38%, var(--base) 100%);
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 12px;
+            top: -44px;
+            z-index: 200;
+            background: var(--gold);
+            color: var(--base);
+            padding: 8px 12px;
+            font-family: Inter, sans-serif;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .skip-link:focus { top: 12px; }
+
+        a { color: var(--gold); }
+
+        a:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        .studio-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 13, 16, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .studio-bar nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .studio-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .studio-logo span { color: var(--studio); }
+
+        .studio-links {
+            display: flex;
+            gap: 1.6rem;
+            list-style: none;
+        }
+
+        .studio-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: Inter, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .studio-links a:hover,
+        .studio-links a.is-current { color: var(--studio); }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 24px 88px;
+        }
+
+        .crumb {
+            font-family: Inter, sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin: 28px 0 0;
+        }
+
+        .crumb a {
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+
+        .crumb a:hover { color: var(--gold); }
+
+        .hero {
+            padding: 4.5rem 0 3.25rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: Inter, sans-serif;
+            font-size: 0.64rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--sky);
+            border: 1px solid rgba(168, 196, 216, 0.28);
+            padding: 0.28rem 0.7rem;
+            border-radius: 100px;
+            margin-bottom: 1.6rem;
+        }
+
+        .wordmark {
+            font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+            font-weight: 600;
+            font-size: clamp(3.6rem, 14vw, 7.4rem);
+            line-height: 0.88;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #F4F7FA;
+            margin-bottom: 1.35rem;
+        }
+
+        .one-liner {
+            font-size: 1.28rem;
+            line-height: 1.45;
+            max-width: 22em;
+            color: var(--text);
+        }
+
+        .one-liner strong {
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .inscription {
+            margin-top: 2.4rem;
+            max-width: 26em;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--sky);
+            opacity: 0.78;
+            border-left: 1px solid rgba(196, 165, 116, 0.45);
+            padding-left: 1rem;
+        }
+
+        .section {
+            padding: 3.4rem 0 0;
+        }
+
+        .section-label {
+            font-family: Inter, sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.85rem;
+        }
+
+        .section h2 {
+            font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+            font-weight: 600;
+            font-size: 2.1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1.1rem;
+        }
+
+        .section p {
+            color: var(--text-dim);
+            max-width: 38em;
+        }
+
+        .mood {
+            list-style: none;
+            display: grid;
+            gap: 1.15rem;
+            margin-top: 0.4rem;
+        }
+
+        .mood li {
+            padding: 1.15rem 0 1.2rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .mood li:last-child { border-bottom: 1px solid var(--line); }
+
+        .mood strong {
+            display: block;
+            font-family: Inter, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+        }
+
+        .mood span {
+            color: var(--text-dim);
+            font-size: 1.02rem;
+        }
+
+        .directions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.4rem;
+        }
+
+        .direction {
+            background: var(--base-lift);
+            border: 1px solid var(--line);
+            padding: 1.35rem 1.2rem 1.45rem;
+            min-height: 100%;
+        }
+
+        .direction-letter {
+            font-family: Inter, sans-serif;
+            font-size: 0.64rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.7rem;
+        }
+
+        .direction h3 {
+            font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+            font-weight: 600;
+            font-size: 1.55rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            line-height: 1.05;
+            margin-bottom: 0.7rem;
+        }
+
+        .direction p {
+            font-size: 0.98rem;
+            color: var(--text-dim);
+            max-width: none;
+        }
+
+        .footnote {
+            margin-top: 1rem;
+            font-family: Inter, sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.02em;
+            color: var(--text-dim);
+        }
+
+        .coming {
+            margin-top: 3.4rem;
+            padding: 1.2rem 0 0;
+            border-top: 1px solid var(--line);
+            font-family: Inter, sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .page-footer {
+            margin-top: 4rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .back-games {
+            font-family: Inter, sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--gold);
+        }
+
+        .back-games:hover { color: var(--sky); }
+
+        .legal {
+            font-family: Inter, sans-serif;
+            font-size: 0.72rem;
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 760px) {
+            .studio-bar nav {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px 16px;
+            }
+
+            .studio-links { gap: 0.9rem 1.1rem; flex-wrap: wrap; }
+
+            .page { padding: 0 16px 72px; }
+
+            .hero { padding: 3.2rem 0 2.4rem; }
+
+            .one-liner { font-size: 1.12rem; }
+
+            .directions { grid-template-columns: 1fr; }
+
+            .section h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#hero">Skip to content</a>
+
+    <header class="studio-bar">
+        <nav aria-label="Studio">
+            <a href="/" class="studio-logo"><span>Color It</span> Company</a>
+            <ul class="studio-links">
+                <li><a href="/games/" class="is-current">Games</a></li>
+                <li><a href="/software/">Software</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="https://blog.coloritcompany.com" target="_blank" rel="noopener">Blog</a></li>
+                <li><a href="/opportunities/">Opportunities</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page">
+        <p class="crumb"><a href="/games/">Games</a> / Verticities</p>
+
+        <header class="hero" id="hero">
+            <p class="badge">In design</p>
+            <h1 class="wordmark">Verticities</h1>
+            <p class="one-liner"><strong>Cities that grow up.</strong> Stacked districts, skybridges, and life between the floors.</p>
+            <p class="inscription">They didn’t expand outward. They stacked the sky.</p>
+        </header>
+
+        <section class="section" aria-labelledby="vision-heading">
+            <p class="section-label">Vision</p>
+            <h2 id="vision-heading">Stacked cities</h2>
+            <p>A world of vertical metropolises — tiers of living, work, and transit rising through weather and light. The page stays with that upward living picture. No playable build is public yet.</p>
+        </section>
+
+        <section class="section" aria-labelledby="mood-heading">
+            <p class="section-label">Mood</p>
+            <h2 id="mood-heading">Shared spine</h2>
+            <ul class="mood">
+                <li>
+                    <strong>Upward aspiration</strong>
+                    <span>Layers, elevators, skybridges, and light from above.</span>
+                </li>
+                <li>
+                    <strong>Tall silhouette</strong>
+                    <span>A city that reads vertically — story-tall, capsule-tall, banner-tall.</span>
+                </li>
+                <li>
+                    <strong>Human scale</strong>
+                    <span>Windows, balconies, and transit inside the megastructure — not pure abstract geometry.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section" aria-labelledby="directions-heading">
+            <p class="section-label">Directions under exploration</p>
+            <h2 id="directions-heading">Three equal reads</h2>
+            <div class="directions">
+                <article class="direction">
+                    <p class="direction-letter">A</p>
+                    <h3>Skyward Commons</h3>
+                    <p>Soft civic utopia.</p>
+                </article>
+                <article class="direction">
+                    <p class="direction-letter">B</p>
+                    <h3>Strata Industry</h3>
+                    <p>Working megacity.</p>
+                </article>
+                <article class="direction">
+                    <p class="direction-letter">C</p>
+                    <h3>Glass Needle</h3>
+                    <p>Premium architectural.</p>
+                </article>
+            </div>
+            <p class="footnote">Final direction lock pending.</p>
+        </section>
+
+        <p class="coming">Coming: locked direction + key art</p>
+
+        <footer class="page-footer">
+            <a class="back-games" href="/games/">← Back to Games</a>
+            <p class="legal">Color It Company LLC</p>
+        </footer>
+    </main>
+</body>
+</html>
