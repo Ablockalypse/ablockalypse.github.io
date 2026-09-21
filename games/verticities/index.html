@@ -309,50 +309,32 @@
             padding-left: 1rem;
         }
 
-        .mood-stage {
-            margin-top: 1.5rem;
-            display: grid;
-            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-            gap: 1.15rem;
-            align-items: stretch;
-        }
-
-        .glass-frame {
-            background:
-                linear-gradient(180deg, rgba(168, 196, 216, 0.16), rgba(20, 24, 32, 0.55));
-            border: 1px solid rgba(168, 196, 216, 0.28);
-            box-shadow:
-                inset 0 0 0 1px rgba(196, 165, 116, 0.2),
-                0 22px 48px rgba(0, 0, 0, 0.32);
-            padding: 6px;
-            min-height: 100%;
-        }
-
-        .glass-frame img {
-            display: block;
-            width: 100%;
-            height: 28rem;
-            object-fit: cover;
-            object-position: center 18%;
-        }
-
-        .mood-copy {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 0.15rem 0;
-        }
-
-        .mood-copy p { max-width: none; }
-
         .visual-lock {
             font-family: Inter, sans-serif;
             font-size: 0.74rem;
             letter-spacing: 0.04em;
             color: var(--sky);
-            border-top: 1px solid var(--line);
-            padding-top: 0.85rem;
+            margin: -0.35rem 0 1.15rem;
+        }
+
+        .glass-frame {
+            margin-top: 1.5rem;
+            background:
+                linear-gradient(180deg, rgba(168, 196, 216, 0.22), rgba(20, 24, 32, 0.55));
+            border: 1px solid rgba(168, 196, 216, 0.38);
+            box-shadow:
+                inset 0 0 0 1px rgba(196, 165, 116, 0.32),
+                0 0 0 1px rgba(11, 13, 16, 0.8),
+                0 22px 48px rgba(0, 0, 0, 0.32);
+            padding: 7px;
+        }
+
+        .glass-frame img {
+            display: block;
+            width: 100%;
+            height: min(36rem, 72vh);
+            object-fit: cover;
+            object-position: center 12%;
         }
 
         .strata-band {
@@ -429,8 +411,6 @@
 
             .modules li { grid-template-columns: 1fr; gap: 0.2rem; }
 
-            .mood-stage { grid-template-columns: 1fr; }
-
             .glass-frame img { height: 22rem; }
 
             .strata-band img { height: 7.5rem; }
@@ -492,15 +472,11 @@
         <section class="section" aria-labelledby="mood-heading">
             <p class="section-label">Mood</p>
             <h2 id="mood-heading">Strata + glass chrome</h2>
-            <div class="mood-stage">
-                <figure class="glass-frame">
-                    <img src="./assets/vt_keyart_vertical_v2.png" alt="Vertical glass-and-stone towers rising through sky mist, linked by skybridges">
-                </figure>
-                <div class="mood-copy">
-                    <p>Working strata stacked under tall glass needles — a city that reads upward, with human windows and transit inside the megastructure.</p>
-                    <p class="visual-lock">Visual: B+C locked — strata systems and tall glass chrome.</p>
-                </div>
-            </div>
+            <p class="visual-lock">Visual: B+C locked — strata systems and tall glass chrome.</p>
+            <p>Working strata stacked under tall glass needles — a city that reads upward, with human windows and transit inside the megastructure.</p>
+            <figure class="glass-frame">
+                <img src="./assets/vt_keyart_vertical_v2.png" alt="Vertical glass-and-stone towers rising through sky mist, linked by skybridges">
+            </figure>
             <figure class="strata-band">
                 <img src="./assets/vt_library_hero_v2.png" alt="Wide stacked megacity in charcoal, sky mist, and stone-gold light">
             </figure>
