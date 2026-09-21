@@ -18,7 +18,7 @@
     <meta name="twitter:image" content="https://colorit.co/games/lasertag/assets/laser_tag_02_steam.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -301,28 +301,6 @@
         .lattice span:nth-child(4) { width: 58%; }
         .lattice span:nth-child(5) { width: 72%; }
 
-        .verticities-visual {
-            background:
-                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(168, 196, 216, 0.2) 0%, transparent 58%),
-                linear-gradient(180deg, #141820 0%, #0B0D10 100%);
-        }
-
-        .verticities-mark {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: rgba(196, 165, 116, 0.92);
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-        }
-
         footer {
             border-top: 1px solid var(--dark-lighter);
             padding: 3.5rem 0 2rem;
@@ -381,7 +359,6 @@
             .game-card-visual { height: 180px; }
             .game-card-info { padding: 2rem; }
             .game-card-info h2 { font-size: 2.1rem; margin-bottom: 1.1rem; }
-            .verticities-mark { font-size: 0.82rem; letter-spacing: 0.12em; }
 
             .footer-inner {
                 grid-template-columns: 1fr;
@@ -487,16 +464,17 @@
                         <div>
                             <div class="status-row" aria-label="Verticities availability">
                                 <span class="status-badge status-badge-soon">In design</span>
-                                <span class="status-badge">City sim</span>
+                                <span class="status-badge">Manage/build</span>
+                                <span class="status-badge">Private slice</span>
                             </div>
                             <h2>Verticities</h2>
-                            <p class="game-card-blurb">Cities that grow up. Stacked districts, skybridges, and life between the floors.</p>
-                            <p class="game-card-meta">Holding page — creative directions on the table; playable build not public yet.</p>
+                            <p class="game-card-blurb">Manage/build a vertical metropolis. Grow up, not out.</p>
+                            <p class="game-card-meta">In design · private Steam slice coming — holding page only; no public play yet.</p>
                         </div>
                         <span class="btn-primary">Open page →</span>
                     </div>
-                    <div class="game-card-visual verticities-visual" aria-hidden="true">
-                        <div class="verticities-mark">Verticities</div>
+                    <div class="game-card-visual game-card-visual-photo">
+                        <img src="./verticities/assets/vt_library_hero_v2.png" alt="Stacked Verticities megacity in charcoal, sky mist, and stone-gold light">
                     </div>
                 </div>
             </a>
