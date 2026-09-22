@@ -730,13 +730,30 @@ dialog.lightbox img {
     line-height: 1.65;
 }
 
-.gallery-fmv {
+.gallery-concept,
+.gallery-fmv,
+.gallery-tease {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
 }
 
-.gallery-fmv button {
+.gallery-concept {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery-fmv {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery-tease {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin-bottom: 1.25rem;
+}
+
+.gallery-concept button,
+.gallery-fmv button,
+.gallery-tease button {
     appearance: none;
     border: 1px solid var(--dark-lighter);
     background: var(--dark-light);
@@ -750,14 +767,20 @@ dialog.lightbox img {
     text-align: left;
 }
 
+.gallery-concept button:hover,
+.gallery-concept button:focus-visible,
 .gallery-fmv button:hover,
-.gallery-fmv button:focus-visible {
+.gallery-fmv button:focus-visible,
+.gallery-tease button:hover,
+.gallery-tease button:focus-visible {
     border-color: var(--cyan);
     transform: translateY(-2px);
     outline: none;
 }
 
-.gallery-fmv img {
+.gallery-concept img,
+.gallery-fmv img,
+.gallery-tease img {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
@@ -847,12 +870,15 @@ dialog.lightbox img {
 }
 
 @media (max-width: 960px) {
+    .gallery-concept { grid-template-columns: 1fr 1fr; }
     .gallery-fmv { grid-template-columns: 1fr 1fr; }
     .court-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {
+    .gallery-concept { grid-template-columns: 1fr; }
     .gallery-fmv { grid-template-columns: 1fr; }
+    .gallery-tease { max-width: none; }
     .cta-band { padding: 0 1.5rem 3.5rem; }
 }
 
